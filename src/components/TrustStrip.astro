@@ -4,6 +4,7 @@ import { useTranslations } from "~/i18n/utils";
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 
+// Logos constrained to a fixed 88×20px cell via object-fit:contain
 const indexed = [
   { name: "Scopus",         logo: "/logos/scopus.svg",         url: "https://www.scopus.com" },
   { name: "Web of Science", logo: "/logos/web-of-science.svg", url: "https://www.webofscience.com" },
@@ -15,123 +16,183 @@ const publishers = [
   { name: "Emerald Publishing", logo: "/logos/emerald.svg",  url: "https://www.emeraldpublishing.com" },
 ];
 
+// Institutions shown as styled text — emblems are illegible at small sizes
 const institutions = [
-  { name: "IIMA",                            logo: "/logos/iima.svg",                                url: "https://islamicmarketingassociation.org" },
-  { name: "Alanya Alaaddin Keykubat Univ.",  logo: "/logos/alanya-alaaddin-keykubat-university.png", url: "https://www.alanya.edu.tr" },
-  { name: "University of Malaya",            logo: "/logos/university-of-malaya.svg",                url: "https://um.edu.my" },
-  { name: "King Abdulaziz University",       logo: "/logos/king-abdulaziz-university.png",           url: "https://www.kau.edu.sa" },
+  { name: "IIMA",                               url: "https://islamicmarketingassociation.org" },
+  { name: "Alanya Alaaddin Keykubat Univ.",     url: "https://www.alanya.edu.tr" },
+  { name: "University of Malaya",               url: "https://um.edu.my" },
+  { name: "King Abdulaziz University",          url: "https://www.kau.edu.sa" },
 ];
 ---
 
-<section class="bg-surface-warm border-y border-midnight-100 py-10 md:py-14">
-  <div class="container-wide space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-10 lg:gap-14 md:items-start">
+<section class="bg-surface-warm border-y border-midnight-100 py-8 md:py-10">
+  <div class="container-wide">
+    <div class="trust-grid">
 
-    <!-- Indexed In -->
-    <div>
-      <p class="label">{t.trust.indexedIn}</p>
-      <ul class="logo-row">
-        {indexed.map((item) => (
+      <!-- Column 1: Indexed in -->
+      <div class="trust-col">
+        <p class="col-label">{t.trust.indexedIn}</p>
+        <ul class="logo-list">
+          {indexed.map((item) => (
+            <li>
+              <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-cell">
+                <img src={item.logo} alt={item.name} />
+              </a>
+            </li>
+          ))}
           <li>
-            <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-link">
-              <img src={item.logo} alt={item.name} class="logo-img" height="28" />
-            </a>
+            <span class="text-chip">ARCIF</span>
           </li>
-        ))}
-        <!-- ARCIF — text badge (no public logo) -->
-        <li>
-          <span class="text-badge">ARCIF</span>
-        </li>
-      </ul>
-    </div>
+        </ul>
+      </div>
 
-    <!-- Publishing Partners -->
-    <div>
-      <p class="label">{t.trust.inPartnership}</p>
-      <ul class="logo-row">
-        {publishers.map((item) => (
-          <li>
-            <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-link">
-              <img src={item.logo} alt={item.name} class="logo-img" height="28" />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <!-- Column 2: Publishing partners -->
+      <div class="trust-col">
+        <p class="col-label">{t.trust.inPartnership}</p>
+        <ul class="logo-list">
+          {publishers.map((item) => (
+            <li>
+              <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-cell">
+                <img src={item.logo} alt={item.name} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-    <!-- Institutional Partners -->
-    <div>
-      <p class="label">{t.trust.institutions ?? (locale === "ar" ? "الشركاء المؤسسيون" : "Institutional Partners")}</p>
-      <ul class="logo-row logo-row--tall">
-        {institutions.map((item) => (
-          <li>
-            <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-link">
-              <img src={item.logo} alt={item.name} class="logo-img" height="36" />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <!-- Column 3: Institutional partners -->
+      <div class="trust-col">
+        <p class="col-label">{t.trust.institutions}</p>
+        <ul class="inst-list">
+          {institutions.map((item) => (
+            <li>
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="inst-name">
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
+    </div>
   </div>
 </section>
 
 <style>
-  .label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--color-saffron-600);
-    margin-bottom: 1rem;
+  /* ── Grid ────────────────────────────────────────────────────────── */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem 0;
   }
 
-  .logo-row {
+  @media (min-width: 768px) {
+    .trust-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+  }
+
+  /* ── Column ──────────────────────────────────────────────────────── */
+  .trust-col {
+    padding-inline: 0 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .trust-col {
+      padding-inline: 1.75rem;
+      border-inline-end: 1px solid var(--color-midnight-100);
+    }
+    .trust-col:first-child {
+      padding-inline-start: 0;
+    }
+    .trust-col:last-child {
+      border-inline-end: none;
+      padding-inline-end: 0;
+    }
+  }
+
+  /* ── Section label ───────────────────────────────────────────────── */
+  .col-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-midnight-400);
+    margin-bottom: 0.875rem;
+  }
+
+  /* ── Logo list ───────────────────────────────────────────────────── */
+  .logo-list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 1.25rem 1.75rem;
+    gap: 0.5rem 1.5rem;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .logo-row--tall {
-    gap: 1rem 1.5rem;
-  }
-
-  .logo-link {
-    display: inline-flex;
-    align-items: center;
-    outline-offset: 4px;
-  }
-
-  .logo-img {
-    height: 28px;
-    width: auto;
-    object-fit: contain;
+  /* Fixed-size cell — logo scales to fit inside, never overflows */
+  .logo-cell {
     display: block;
-    /* Muted by default, full color on hover */
-    filter: grayscale(0.3) opacity(0.72);
-    transition: filter 0.22s ease;
+    width: 80px;
+    height: 20px;
+    outline-offset: 3px;
   }
 
-  .logo-row--tall .logo-img {
-    height: 36px;
+  .logo-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left center;
+    /* Greyscale by default — color on hover */
+    filter: grayscale(1) opacity(0.45);
+    transition: filter 0.25s ease;
   }
 
-  .logo-link:hover .logo-img,
-  .logo-link:focus-visible .logo-img {
+  /* RTL: flip object-position */
+  :root[dir="rtl"] .logo-cell img {
+    object-position: right center;
+  }
+
+  .logo-cell:hover img,
+  .logo-cell:focus-visible img {
     filter: grayscale(0) opacity(1);
   }
 
-  /* ARCIF text badge — no public logo available */
-  .text-badge {
-    display: inline-block;
-    font-family: var(--font-serif);
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--color-midnight-700);
-    opacity: 0.6;
-    letter-spacing: 0.04em;
+  /* ── ARCIF text chip ─────────────────────────────────────────────── */
+  .text-chip {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-midnight-600);
+    opacity: 0.45;
+  }
+
+  /* ── Institution text list ───────────────────────────────────────── */
+  .inst-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem 0.75rem;
+  }
+
+  .inst-name {
+    font-size: 0.72rem;
+    color: var(--color-midnight-600);
+    opacity: 0.65;
+    text-decoration: none;
+    transition: opacity 0.18s ease, color 0.18s ease;
+    line-height: 1.4;
+  }
+
+  .inst-name:hover {
+    opacity: 1;
+    color: var(--color-midnight-800);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 </style>
