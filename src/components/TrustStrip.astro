@@ -4,51 +4,134 @@ import { useTranslations } from "~/i18n/utils";
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 
-const indexedIn = [
-  { name: "Scopus" },
-  { name: "Web of Science" },
-  { name: "ARCIF" },
-  { name: "EBSCO" },
+const indexed = [
+  { name: "Scopus",         logo: "/logos/scopus.svg",         url: "https://www.scopus.com" },
+  { name: "Web of Science", logo: "/logos/web-of-science.svg", url: "https://www.webofscience.com" },
+  { name: "EBSCO",          logo: "/logos/ebsco.svg",          url: "https://www.ebsco.com" },
 ];
 
-const partners = [
-  { name: "Springer" },
-  { name: "Emerald Publishing" },
-  { name: "IIMA" },
-  { name: "Alanya Alaaddin Univ." },
-  { name: "Jadara Univ." },
-  { name: "Al-Quds Open Univ." },
+const publishers = [
+  { name: "Springer",           logo: "/logos/springer.svg", url: "https://link.springer.com" },
+  { name: "Emerald Publishing", logo: "/logos/emerald.svg",  url: "https://www.emeraldpublishing.com" },
+];
+
+const institutions = [
+  { name: "IIMA",                            logo: "/logos/iima.svg",                                url: "https://islamicmarketingassociation.org" },
+  { name: "Alanya Alaaddin Keykubat Univ.",  logo: "/logos/alanya-alaaddin-keykubat-university.png", url: "https://www.alanya.edu.tr" },
+  { name: "University of Malaya",            logo: "/logos/university-of-malaya.svg",                url: "https://um.edu.my" },
+  { name: "King Abdulaziz University",       logo: "/logos/king-abdulaziz-university.png",           url: "https://www.kau.edu.sa" },
 ];
 ---
 
-<section id="publications" class="bg-surface-warm py-10 md:py-14 lg:py-16 border-y border-midnight-100">
-  <div class="container-wide">
-    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
-      <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-600 mb-4">
-          {t.trust.indexedIn}
-        </p>
-        <ul class="flex flex-wrap items-center gap-x-6 md:gap-x-8 gap-y-3 md:gap-y-4">
-          {indexedIn.map((item) => (
-            <li class="font-serif text-xl md:text-2xl lg:text-3xl text-midnight-800/85 tracking-tight">
-              {item.name}
-            </li>
-          ))}
-        </ul>
-      </div>
+<section class="bg-surface-warm border-y border-midnight-100 py-10 md:py-14">
+  <div class="container-wide space-y-8 md:space-y-0 md:grid md:grid-cols-3 md:gap-10 lg:gap-14 md:items-start">
 
-      <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-600 mb-4">
-          {t.trust.inPartnership}
-        </p>
-        <ul class="flex flex-wrap items-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3">
-          {partners.map((p) => (
-            <li class="text-sm md:text-base lg:text-lg font-medium text-midnight-700">
-              {p.name}
-            </li>
-          ))}
-        </ul>
-      </div>
+    <!-- Indexed In -->
+    <div>
+      <p class="label">{t.trust.indexedIn}</p>
+      <ul class="logo-row">
+        {indexed.map((item) => (
+          <li>
+            <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-link">
+              <img src={item.logo} alt={item.name} class="logo-img" height="28" />
+            </a>
+          </li>
+        ))}
+        <!-- ARCIF — text badge (no public logo) -->
+        <li>
+          <span class="text-badge">ARCIF</span>
+        </li>
+      </ul>
     </div>
+
+    <!-- Publishing Partners -->
+    <div>
+      <p class="label">{t.trust.inPartnership}</p>
+      <ul class="logo-row">
+        {publishers.map((item) => (
+          <li>
+            <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-link">
+              <img src={item.logo} alt={item.name} class="logo-img" height="28" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Institutional Partners -->
+    <div>
+      <p class="label">{t.trust.institutions ?? (locale === "ar" ? "الشركاء المؤسسيون" : "Institutional Partners")}</p>
+      <ul class="logo-row logo-row--tall">
+        {institutions.map((item) => (
+          <li>
+            <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-link">
+              <img src={item.logo} alt={item.name} class="logo-img" height="36" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
   </div>
 </section>
+
+<style>
+  .label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-saffron-600);
+    margin-bottom: 1rem;
+  }
+
+  .logo-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem 1.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .logo-row--tall {
+    gap: 1rem 1.5rem;
+  }
+
+  .logo-link {
+    display: inline-flex;
+    align-items: center;
+    outline-offset: 4px;
+  }
+
+  .logo-img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    /* Muted by default, full color on hover */
+    filter: grayscale(0.3) opacity(0.72);
+    transition: filter 0.22s ease;
+  }
+
+  .logo-row--tall .logo-img {
+    height: 36px;
+  }
+
+  .logo-link:hover .logo-img,
+  .logo-link:focus-visible .logo-img {
+    filter: grayscale(0) opacity(1);
+  }
+
+  /* ARCIF text badge — no public logo available */
+  .text-badge {
+    display: inline-block;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-midnight-700);
+    opacity: 0.6;
+    letter-spacing: 0.04em;
+  }
+</style>

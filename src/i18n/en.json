@@ -28,7 +28,8 @@
   },
   "trust": {
     "indexedIn": "Conference proceedings indexed in",
-    "inPartnership": "In partnership with"
+    "inPartnership": "In partnership with",
+    "institutions": "Institutional partners"
   },
   "stats": {
     "yearsValue": "15+",
@@ -59,10 +60,22 @@
     "kicker": "Key dates",
     "title": "Plan your submission",
     "items": [
-      { "label": "Paper submission deadline", "date": "20 September 2026" },
-      { "label": "Early bird registration (–30%)", "date": "1 October 2026" },
-      { "label": "Fees payment deadline", "date": "15 October 2026" },
-      { "label": "Conference", "date": "27–28 October 2026" }
+      {
+        "label": "Paper submission deadline",
+        "date": "20 September 2026"
+      },
+      {
+        "label": "Early bird registration (–30%)",
+        "date": "1 October 2026"
+      },
+      {
+        "label": "Fees payment deadline",
+        "date": "15 October 2026"
+      },
+      {
+        "label": "Conference",
+        "date": "27–28 October 2026"
+      }
     ]
   },
   "fees": {
@@ -118,13 +131,34 @@
     ],
     "formatTitle": "Format requirements",
     "format": [
-      { "label": "File type", "value": "PDF or Word (.docx)" },
-      { "label": "Language", "value": "English or Arabic" },
-      { "label": "Abstract", "value": "200 – 300 words" },
-      { "label": "Full paper length", "value": "6,000 – 9,000 words" },
-      { "label": "Citation style", "value": "APA 7th edition" },
-      { "label": "Blind review", "value": "Remove all author-identifying information from the manuscript" },
-      { "label": "Deadline", "value": "20 September 2026" }
+      {
+        "label": "File type",
+        "value": "PDF or Word (.docx)"
+      },
+      {
+        "label": "Language",
+        "value": "English or Arabic"
+      },
+      {
+        "label": "Abstract",
+        "value": "200 – 300 words"
+      },
+      {
+        "label": "Full paper length",
+        "value": "6,000 – 9,000 words"
+      },
+      {
+        "label": "Citation style",
+        "value": "APA 7th edition"
+      },
+      {
+        "label": "Blind review",
+        "value": "Remove all author-identifying information from the manuscript"
+      },
+      {
+        "label": "Deadline",
+        "value": "20 September 2026"
+      }
     ],
     "cta": "Email your paper",
     "whatsappCta": "Have a question? Chat on WhatsApp",
@@ -153,9 +187,18 @@
     "venueDesc": "Asia Beach Resort & Spa is a premium property on Alanya's Cleopatra Beach, offering fully equipped conference halls, meeting rooms, and all-inclusive hospitality for academic events.",
     "alanyaTitle": "Getting to Alanya",
     "flights": [
-      { "label": "Gazipaşa–Alanya (GZP)", "value": "Nearest airport · 45 min transfer" },
-      { "label": "Antalya (AYT)", "value": "Major hub · ~2 h by shuttle" },
-      { "label": "Istanbul (IST / SAW)", "value": "Connecting hub · domestic onward" }
+      {
+        "label": "Gazipaşa–Alanya (GZP)",
+        "value": "Nearest airport · 45 min transfer"
+      },
+      {
+        "label": "Antalya (AYT)",
+        "value": "Major hub · ~2 h by shuttle"
+      },
+      {
+        "label": "Istanbul (IST / SAW)",
+        "value": "Connecting hub · domestic onward"
+      }
     ],
     "hybridTitle": "Online participation",
     "hybridDesc": "GIMAC 17 is a hybrid event. Online attendees receive a live-stream link and access to the virtual Q&A room. The online fee is $150 (all categories). Registration details are sent by email after payment."
