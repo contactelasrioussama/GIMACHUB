@@ -1,0 +1,75 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+const links = [
+  { label: "Home",              href: "/" },
+  { label: "Submit a Paper",    href: "/submit" },
+  { label: "Publications",      href: "/publications" },
+  { label: "Committee",         href: "/committee" },
+  { label: "Venue & Travel",    href: "/venue" },
+  { label: "Gallery",           href: "/gallery" },
+];
+---
+
+<BaseLayout
+  title="Page Not Found — GIMAC 17"
+  description="The page you're looking for doesn't exist. Return to the GIMAC 17 conference website."
+>
+  <section class="flex-1 flex items-center py-24 md:py-32">
+    <div class="container-tight text-center">
+
+      <!-- Ornament -->
+      <span class="ornament-star !w-8 !h-8 text-saffron-400 inline-block mb-8 opacity-60"></span>
+
+      <!-- 404 number -->
+      <p class="font-serif text-[8rem] md:text-[12rem] font-semibold text-midnight-800 leading-none tracking-tight select-none" aria-hidden="true">
+        404
+      </p>
+
+      <!-- Heading -->
+      <h1 class="font-serif text-2xl md:text-3xl font-semibold text-midnight-800 mt-2">
+        Page not found
+      </h1>
+      <p class="mt-3 text-base text-muted max-w-sm mx-auto leading-relaxed">
+        The page you're looking for doesn't exist or may have moved.
+      </p>
+
+      <!-- Primary CTA -->
+      <div class="mt-8">
+        <a href="/" class="btn btn-dark">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M19 12H5M11 5l-7 7 7 7"/>
+          </svg>
+          Back to homepage
+        </a>
+      </div>
+
+      <!-- Quick links grid -->
+      <div class="mt-14 border-t border-midnight-100 pt-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-6">
+          Quick links
+        </p>
+        <ul class="flex flex-wrap justify-center gap-2 md:gap-3">
+          {links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="inline-block px-4 py-2 text-sm text-midnight-700 border border-midnight-100 rounded-sm hover:border-saffron-400 hover:text-midnight-900 transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Make the section fill the remaining viewport height */
+  section {
+    min-height: calc(100vh - 140px);
+  }
+</style>

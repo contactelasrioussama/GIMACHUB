@@ -4,6 +4,7 @@ import Header from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import { useTranslations, getDirection } from "~/i18n/utils";
+import config from "~/data/config.json";
 
 interface Props {
   title?: string;
@@ -22,6 +23,56 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+
+// JSON-LD — Conference Event schema (helps Google show rich results)
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "GIMAC 17 — 17th Global Islamic Marketing Conference",
+  "description": t.hero.subtitle,
+  "url": "https://gimachub.com",
+  "startDate": config.conferenceDates.start,
+  "endDate": config.conferenceDates.end,
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": config.venue.name,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": config.venue.city,
+      "addressCountry": "TR"
+    }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "International Islamic Marketing Association (IIMA)",
+    "url": "https://islamicmarketingassociation.org",
+    "email": config.contact.chairEmail
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "In-Person Registration",
+      "price": String(config.fees.otherInPerson),
+      "priceCurrency": config.fees.currency,
+      "availability": "https://schema.org/InStock",
+      "validFrom": config.conferenceDates.start,
+      "url": "https://gimachub.com/submit"
+    },
+    {
+      "@type": "Offer",
+      "name": "Online Registration",
+      "price": String(config.fees.otherOnline),
+      "priceCurrency": config.fees.currency,
+      "availability": "https://schema.org/InStock",
+      "validFrom": config.conferenceDates.start,
+      "url": "https://gimachub.com/submit"
+    }
+  ],
+  "image": "https://gimachub.com/og-default.jpg",
+  "inLanguage": ["en", "ar"]
+};
 ---
 
 <!doctype html>
@@ -58,6 +109,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Structured data — Conference Event schema -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Smooth page transitions -->
     <ClientRouter />
