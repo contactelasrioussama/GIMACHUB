@@ -7,11 +7,22 @@ const t = useTranslations(locale);
 const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeURIComponent("GIMAC 17 — Paper Submission")}`;
 ---
 
-<section class="relative overflow-hidden bg-midnight-800 text-surface lg:min-h-[660px]">
+<section class="relative overflow-hidden bg-midnight-800 text-surface min-h-[600px] lg:min-h-[680px]">
 
-  <!-- ── Background decorations ───────────────────────────────────── -->
-  <!-- Subtle star-polygon tile -->
-  <svg class="absolute inset-0 w-full h-full opacity-[0.035] pointer-events-none" aria-hidden="true">
+  <!-- ── Full-bleed background image ──────────────────────────────── -->
+  <div class="absolute inset-0" aria-hidden="true">
+    <img
+      src="/images/hero-conference.jpg"
+      alt=""
+      class="w-full h-full object-cover object-[center_30%]"
+      loading="eager"
+    />
+    <!-- Solid uniform dark overlay — no gradient -->
+    <div class="absolute inset-0 bg-midnight-800/70"></div>
+  </div>
+
+  <!-- ── Subtle star tile on top of overlay ───────────────────────── -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none" aria-hidden="true">
     <defs>
       <pattern id="hero-stars" x="0" y="0" width="96" height="96" patternUnits="userSpaceOnUse">
         <polygon
@@ -26,31 +37,12 @@ const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeUR
   <!-- Saffron top accent bar -->
   <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-saffron-400 to-transparent"></div>
 
-  <!-- Radial breathing glow (text side only) -->
-  <div class="glow-pulse absolute -top-32 start-[-10%] w-[700px] h-[700px] rounded-full bg-saffron-400/[0.06] blur-3xl pointer-events-none"></div>
-
-  <!-- ── Right image panel (desktop) ──────────────────────────────── -->
-  <div
-    class="hidden lg:block absolute inset-y-0 end-0 w-[46%]"
-    aria-hidden="true"
-  >
-    <!-- Blend edge: image fades into the dark left background -->
-    <div class="absolute inset-y-0 start-0 w-2/5 bg-gradient-to-r from-midnight-800 via-midnight-800/70 to-transparent z-10"></div>
-    <!-- Top + bottom fades -->
-    <div class="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-midnight-800/60 to-transparent z-10"></div>
-    <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-midnight-800/60 to-transparent z-10"></div>
-
-    <img
-      src="/images/hero-conference.jpg"
-      alt=""
-      class="w-full h-full object-cover object-[center_28%] opacity-75"
-      loading="eager"
-    />
-  </div>
+  <!-- Breathing radial glow -->
+  <div class="glow-pulse absolute -top-32 start-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-saffron-400/[0.06] blur-3xl pointer-events-none"></div>
 
   <!-- ── Content ───────────────────────────────────────────────────── -->
   <div class="container-wide relative z-10 py-20 md:py-28 lg:py-32">
-    <div class="max-w-xl lg:max-w-2xl">
+    <div class="max-w-3xl">
 
       <p class="hero-anim inline-flex items-center gap-2 text-xs sm:text-sm font-medium uppercase tracking-[0.22em] text-saffron-300 mb-6" style="animation-delay:0.05s">
         <span class="ornament-star !w-3 !h-3"></span>
@@ -61,7 +53,7 @@ const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeUR
         {t.hero.title}
       </h1>
 
-      <p class="hero-anim mt-6 text-lg sm:text-xl leading-relaxed text-surface/80 max-w-lg" style="animation-delay:0.35s">
+      <p class="hero-anim mt-6 text-lg sm:text-xl leading-relaxed text-surface/80 max-w-2xl" style="animation-delay:0.35s">
         {t.hero.subtitle}
       </p>
 
@@ -97,22 +89,5 @@ const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeUR
       </div>
 
     </div>
-
-    <!-- ── Mobile image (below content on sm/md) ──────────────────── -->
-    <div class="lg:hidden mt-14 -mx-4 sm:-mx-6 relative" aria-hidden="true">
-      <div class="aspect-[16/7] overflow-hidden">
-        <img
-          src="/images/hero-conference.jpg"
-          alt=""
-          class="w-full h-full object-cover object-[center_28%] opacity-75"
-          loading="eager"
-        />
-      </div>
-      <!-- Bottom fade into page background -->
-      <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-midnight-800 to-transparent"></div>
-      <!-- Top fade -->
-      <div class="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-midnight-800/40 to-transparent"></div>
-    </div>
-
   </div>
 </section>
