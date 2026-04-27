@@ -1,0 +1,98 @@
+---
+import { useTranslations } from "~/i18n/utils";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+---
+
+<section class="py-12 md:py-20 lg:py-24 bg-surface-warm border-t border-midnight-100">
+  <div class="container-tight">
+    <div class="mb-10 md:mb-14">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">
+        {t.faq.kicker}
+      </p>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-midnight-800 leading-tight">
+        {t.faq.title}
+      </h2>
+    </div>
+
+    <div class="faq-list">
+      {t.faq.items.map((item, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary class="faq-summary">
+            <span class="faq-q">{item.q}</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </summary>
+          <div class="faq-body">
+            <p class="faq-a">{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    border-top: 1px solid var(--color-midnight-100);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--color-midnight-100);
+  }
+
+  .faq-summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .faq-summary::-webkit-details-marker { display: none; }
+
+  .faq-q {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-midnight-800);
+    line-height: 1.45;
+    padding-top: 0.1rem;
+  }
+  @media (min-width: 768px) {
+    .faq-q { font-size: 1.125rem; }
+    .faq-summary { padding: 1.5rem 0; }
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: var(--color-saffron-500);
+    transition: transform 0.22s ease;
+  }
+  details[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+  details[open] .faq-body {
+    max-height: 600px;
+  }
+
+  .faq-a {
+    padding-bottom: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--color-muted);
+  }
+  @media (min-width: 768px) {
+    .faq-a { font-size: 1rem; }
+  }
+</style>

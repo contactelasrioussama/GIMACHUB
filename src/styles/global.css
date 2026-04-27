@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — Midnight + Saffron + warm off-white */
+  --color-midnight-50:  #F2F4F9;
+  --color-midnight-100: #DCE2EE;
+  --color-midnight-200: #B6C0D6;
+  --color-midnight-300: #8493B5;
+  --color-midnight-400: #4F628E;
+  --color-midnight-500: #243A6B;
+  --color-midnight-600: #18305B;
+  --color-midnight-700: #11264C;
+  --color-midnight-800: #0A1F44;
+  --color-midnight-900: #060F26;
+
+  --color-saffron-50:  #FBF6E6;
+  --color-saffron-100: #F4E7BD;
+  --color-saffron-200: #E9D38A;
+  --color-saffron-300: #DCBE5C;
+  --color-saffron-400: #C9A94D;
+  --color-saffron-500: #B0903A;
+  --color-saffron-600: #8C7028;
+  --color-saffron-700: #6B541A;
+  --color-saffron-800: #4A3910;
+  --color-saffron-900: #2B2008;
+
+  --color-surface:        #F8F5EE;
+  --color-surface-warm:   #F1ECDF;
+  --color-ink:            #1A1A1A;
+  --color-muted:          #5A6271;
+
+  /* Type stack */
+  --font-serif: "Spectral", Georgia, "Times New Roman", serif;
+  --font-sans:  "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-arabic-serif: "Amiri", "Spectral", Georgia, serif;
+  --font-arabic-sans:  "Cairo", "Inter", system-ui, sans-serif;
+}
+
+/* Base */
+html {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html[lang="ar"] {
+  font-family: var(--font-arabic-sans);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4 {
+  font-family: var(--font-arabic-serif);
+  letter-spacing: 0;
+}
+
+/* Selection */
+::selection { background: var(--color-saffron-200); color: var(--color-midnight-800); }
+
+/* Component layer — must be inside @layer so Tailwind utilities (hidden, etc.) can override */
+@layer components {
+  .container-wide { max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
+  .container-tight { max-width: 920px; margin-inline: auto; padding-inline: 1.5rem; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.4rem;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: transform 120ms ease, background 120ms ease, color 120ms ease, box-shadow 120ms ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--color-saffron-400);
+    color: var(--color-midnight-900);
+    box-shadow: 0 1px 0 0 var(--color-saffron-600) inset, 0 8px 24px -8px rgba(201,169,77,0.5);
+  }
+  .btn-primary:hover { background: var(--color-saffron-300); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-surface) 40%, transparent);
+  }
+  .btn-ghost:hover { background: color-mix(in srgb, var(--color-surface) 10%, transparent); }
+  .btn-dark {
+    background: var(--color-midnight-800);
+    color: var(--color-surface);
+  }
+  .btn-dark:hover { background: var(--color-midnight-700); transform: translateY(-1px); }
+
+  .hairline {
+    border: 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-midnight-800) 12%, transparent);
+  }
+
+  .ornament-star {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,4 61,28 88,28 71,46 88,64 61,64 50,88 39,64 12,64 29,46 12,28 39,28' fill='black'/></svg>") no-repeat center / contain;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,4 61,28 88,28 71,46 88,64 61,64 50,88 39,64 12,64 29,46 12,28 39,28' fill='black'/></svg>") no-repeat center / contain;
+  }
+
+  /* Mobile accordion for Themes section */
+  .track-accordion summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-midnight-800) 12%, transparent);
+  }
+  .track-accordion summary::-webkit-details-marker { display: none; }
+  .track-accordion summary .chevron {
+    width: 18px; height: 18px; flex-shrink: 0;
+    transition: transform 200ms ease;
+    color: var(--color-saffron-500);
+  }
+  .track-accordion[open] summary .chevron { transform: rotate(180deg); }
+  .track-accordion .chip-list { padding-top: 1rem; padding-bottom: 0.5rem; }
+}

@@ -1,0 +1,30 @@
+{
+  "conferenceDates": {
+    "start": "2026-10-27",
+    "end": "2026-10-28"
+  },
+  "deadlines": {
+    "submission": "2026-09-20T23:59:59+03:00",
+    "earlyBird": "2026-10-01T23:59:59+03:00",
+    "fees": "2026-10-15T23:59:59+03:00"
+  },
+  "fees": {
+    "studentInPerson": 200,
+    "studentOnline": 150,
+    "otherInPerson": 300,
+    "otherOnline": 150,
+    "earlyBirdDiscount": 0.3,
+    "currency": "USD"
+  },
+  "contact": {
+    "chairEmail": "alserhan@psut.edu.jo",
+    "whatsapp": "+962770548917",
+    "whatsappDisplay": "+962 770 548 917"
+  },
+  "venue": {
+    "name": "Asia Beach Resort & Spa",
+    "city": "Alanya",
+    "country": "Turkey"
+  },
+  "paypalUrl": "https://www.paypal.com/"
+}

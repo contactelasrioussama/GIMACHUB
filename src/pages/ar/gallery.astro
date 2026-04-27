@@ -1,0 +1,107 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import FinalCta from "~/components/FinalCta.astro";
+import { useTranslations } from "~/i18n/utils";
+import galleryData from "~/data/gallery.json";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+const gp = t.galleryPage;
+---
+
+<BaseLayout title={`${gp.title} — GIMAC 17`} description={gp.subtitle}>
+
+  <!-- Page hero -->
+  <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">
+    <div class="container-tight">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">{gp.kicker}</p>
+      <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+        {gp.title}
+      </h1>
+      <p class="mt-4 text-base md:text-lg text-muted leading-relaxed max-w-2xl">{gp.subtitle}</p>
+      <p class="mt-5 text-xs text-midnight-400">{gp.attribution}</p>
+    </div>
+  </section>
+
+  <!-- Masonry photo grid -->
+  <section class="py-10 md:py-14 lg:py-16">
+    <div class="container-wide">
+      <div class="gallery-grid">
+        {galleryData.photos.map((photo, i) => (
+          <a
+            href={`${galleryData.flickrProfile}${photo.id}/`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-item"
+            aria-label={`صورة من مؤتمر جيماك — عرض على فليكر`}
+          >
+            <img
+              src={photo.src}
+              alt={`صورة من مؤتمر جيماك`}
+              loading={i < 8 ? "eager" : "lazy"}
+              decoding="async"
+              class="gallery-img"
+              width="640"
+            />
+          </a>
+        ))}
+      </div>
+
+      <!-- Flickr CTA -->
+      <div class="mt-10 md:mt-14 flex flex-col sm:flex-row items-center gap-4">
+        <a
+          href={galleryData.flickrProfile}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-dark"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12zm14.823-4.432c-1.44 0-2.607 1.168-2.607 2.608S13.383 12.784 14.823 12.784s2.608-1.168 2.608-2.608-1.168-2.608-2.608-2.608zM9.177 7.568c-1.44 0-2.608 1.168-2.608 2.608s1.168 2.608 2.608 2.608S11.785 11.616 11.785 10.176 10.617 7.568 9.177 7.568z"/>
+          </svg>
+          {gp.flickrCta}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <FinalCta />
+</BaseLayout>
+
+<style>
+  .gallery-grid {
+    columns: 2;
+    column-gap: 0.5rem;
+  }
+  @media (min-width: 640px) {
+    .gallery-grid { columns: 3; column-gap: 0.625rem; }
+  }
+  @media (min-width: 1024px) {
+    .gallery-grid { columns: 4; column-gap: 0.75rem; }
+  }
+
+  .gallery-item {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--color-midnight-100);
+  }
+  @media (min-width: 640px) {
+    .gallery-item { margin-bottom: 0.625rem; }
+  }
+  @media (min-width: 1024px) {
+    .gallery-item { margin-bottom: 0.75rem; }
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.35s ease, opacity 0.2s ease;
+  }
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.04);
+    opacity: 0.88;
+  }
+</style>

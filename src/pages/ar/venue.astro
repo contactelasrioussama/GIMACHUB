@@ -1,0 +1,89 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import FinalCta from "~/components/FinalCta.astro";
+import { useTranslations, localePath } from "~/i18n/utils";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+const vp = t.venuePage;
+const isAr = locale === "ar";
+---
+
+<BaseLayout title={`${vp.title} — GIMAC 17`} description={vp.subtitle}>
+
+  <!-- Page hero -->
+  <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">
+    <div class="container-tight">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">{vp.kicker}</p>
+      <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+        {vp.title}
+      </h1>
+      <p class="mt-4 text-base md:text-lg text-muted leading-relaxed max-w-2xl">{vp.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Venue details -->
+  <section class="py-12 md:py-16 lg:py-20">
+    <div class="container-tight">
+
+      <!-- Venue fact card — dark accent -->
+      <div class="bg-midnight-800 text-surface rounded-sm p-6 md:p-8 mb-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-300 mb-3">{vp.venueTitle}</p>
+        <h2 class="font-serif text-xl md:text-2xl font-semibold text-surface mb-6 leading-snug">
+          Asia Beach Resort & Spa
+        </h2>
+        <dl class="divide-y divide-[#11264C] text-sm">
+          <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+            <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">
+              {isAr ? "العنوان" : "Address"}
+            </dt>
+            <dd class="text-surface/85">Cleopatra Beach, Alanya, Antalya Province, Türkiye</dd>
+          </div>
+          <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+            <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">
+              {isAr ? "تاريخ المؤتمر" : "Conference dates"}
+            </dt>
+            <dd class="font-semibold text-saffron-300">27 – 28 October 2026</dd>
+          </div>
+          <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+            <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">
+              {isAr ? "الصيغة" : "Format"}
+            </dt>
+            <dd class="text-surface/85">{isAr ? "هجين (حضوري + عبر الإنترنت)" : "Hybrid — in-person & live online"}</dd>
+          </div>
+        </dl>
+        <p class="mt-6 text-sm text-surface/65 leading-relaxed">{vp.venueDesc}</p>
+      </div>
+
+      <!-- Getting to Alanya -->
+      <h2 class="font-serif text-xl md:text-2xl font-semibold text-midnight-800 mb-5">{vp.alanyaTitle}</h2>
+      <ul class="grid gap-3 sm:grid-cols-3">
+        {vp.flights.map((flight) => (
+          <li class="bg-white border border-midnight-100 rounded-sm p-4 md:p-5">
+            <p class="font-semibold text-midnight-800 text-sm md:text-base leading-snug mb-1">{flight.label}</p>
+            <p class="text-xs text-muted leading-relaxed">{flight.value}</p>
+          </li>
+        ))}
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- Online participation -->
+  <section class="py-12 md:py-16 bg-surface-warm border-t border-midnight-100">
+    <div class="container-tight">
+      <div class="flex gap-4 items-start">
+        <span class="ornament-star !w-5 !h-5 text-saffron-400 shrink-0 mt-0.5"></span>
+        <div>
+          <h2 class="font-serif text-xl md:text-2xl font-semibold text-midnight-800 mb-3">{vp.hybridTitle}</h2>
+          <p class="text-sm md:text-base text-muted leading-relaxed max-w-2xl">{vp.hybridDesc}</p>
+          <a href={localePath(locale, "/submit")} class="btn btn-dark mt-6 inline-flex">
+            {t.nav.submit}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FinalCta />
+</BaseLayout>

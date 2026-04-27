@@ -1,0 +1,12 @@
+{
+  "outlets": [
+    { "title": "Springer Proceedings in Business and Economics", "publisher": "Springer", "indexing": ["Scopus"] },
+    { "title": "Emerald Studies in Islamic Economy and Finance", "publisher": "Emerald", "indexing": ["Scopus", "WOS"] },
+    { "title": "International Journal of Technology Enhanced Learning", "publisher": "Inderscience", "indexing": ["Scopus"] },
+    { "title": "International Journal of Environment, Workplace & Employment", "publisher": "Inderscience", "indexing": ["Scopus"] },
+    { "title": "International Journal of Islamic Marketing and Branding", "publisher": "Inderscience", "indexing": ["Google Scholar"] },
+    { "title": "Journal of Islamic Management and Leadership (Arabic)", "publisher": "IIMA", "indexing": ["ARCIF", "EBSCO"] },
+    { "title": "International Journal of Islamic Marketing (Arabic)", "publisher": "IIMA", "indexing": ["ARCIF", "EBSCO"] },
+    { "title": "Journal of Islamic Entrepreneurship (Arabic)", "publisher": "IIMA", "indexing": ["ARCIF", "EBSCO"] }
+  ]
+}

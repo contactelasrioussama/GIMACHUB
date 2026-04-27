@@ -1,0 +1,20 @@
+{
+  "editions": [
+    { "edition": 1, "city": { "en": "Dubai", "ar": "دبي" }, "country": { "en": "U.A.E.", "ar": "الإمارات" }, "year": 2011 },
+    { "edition": 2, "city": { "en": "Abu Dhabi", "ar": "أبو ظبي" }, "country": { "en": "U.A.E.", "ar": "الإمارات" }, "year": 2012 },
+    { "edition": 3, "city": { "en": "Cairo", "ar": "القاهرة" }, "country": { "en": "Egypt", "ar": "مصر" }, "year": 2012 },
+    { "edition": 4, "city": { "en": "Istanbul", "ar": "إسطنبول" }, "country": { "en": "Türkiye", "ar": "تركيا" }, "year": 2013 },
+    { "edition": 5, "city": { "en": "Kuala Lumpur", "ar": "كوالالمبور" }, "country": { "en": "Malaysia", "ar": "ماليزيا" }, "year": 2014 },
+    { "edition": 6, "city": { "en": "Istanbul", "ar": "إسطنبول" }, "country": { "en": "Türkiye", "ar": "تركيا" }, "year": 2015 },
+    { "edition": 7, "city": { "en": "Casablanca", "ar": "الدار البيضاء" }, "country": { "en": "Morocco", "ar": "المغرب" }, "year": 2016 },
+    { "edition": 8, "city": { "en": "Alanya", "ar": "ألانيا" }, "country": { "en": "Türkiye", "ar": "تركيا" }, "year": 2017 },
+    { "edition": 9, "city": { "en": "Tunis", "ar": "تونس" }, "country": { "en": "Tunisia", "ar": "تونس" }, "year": 2018 },
+    { "edition": 10, "city": { "en": "Alanya", "ar": "ألانيا" }, "country": { "en": "Türkiye", "ar": "تركيا" }, "year": 2019 },
+    { "edition": 11, "city": { "en": "Alanya", "ar": "ألانيا" }, "country": { "en": "Türkiye", "ar": "تركيا" }, "year": 2021 },
+    { "edition": 12, "city": { "en": "Istanbul", "ar": "إسطنبول" }, "country": { "en": "Türkiye", "ar": "تركيا" }, "year": 2022 },
+    { "edition": 13, "city": { "en": "Tbilisi", "ar": "تبليسي" }, "country": { "en": "Georgia", "ar": "جورجيا" }, "year": 2023 },
+    { "edition": 14, "city": { "en": "Hammamet", "ar": "الحمامات" }, "country": { "en": "Tunisia", "ar": "تونس" }, "year": 2024 },
+    { "edition": 16, "city": { "en": "Alanya", "ar": "ألانيا" }, "country": { "en": "Türkiye", "ar": "تركيا" }, "year": 2025 },
+    { "edition": 17, "city": { "en": "Alanya", "ar": "ألانيا" }, "country": { "en": "Türkiye", "ar": "تركيا" }, "year": 2026, "current": true }
+  ]
+}

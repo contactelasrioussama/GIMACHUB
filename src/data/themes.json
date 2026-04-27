@@ -1,0 +1,67 @@
+{
+  "groups": [
+    {
+      "id": "special",
+      "highlight": true,
+      "title": { "en": "GIMAC 17 special focus", "ar": "التركيز الخاص للنسخة 17" },
+      "topics": [
+        { "en": "AI and Business", "ar": "الذكاء الاصطناعي والأعمال" },
+        { "en": "Digital Transformation", "ar": "التحول الرقمي" },
+        { "en": "Cross-cultural Marketing", "ar": "التسويق عبر الثقافات" },
+        { "en": "Social Media", "ar": "وسائل التواصل الاجتماعي" },
+        { "en": "Women Entrepreneurship", "ar": "ريادة الأعمال النسائية" },
+        { "en": "Home-based Businesses", "ar": "الأعمال المنزلية" },
+        { "en": "Ethics and Crises", "ar": "الأخلاقيات والأزمات" }
+      ]
+    },
+    {
+      "id": "marketing",
+      "title": { "en": "Islamic Marketing & Business", "ar": "التسويق والأعمال الإسلامية" },
+      "topics": [
+        { "en": "Marketing Strategies", "ar": "استراتيجيات التسويق" },
+        { "en": "Consumer Behavior", "ar": "سلوك المستهلك" },
+        { "en": "International Marketing", "ar": "التسويق الدولي" },
+        { "en": "Media & Branding", "ar": "الإعلام والعلامة التجارية" },
+        { "en": "Muslim Consumers", "ar": "المستهلكون المسلمون" },
+        { "en": "Islamic Business Ethics", "ar": "أخلاقيات الأعمال الإسلامية" },
+        { "en": "Islamic HR, Management & Leadership", "ar": "الموارد البشرية والإدارة والقيادة الإسلامية" },
+        { "en": "Islamic & Social Entrepreneurship", "ar": "ريادة الأعمال الإسلامية والاجتماعية" },
+        { "en": "Emerging Islamic Markets", "ar": "الأسواق الإسلامية الناشئة" },
+        { "en": "Social Innovation", "ar": "الابتكار الاجتماعي" },
+        { "en": "Islamic Economics & Business Education", "ar": "تعليم الاقتصاد والأعمال الإسلامية" },
+        { "en": "Research Methods by Muslim Scholars", "ar": "مناهج البحث عند الباحثين المسلمين" },
+        { "en": "Social Responsibility", "ar": "المسؤولية الاجتماعية" },
+        { "en": "Halal Market", "ar": "السوق الحلال" },
+        { "en": "Islamic Hospitality, Tourism & Logistics", "ar": "الضيافة والسياحة واللوجستيات الإسلامية" }
+      ]
+    },
+    {
+      "id": "comparative",
+      "title": { "en": "Comparative Studies", "ar": "الدراسات المقارنة" },
+      "topics": [
+        { "en": "Christian Business Studies", "ar": "دراسات الأعمال المسيحية" },
+        { "en": "Vegetarian Consumer & Market Studies", "ar": "دراسات المستهلك النباتي والسوق" },
+        { "en": "Ethnic Consumer & Market Studies", "ar": "دراسات الأسواق العرقية" },
+        { "en": "Green & Environmental Marketing", "ar": "التسويق الأخضر والبيئي" },
+        { "en": "Interfaith Dialogue", "ar": "حوار الأديان" },
+        { "en": "Asian Islamic Studies", "ar": "الدراسات الإسلامية الآسيوية" }
+      ]
+    },
+    {
+      "id": "finance",
+      "title": { "en": "Islamic Finance & Banking", "ar": "المالية والمصرفية الإسلامية" },
+      "topics": [
+        { "en": "Stock Exchanges, Investments & Finance", "ar": "البورصات والاستثمار والتمويل" },
+        { "en": "Fintech, Cryptocurrencies & Blockchain", "ar": "التكنولوجيا المالية والعملات الرقمية والبلوكشين" },
+        { "en": "Accounting, Zakat, Waqf", "ar": "المحاسبة والزكاة والوقف" },
+        { "en": "Insurance & Takaful", "ar": "التأمين والتكافل" },
+        { "en": "Islamic Law & Marketing Practices", "ar": "الفقه وممارسات التسويق" },
+        { "en": "Trade with Islamic Markets", "ar": "التجارة مع الأسواق الإسلامية" },
+        { "en": "Digital Content & Communications", "ar": "المحتوى الرقمي والاتصالات" },
+        { "en": "Islamic Fashion & Clothing", "ar": "الموضة والملابس الإسلامية" },
+        { "en": "Pharmaceuticals, Cosmetics & Toiletries", "ar": "الأدوية ومستحضرات التجميل" },
+        { "en": "Traditional & Herbal Medicines", "ar": "الطب التقليدي والعشبي" }
+      ]
+    }
+  ]
+}

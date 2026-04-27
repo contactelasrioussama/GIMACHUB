@@ -1,0 +1,83 @@
+---
+import { useTranslations } from "~/i18n/utils";
+import themesData from "~/data/themes.json";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+type LocalKey = "en" | "ar";
+const k: LocalKey = locale === "ar" ? "ar" : "en";
+---
+
+<section id="themes" class="py-12 md:py-20 lg:py-24 bg-surface-warm">
+  <div class="container-wide">
+    <div class="max-w-3xl mb-10 md:mb-14">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">
+        {t.themes.kicker}
+      </p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+        {t.themes.title}
+      </h2>
+      <p class="mt-4 text-base md:text-lg text-muted leading-relaxed">
+        {t.themes.subtitle}
+      </p>
+    </div>
+
+    <div class="space-y-3 md:space-y-0 md:grid md:gap-6 lg:grid-cols-12">
+      {themesData.groups.map((group, i) => (
+        group.highlight ? (
+          /* Special focus — always fully visible */
+          <article class="lg:col-span-12 bg-midnight-800 text-surface rounded-sm p-4 md:p-6 lg:p-8 border border-midnight-100">
+            <header class="flex items-center gap-3 mb-4">
+              <span class="ornament-star !w-4 !h-4 text-saffron-400 shrink-0"></span>
+              <h3 class="font-serif text-lg md:text-xl lg:text-2xl font-semibold text-saffron-300">
+                {group.title[k]}
+              </h3>
+            </header>
+            <ul class="flex flex-wrap gap-1.5 md:gap-2">
+              {group.topics.map((topic) => (
+                <li class="px-2 py-1 text-xs md:px-3 md:py-1.5 md:text-sm rounded-sm bg-midnight-700/60 text-surface/90 border border-midnight-700">
+                  {topic[k]}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ) : (
+          /* Secondary groups — collapsible on mobile, always open on md+ */
+          <article class="lg:col-span-6 bg-white text-midnight-800 rounded-sm border border-midnight-100 overflow-hidden">
+            {/* Mobile: accordion */}
+            <details class="track-accordion md:hidden" open={i === 1}>
+              <summary class="px-4 py-3">
+                <h3 class="font-serif text-base font-semibold text-midnight-800">{group.title[k]}</h3>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </summary>
+              <div class="chip-list px-4 pb-4">
+                <ul class="flex flex-wrap gap-1.5">
+                  {group.topics.map((topic) => (
+                    <li class="px-2 py-1 text-xs rounded-sm bg-surface text-midnight-700 border border-midnight-100">
+                      {topic[k]}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+            {/* Desktop: always open */}
+            <div class="hidden md:block p-7 lg:p-8">
+              <h3 class="font-serif text-xl md:text-2xl font-semibold text-midnight-800 mb-5">
+                {group.title[k]}
+              </h3>
+              <ul class="flex flex-wrap gap-2">
+                {group.topics.map((topic) => (
+                  <li class="px-3 py-1.5 text-sm rounded-sm bg-surface text-midnight-700 border border-midnight-100">
+                    {topic[k]}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        )
+      ))}
+    </div>
+  </div>
+</section>

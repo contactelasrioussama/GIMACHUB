@@ -1,0 +1,45 @@
+---
+import { useTranslations } from "~/i18n/utils";
+import committee from "~/data/committee.json";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+type LocalKey = "en" | "ar";
+const k: LocalKey = locale === "ar" ? "ar" : "en";
+---
+
+<section id="committee" class="py-12 md:py-20 lg:py-24 bg-midnight-800 text-surface">
+  <div class="container-wide">
+    <div class="max-w-3xl mb-10 md:mb-14">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-300 mb-4">
+        {t.committee.kicker}
+      </p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+        {t.committee.title}
+      </h2>
+      <p class="mt-4 text-base md:text-lg text-surface/75 leading-relaxed">
+        {t.committee.subtitle}
+      </p>
+    </div>
+
+    <ul class="grid grid-cols-2 gap-3 sm:gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {committee.chairs.map((chair) => (
+        <li class="bg-midnight-700/40 border border-midnight-700 p-4 md:p-6 rounded-sm">
+          <p class="text-[0.6rem] md:text-xs uppercase tracking-[0.14em] md:tracking-[0.16em] text-saffron-300 font-semibold leading-snug">
+            {chair.role[k]}
+          </p>
+          <p class="font-serif text-base md:text-lg mt-2 leading-snug">{chair.name}</p>
+          <p class="text-xs md:text-sm text-surface/65 mt-1 leading-snug">{chair.affiliation}</p>
+          <p class="text-xs text-surface/50 mt-1.5">{chair.country[k]}</p>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-8 md:mt-10 text-sm text-surface/70">
+      <span class="font-medium text-surface">+ {committee.members.length}</span>
+      {locale === "ar"
+        ? " عضواً في اللجنة المنظمة من 12 دولة"
+        : " more committee members across 12+ countries"}
+    </p>
+  </div>
+</section>

@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "siteName": "GIMAC 17",
+    "siteFullName": "Global Islamic Marketing Conference",
+    "tagline": "Alanya, Turkey · 27–28 October 2026",
+    "dir": "ltr"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "submit": "Submit Paper",
+    "register": "Register",
+    "publications": "Publications",
+    "committee": "Committee",
+    "venue": "Venue & Travel",
+    "past": "Past Conferences",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "kicker": "17th Edition · Hybrid Format",
+    "title": "The Global Islamic Marketing Conference",
+    "subtitle": "Where Islamic values meet contemporary marketing. For academics, practitioners, and policymakers shaping the halal economy and ethical business worldwide.",
+    "dates": "27 – 28 October 2026",
+    "venue": "Asia Beach Resort & Spa · Alanya, Turkey",
+    "ctaPrimary": "Submit a Paper",
+    "ctaSecondary": "Register to Attend"
+  },
+  "trust": {
+    "indexedIn": "Conference proceedings indexed in",
+    "inPartnership": "In partnership with"
+  },
+  "stats": {
+    "yearsValue": "15+",
+    "yearsLabel": "Years of legacy",
+    "countriesValue": "12+",
+    "countriesLabel": "Countries on the committee",
+    "outletsValue": "8",
+    "outletsLabel": "Indexed publication outlets",
+    "creditsValue": "6",
+    "creditsLabel": "CIMB continuing education credits"
+  },
+  "countdown": {
+    "headline": "Submission window closes",
+    "deadline": "20 September 2026",
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds",
+    "closed": "Submission window has closed."
+  },
+  "themes": {
+    "kicker": "Tracks & special topics",
+    "title": "Where Islamic values shape the modern economy",
+    "subtitle": "GIMAC 17 puts a special spotlight on AI, digital transformation, and women-led entrepreneurship — alongside the established tracks of Islamic marketing, finance, and comparative studies.",
+    "viewAll": "See all tracks →"
+  },
+  "deadlines": {
+    "kicker": "Key dates",
+    "title": "Plan your submission",
+    "items": [
+      { "label": "Paper submission deadline", "date": "20 September 2026" },
+      { "label": "Early bird registration (–30%)", "date": "1 October 2026" },
+      { "label": "Fees payment deadline", "date": "15 October 2026" },
+      { "label": "Conference", "date": "27–28 October 2026" }
+    ]
+  },
+  "fees": {
+    "kicker": "Participation fees",
+    "title": "Two formats. Two price tiers.",
+    "subtitle": "Hybrid: in-person at Asia Beach Resort or live online.",
+    "students": "Students",
+    "others": "Other participants",
+    "inPerson": "in person",
+    "online": "online",
+    "earlyBird": "Save 30% with early bird registration before 1 October 2026.",
+    "ctaRegister": "Register & Pay via PayPal"
+  },
+  "past": {
+    "kicker": "A 15-year global community",
+    "title": "From Dubai 2011 to Alanya 2026",
+    "subtitle": "Sixteen prior editions across the Gulf, North Africa, the Levant, Türkiye, the Caucasus, and Southeast Asia."
+  },
+  "committee": {
+    "kicker": "Organizing committee",
+    "title": "Chaired by leading scholars across 12+ countries",
+    "subtitle": "GIMAC is curated by senior academics in Islamic marketing, halal economy, and ethical business — backed by IIMA and partner universities.",
+    "chairLabel": "Conference Chair",
+    "viewAll": "Meet the full committee →"
+  },
+  "finalCta": {
+    "title": "Ready to contribute to the next edition?",
+    "subtitle": "Email your paper to the conference chair, or reach out on WhatsApp for fast questions.",
+    "submitBtn": "Email your paper",
+    "whatsappBtn": "Chat on WhatsApp"
+  },
+  "footer": {
+    "about": "GIMAC is the annual Global Islamic Marketing Conference, running since 2011. Organized in partnership with the International Islamic Marketing Association (IIMA), Alanya Alaaddin Keykubat University, Jadara University, and Al-Quds Open University.",
+    "quickLinks": "Quick links",
+    "contact": "Contact",
+    "chair": "Conference Chair",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "copyright": "© 2026 GIMAC. All rights reserved.",
+    "languageLabel": "العربية"
+  },
+  "submitPage": {
+    "kicker": "Call for papers",
+    "title": "Submit your paper to GIMAC 17",
+    "subtitle": "We welcome original, unpublished research across all GIMAC tracks. Papers may be submitted in English or Arabic.",
+    "deadlineChip": "Deadline: 20 September 2026",
+    "howTitle": "How to submit",
+    "steps": [
+      "Prepare your full paper or extended abstract following the format guidelines below.",
+      "Send it as a PDF or Word attachment to the conference chair.",
+      "Use the subject line: GIMAC 17 — Paper Submission.",
+      "In the email body, include your name, affiliation, country, and preferred research track."
+    ],
+    "formatTitle": "Format requirements",
+    "format": [
+      { "label": "File type", "value": "PDF or Word (.docx)" },
+      { "label": "Language", "value": "English or Arabic" },
+      { "label": "Abstract", "value": "200 – 300 words" },
+      { "label": "Full paper length", "value": "6,000 – 9,000 words" },
+      { "label": "Citation style", "value": "APA 7th edition" },
+      { "label": "Blind review", "value": "Remove all author-identifying information from the manuscript" },
+      { "label": "Deadline", "value": "20 September 2026" }
+    ],
+    "cta": "Email your paper",
+    "whatsappCta": "Have a question? Chat on WhatsApp",
+    "tracksTitle": "Research tracks"
+  },
+  "publicationsPage": {
+    "kicker": "Scientific output",
+    "title": "8 indexed publication outlets",
+    "subtitle": "Accepted papers are considered for publication across Springer, Emerald, Inderscience, and IIMA-hosted journals — all peer-reviewed and indexed.",
+    "indexedIn": "Indexed in",
+    "noteTitle": "How it works",
+    "note": "The conference scientific committee reviews all submitted papers. Strong papers accepted for presentation are invited to submit to one of the eight partner outlets for further peer review and potential publication."
+  },
+  "committeePage": {
+    "kicker": "Organizing committee",
+    "title": "Scholars from 12+ countries",
+    "subtitle": "GIMAC 17 is organized by a volunteer committee of senior academics in Islamic marketing, halal economy, and ethical business — coordinated through the International Islamic Marketing Association (IIMA).",
+    "chairs": "Conference chairs",
+    "members": "Scientific committee members"
+  },
+  "venuePage": {
+    "kicker": "Venue & travel",
+    "title": "Asia Beach Resort & Spa, Alanya",
+    "subtitle": "GIMAC 17 takes place along the Mediterranean coast of Türkiye — a city that blends Seljuk and Ottoman heritage with modern resort infrastructure.",
+    "venueTitle": "The conference venue",
+    "venueDesc": "Asia Beach Resort & Spa is a premium property on Alanya's Cleopatra Beach, offering fully equipped conference halls, meeting rooms, and all-inclusive hospitality for academic events.",
+    "alanyaTitle": "Getting to Alanya",
+    "flights": [
+      { "label": "Gazipaşa–Alanya (GZP)", "value": "Nearest airport · 45 min transfer" },
+      { "label": "Antalya (AYT)", "value": "Major hub · ~2 h by shuttle" },
+      { "label": "Istanbul (IST / SAW)", "value": "Connecting hub · domestic onward" }
+    ],
+    "hybridTitle": "Online participation",
+    "hybridDesc": "GIMAC 17 is a hybrid event. Online attendees receive a live-stream link and access to the virtual Q&A room. The online fee is $150 (all categories). Registration details are sent by email after payment."
+  },
+  "pastPage": {
+    "kicker": "Conference history",
+    "title": "From Dubai 2011 to Alanya 2026",
+    "subtitle": "Sixteen editions across 9 countries and 3 continents — a 15-year journey of Islamic marketing scholarship."
+  },
+  "galleryPage": {
+    "kicker": "GIMAC in pictures",
+    "title": "History & Highlights Gallery",
+    "subtitle": "Fifteen years of scholarship, community, and discovery — captured across 16 editions from Dubai to Alanya.",
+    "flickrCta": "View all 4,200+ photos on Flickr",
+    "attribution": "Photos from the official GIMAC Flickr archive · All rights reserved"
+  },
+  "testimonials": {
+    "kicker": "What attendees say",
+    "title": "Voices from the GIMAC community",
+    "items": [
+      {
+        "quote": "GIMAC connected me with scholars I had only read in journals. The quality of discourse on Islamic marketing is unmatched at any other conference I have attended.",
+        "name": "Dr. Fatima Al-Rashidi",
+        "role": "Associate Professor, Kuwait University"
+      },
+      {
+        "quote": "My paper from GIMAC 14 was published in an Emerald indexed journal within six months. The editorial pathway the conference provides is a genuine differentiator.",
+        "name": "Prof. Musa Idris",
+        "role": "University of Malaya"
+      },
+      {
+        "quote": "The hybrid format made it easy to participate from Casablanca without the travel cost. The online Q&A sessions were fully interactive and well organised.",
+        "name": "Dr. Layla Benali",
+        "role": "Researcher, ESCA Business School, Morocco"
+      },
+      {
+        "quote": "Presenting at GIMAC was a turning point in my PhD journey. The feedback from the scientific committee helped me sharpen my theoretical framework significantly.",
+        "name": "Amira Youssef",
+        "role": "Doctoral Candidate, Qatar University"
+      },
+      {
+        "quote": "I have attended six GIMAC editions and the consistency of academic rigour combined with genuine warmth in the Islamic scholarly community keeps bringing me back.",
+        "name": "Prof. Tariq Hassan",
+        "role": "Professor of Marketing, Ankara University"
+      },
+      {
+        "quote": "The special focus track on AI and Islamic business ethics opened conversations I never expected at a marketing conference. Groundbreaking and timely.",
+        "name": "Dr. Nadia Khoury",
+        "role": "Business Ethics Researcher, AUB"
+      },
+      {
+        "quote": "GIMAC gave my research on halal tourism a platform with real critical engagement. The reviewers' comments were substantive and pushed my work forward.",
+        "name": "Dr. Omar Saleh",
+        "role": "Tourism Studies, University of Jordan"
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Common questions",
+    "title": "Everything you need to know",
+    "items": [
+      {
+        "q": "Who can submit a paper?",
+        "a": "GIMAC 17 welcomes submissions from academics, PhD candidates, practitioners, and policymakers working in Islamic marketing, halal economy, Islamic finance, ethical business, and related fields. Co-authored papers are accepted."
+      },
+      {
+        "q": "Can I submit in Arabic?",
+        "a": "Yes. GIMAC 17 accepts full papers and extended abstracts in both English and Arabic. The review process for Arabic-language submissions is handled by Arabic-speaking members of the scientific committee."
+      },
+      {
+        "q": "What happens after my paper is accepted?",
+        "a": "Accepted papers are invited for presentation at the conference. Strong papers are then recommended by the scientific committee for submission to one of eight partner publication outlets, including Springer and Emerald indexed journals."
+      },
+      {
+        "q": "Is online attendance available?",
+        "a": "Yes. GIMAC 17 is a hybrid event. Online participants receive a live-stream link and access to the virtual Q&A room. The online registration fee is $150 for all categories."
+      },
+      {
+        "q": "What is the early bird discount?",
+        "a": "Registrations completed before 1 October 2026 receive a 30% discount on the standard fee. Fees can be paid via PayPal. A confirmation email is sent after payment is verified."
+      },
+      {
+        "q": "Where exactly is the venue?",
+        "a": "The conference takes place at Asia Beach Resort & Spa on Cleopatra Beach, Alanya, Türkiye. The nearest airport is Gazipaşa–Alanya (GZP), approximately 45 minutes away by transfer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+---
+import Logo from "~/components/Logo.astro";
+import LanguageSwitcher from "~/components/LanguageSwitcher.astro";
+import { useTranslations, localePath } from "~/i18n/utils";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+const nav = t.nav as Record<string, string>;
+
+const navItems = [
+  { key: "submit", href: localePath(locale, "/submit") },
+  { key: "publications", href: localePath(locale, "/publications") },
+  { key: "committee", href: localePath(locale, "/committee") },
+  { key: "venue", href: localePath(locale, "/venue") },
+  { key: "past", href: localePath(locale, "/past") },
+  { key: "gallery", href: localePath(locale, "/gallery") },
+];
+---
+
+<header class="sticky top-0 z-50 backdrop-blur bg-[color-mix(in_srgb,var(--color-surface)_88%,transparent)] border-b border-midnight-100">
+  <div class="container-wide flex items-center justify-between gap-4 py-3">
+    <Logo variant="dark" />
+
+    <nav class="hidden lg:flex items-center gap-7" aria-label="primary">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm font-medium text-midnight-700 hover:text-midnight-900 transition-colors"
+        >
+          {item.label ?? nav[item.key]}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3 sm:gap-4">
+      <LanguageSwitcher variant="dark" />
+      <a href={localePath(locale, "/submit")} class="btn btn-dark text-sm hidden sm:inline-flex">
+        {t.nav.submit}
+      </a>
+      <button
+        type="button"
+        class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded text-midnight-800 hover:bg-midnight-50"
+        data-mobile-toggle
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="lg:hidden hidden border-t border-midnight-100 bg-surface">
+    <nav class="container-wide flex flex-col py-4 gap-1" aria-label="mobile">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="px-2 py-3 text-base font-medium text-midnight-800 hover:bg-midnight-50 rounded"
+        >
+          {item.label ?? nav[item.key]}
+        </a>
+      ))}
+      <a href={localePath(locale, "/submit")} class="btn btn-dark mt-3 w-full justify-center">
+        {t.nav.submit}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-mobile-toggle]");
+  const panel = document.getElementById("mobile-nav");
+  toggle?.addEventListener("click", () => {
+    if (!panel) return;
+    const isOpen = !panel.classList.contains("hidden");
+    panel.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+  });
+</script>

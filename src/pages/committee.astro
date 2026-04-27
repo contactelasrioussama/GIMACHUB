@@ -1,0 +1,68 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import FinalCta from "~/components/FinalCta.astro";
+import { useTranslations } from "~/i18n/utils";
+import committeeData from "~/data/committee.json";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+type LocalKey = "en" | "ar";
+const k: LocalKey = locale === "ar" ? "ar" : "en";
+const cp = t.committeePage;
+---
+
+<BaseLayout title={`${cp.title} — GIMAC 17`} description={cp.subtitle}>
+
+  <!-- Page hero -->
+  <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">
+    <div class="container-tight">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">{cp.kicker}</p>
+      <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+        {cp.title}
+      </h1>
+      <p class="mt-4 text-base md:text-lg text-muted leading-relaxed max-w-2xl">{cp.subtitle}</p>
+    </div>
+  </section>
+
+  <!-- Conference chairs -->
+  <section class="py-12 md:py-16 lg:py-20">
+    <div class="container-wide">
+      <h2 class="font-serif text-xl md:text-2xl font-semibold text-midnight-800 mb-6 md:mb-8">{cp.chairs}</h2>
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {committeeData.chairs.map((chair) => (
+          <li class="bg-white rounded-sm border border-midnight-100 overflow-hidden">
+            <div class="bg-saffron-400" style="height:3px"></div>
+            <div class="p-5 md:p-6">
+              <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-saffron-600 mb-2">
+                {chair.role[k]}
+              </p>
+              <p class="font-serif text-base md:text-lg font-semibold text-midnight-800 leading-snug">
+                {chair.name}
+              </p>
+              <p class="text-xs md:text-sm text-muted mt-1.5">{chair.affiliation}</p>
+              <p class="text-xs text-midnight-400 mt-0.5">{chair.country[k]}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Scientific committee members -->
+  <section class="py-12 md:py-16 bg-surface-warm border-t border-midnight-100">
+    <div class="container-wide">
+      <h2 class="font-serif text-xl md:text-2xl font-semibold text-midnight-800 mb-6 md:mb-8">{cp.members}</h2>
+      <ul class="grid gap-2.5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {committeeData.members.map((member) => (
+          <li class="bg-white border border-midnight-100 rounded-sm px-4 py-4">
+            <p class="text-sm font-semibold text-midnight-800 leading-snug">{member.name}</p>
+            <p class="text-xs text-muted mt-1 leading-snug">{member.affiliation}</p>
+            <p class="text-[0.65rem] text-midnight-400 mt-0.5 uppercase tracking-wide">{member.country[k]}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <FinalCta />
+</BaseLayout>

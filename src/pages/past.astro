@@ -1,0 +1,67 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import FinalCta from "~/components/FinalCta.astro";
+import { useTranslations } from "~/i18n/utils";
+import past from "~/data/past-conferences.json";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+type LocalKey = "en" | "ar";
+const k: LocalKey = locale === "ar" ? "ar" : "en";
+const pp = t.pastPage;
+
+const total = past.editions.length;
+const countries = [...new Set(past.editions.map((e) => e.country.en))].length;
+---
+
+<BaseLayout title={`${pp.title} — GIMAC 17`} description={pp.subtitle}>
+
+  <!-- Page hero -->
+  <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">
+    <div class="container-tight">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">{pp.kicker}</p>
+      <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+        {pp.title}
+      </h1>
+      <p class="mt-4 text-base md:text-lg text-muted leading-relaxed max-w-2xl">{pp.subtitle}</p>
+
+      <!-- Quick stats strip -->
+      <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+        {[
+          { value: String(total), label: locale === "ar" ? "نسخة" : "editions" },
+          { value: String(countries), label: locale === "ar" ? "دول" : "countries" },
+          { value: "15+", label: locale === "ar" ? "عامًا" : "years" },
+        ].map(({ value, label }) => (
+          <div class="flex items-baseline gap-1.5">
+            <span class="font-serif text-2xl md:text-3xl font-semibold text-midnight-800">{value}</span>
+            <span class="text-sm text-muted">{label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Editions grid -->
+  <section class="py-12 md:py-16 lg:py-20">
+    <div class="container-wide">
+      <ol class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-5">
+        {past.editions.map((ed) => (
+          <li class={`relative ps-4 border-s ${ed.current ? "border-saffron-400" : "border-midnight-200"}`}>
+            <p class={`text-[0.65rem] md:text-xs font-semibold tracking-wider mb-1 ${ed.current ? "text-saffron-600" : "text-midnight-400"}`}>
+              #{ed.edition} · {ed.year}
+            </p>
+            <p class={`font-serif leading-tight ${ed.current ? "text-xl md:text-2xl font-bold text-midnight-900" : "text-lg md:text-xl font-semibold text-midnight-700"}`}>
+              {ed.city[k]}
+            </p>
+            <p class={`text-xs mt-0.5 ${ed.current ? "text-midnight-600" : "text-muted"}`}>{ed.country[k]}</p>
+            {ed.current && (
+              <span class="absolute -start-[5px] top-2 w-2.5 h-2.5 rounded-full bg-saffron-400 ring-4 ring-saffron-100"></span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <FinalCta />
+</BaseLayout>

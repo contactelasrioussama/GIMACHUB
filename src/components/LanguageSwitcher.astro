@@ -1,0 +1,34 @@
+---
+import { useTranslations, getOppositeLocale } from "~/i18n/utils";
+
+interface Props {
+  variant?: "light" | "dark";
+}
+
+const { variant = "dark" } = Astro.props;
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+const otherLocale = getOppositeLocale(locale);
+
+const path = Astro.url.pathname;
+const targetPath = locale === "ar"
+  ? path.replace(/^\/ar(\/|$)/, "/")
+  : `/ar${path === "/" ? "/" : path}`;
+
+const colorClass = variant === "light"
+  ? "text-surface/80 hover:text-surface"
+  : "text-midnight-700 hover:text-midnight-900";
+---
+
+<a
+  href={targetPath}
+  class={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${colorClass}`}
+  hreflang={otherLocale}
+  lang={otherLocale}
+>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+  </svg>
+  {t.footer.languageLabel}
+</a>

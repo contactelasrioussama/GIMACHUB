@@ -1,0 +1,54 @@
+---
+import { useTranslations } from "~/i18n/utils";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+
+const indexedIn = [
+  { name: "Scopus" },
+  { name: "Web of Science" },
+  { name: "ARCIF" },
+  { name: "EBSCO" },
+];
+
+const partners = [
+  { name: "Springer" },
+  { name: "Emerald Publishing" },
+  { name: "IIMA" },
+  { name: "Alanya Alaaddin Univ." },
+  { name: "Jadara Univ." },
+  { name: "Al-Quds Open Univ." },
+];
+---
+
+<section id="publications" class="bg-surface-warm py-10 md:py-14 lg:py-16 border-y border-midnight-100">
+  <div class="container-wide">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-start">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-600 mb-4">
+          {t.trust.indexedIn}
+        </p>
+        <ul class="flex flex-wrap items-center gap-x-6 md:gap-x-8 gap-y-3 md:gap-y-4">
+          {indexedIn.map((item) => (
+            <li class="font-serif text-xl md:text-2xl lg:text-3xl text-midnight-800/85 tracking-tight">
+              {item.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-600 mb-4">
+          {t.trust.inPartnership}
+        </p>
+        <ul class="flex flex-wrap items-center gap-x-4 md:gap-x-6 gap-y-2 md:gap-y-3">
+          {partners.map((p) => (
+            <li class="text-sm md:text-base lg:text-lg font-medium text-midnight-700">
+              {p.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

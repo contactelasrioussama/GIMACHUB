@@ -1,0 +1,80 @@
+---
+import Logo from "~/components/Logo.astro";
+import LanguageSwitcher from "~/components/LanguageSwitcher.astro";
+import config from "~/data/config.json";
+import { useTranslations, localePath } from "~/i18n/utils";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+const nav = t.nav as Record<string, string>;
+
+const quickLinks = [
+  { key: "submit", href: localePath(locale, "/submit") },
+  { key: "publications", href: localePath(locale, "/publications") },
+  { key: "committee", href: localePath(locale, "/committee") },
+  { key: "venue", href: localePath(locale, "/venue") },
+  { key: "past", href: localePath(locale, "/past") },
+  { key: "gallery", href: localePath(locale, "/gallery") },
+];
+---
+
+<footer class="bg-midnight-800 text-surface mt-16">
+  <div class="container-wide py-14 grid gap-10 lg:gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <Logo variant="light" showSubtitle={true} />
+      <p class="mt-6 text-sm leading-relaxed text-surface/75 max-w-md">
+        {t.footer.about}
+      </p>
+    </div>
+
+    <div class="lg:col-span-3">
+      <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-300 mb-4">
+        {t.footer.quickLinks}
+      </h3>
+      <ul class="space-y-2.5 text-sm">
+        {quickLinks.map((link) => (
+          <li>
+            <a href={link.href} class="text-surface/80 hover:text-saffron-300 transition-colors">
+              {nav[link.key]}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="lg:col-span-4">
+      <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-300 mb-4">
+        {t.footer.contact}
+      </h3>
+      <dl class="space-y-3 text-sm">
+        <div>
+          <dt class="text-surface/60 mb-1">{t.footer.chair}</dt>
+          <dd class="font-medium">Prof. Baker Ahmad Alserhan</dd>
+        </div>
+        <div>
+          <dt class="text-surface/60 mb-1">{t.footer.email}</dt>
+          <dd>
+            <a href={`mailto:${config.contact.chairEmail}`} class="hover:text-saffron-300 transition-colors break-all">
+              {config.contact.chairEmail}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-surface/60 mb-1">{t.footer.whatsapp}</dt>
+          <dd>
+            <a href={`https://wa.me/${config.contact.whatsapp.replace(/\D/g, "")}`} class="hover:text-saffron-300 transition-colors">
+              {config.contact.whatsappDisplay}
+            </a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="border-t border-midnight-700">
+    <div class="container-wide py-5 flex flex-wrap items-center justify-between gap-4 text-xs text-surface/60">
+      <p>{t.footer.copyright}</p>
+      <LanguageSwitcher variant="light" />
+    </div>
+  </div>
+</footer>

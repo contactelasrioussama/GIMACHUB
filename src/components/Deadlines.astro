@@ -1,0 +1,37 @@
+---
+import { useTranslations } from "~/i18n/utils";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+---
+
+<section class="py-12 md:py-20 lg:py-24">
+  <div class="container-wide">
+    <div class="grid lg:grid-cols-12 gap-8 md:gap-10 lg:gap-16">
+      <div class="lg:col-span-5">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">
+          {t.deadlines.kicker}
+        </p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+          {t.deadlines.title}
+        </h2>
+      </div>
+
+      <div class="lg:col-span-7">
+        <ol class="divide-y divide-midnight-100 border-y border-midnight-100">
+          {t.deadlines.items.map((item, i) => (
+            <li class="py-4 md:py-5 flex items-baseline justify-between gap-4">
+              <div class="flex items-baseline gap-3 md:gap-4 min-w-0">
+                <span class="font-serif text-saffron-500 text-sm tabular-nums shrink-0">0{i + 1}</span>
+                <span class="text-sm md:text-base lg:text-lg text-midnight-800">{item.label}</span>
+              </div>
+              <span class="font-serif text-sm md:text-base lg:text-lg font-medium text-midnight-800 whitespace-nowrap shrink-0">
+                {item.date}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>

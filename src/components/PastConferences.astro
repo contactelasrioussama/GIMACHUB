@@ -1,0 +1,40 @@
+---
+import { useTranslations } from "~/i18n/utils";
+import past from "~/data/past-conferences.json";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+type LocalKey = "en" | "ar";
+const k: LocalKey = locale === "ar" ? "ar" : "en";
+---
+
+<section id="past" class="py-12 md:py-20 lg:py-24">
+  <div class="container-wide">
+    <div class="max-w-3xl mb-8 md:mb-12">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">
+        {t.past.kicker}
+      </p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+        {t.past.title}
+      </h2>
+      <p class="mt-4 text-base md:text-lg text-muted leading-relaxed">{t.past.subtitle}</p>
+    </div>
+
+    <ol class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-5">
+      {past.editions.map((ed) => (
+        <li class={`relative ps-3 md:ps-4 border-s ${ed.current ? "border-saffron-400" : "border-midnight-200"}`}>
+          <div class={`text-[0.65rem] md:text-xs font-semibold tracking-wider ${ed.current ? "text-saffron-600" : "text-midnight-400"}`}>
+            #{ed.edition} · {ed.year}
+          </div>
+          <div class={`font-serif text-base md:text-lg lg:text-xl mt-0.5 leading-tight ${ed.current ? "text-midnight-800 font-semibold" : "text-midnight-700"}`}>
+            {ed.city[k]}
+          </div>
+          <div class="text-xs text-muted">{ed.country[k]}</div>
+          {ed.current && (
+            <span class="absolute -start-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-saffron-400 ring-4 ring-saffron-100"></span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

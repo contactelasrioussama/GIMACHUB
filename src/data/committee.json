@@ -1,0 +1,69 @@
+{
+  "chairs": [
+    {
+      "role": { "en": "Conference Chair", "ar": "رئيس المؤتمر" },
+      "name": "Prof. Baker Ahmad Alserhan",
+      "affiliation": "Princess Sumaya University",
+      "country": { "en": "Jordan", "ar": "الأردن" }
+    },
+    {
+      "role": { "en": "Regional Director", "ar": "المدير الإقليمي" },
+      "name": "Dr. Ali Hilal AlBagoum",
+      "affiliation": "Intl. Islamic Marketing Association",
+      "country": { "en": "Jordan", "ar": "الأردن" }
+    },
+    {
+      "role": { "en": "Marketing Chair", "ar": "رئيس لجنة التسويق" },
+      "name": "Dr. Roudaina Houjeir",
+      "affiliation": "Higher Colleges of Technology",
+      "country": { "en": "U.A.E.", "ar": "الإمارات" }
+    },
+    {
+      "role": { "en": "Scientific Chair", "ar": "رئيس اللجنة العلمية" },
+      "name": "Prof. Daphne Halkias",
+      "affiliation": "Ecole des Ponts Business School",
+      "country": { "en": "Greece", "ar": "اليونان" }
+    },
+    {
+      "role": { "en": "Chair, Caucasus Region", "ar": "رئيس منطقة القوقاز" },
+      "name": "Prof. Tornike Khoshtaria",
+      "affiliation": "North Umbria University",
+      "country": { "en": "Qatar", "ar": "قطر" }
+    },
+    {
+      "role": { "en": "Chair, Türkiye", "ar": "رئيس تركيا" },
+      "name": "Dr. Mehmet Özer Demir",
+      "affiliation": "Alanya Alaaddin Keykubat University",
+      "country": { "en": "Türkiye", "ar": "تركيا" }
+    },
+    {
+      "role": { "en": "Chair, Türkiye", "ar": "رئيس تركيا" },
+      "name": "Dr. Mehmet Bayirli",
+      "affiliation": "Alanya Alaaddin Keykubat University",
+      "country": { "en": "Türkiye", "ar": "تركيا" }
+    }
+  ],
+  "members": [
+    { "name": "Prof. Hafedh Ben Abdennebi", "affiliation": "ECSTRA - University of Carthage", "country": { "en": "Tunisia", "ar": "تونس" } },
+    { "name": "Prof. Sami Mensi", "affiliation": "ECSTRA - University of Carthage", "country": { "en": "Tunisia", "ar": "تونس" } },
+    { "name": "Dr. Mohamed Sadok Gassouma", "affiliation": "Institut Supérieur de Théologie de Tunis (Ez-Un)", "country": { "en": "Tunisia", "ar": "تونس" } },
+    { "name": "Prof. Houyam Alsaudi", "affiliation": "University of Jordan", "country": { "en": "Jordan", "ar": "الأردن" } },
+    { "name": "Dr. Ismail Abu Amoud", "affiliation": "University of Jordan", "country": { "en": "Jordan", "ar": "الأردن" } },
+    { "name": "Haitham Ali Hilal Albaqoum", "affiliation": "Al-Albayt University", "country": { "en": "Jordan", "ar": "الأردن" } },
+    { "name": "Prof. Mubbsher Munawar Khan", "affiliation": "Hailey College of Banking", "country": { "en": "Pakistan", "ar": "باكستان" } },
+    { "name": "Dr. Bekir Ozkan", "affiliation": "Bursa Technical University", "country": { "en": "Türkiye", "ar": "تركيا" } },
+    { "name": "Dr. Hasan Terzi", "affiliation": "Karabuk University", "country": { "en": "Türkiye", "ar": "تركيا" } },
+    { "name": "Dr. Berfu Ilter", "affiliation": "Afyon Kocatepe University", "country": { "en": "Türkiye", "ar": "تركيا" } },
+    { "name": "Dr. Youssef Chetioui", "affiliation": "Al Akhawayn University in Ifrane", "country": { "en": "Morocco", "ar": "المغرب" } },
+    { "name": "Prof. Omar Elasri", "affiliation": "Université Mohammed V", "country": { "en": "Morocco", "ar": "المغرب" } },
+    { "name": "Dr. Thamer Baazeem", "affiliation": "King Abdulaziz University", "country": { "en": "Saudi Arabia", "ar": "السعودية" } },
+    { "name": "Dr. Raed Ahmad Abu Eid", "affiliation": "Al-Quds Open University", "country": { "en": "Palestine", "ar": "فلسطين" } },
+    { "name": "Dr. Arabeche Zina", "affiliation": "University Center of Relizane", "country": { "en": "Algeria", "ar": "الجزائر" } },
+    { "name": "Prof. Ilhaamie Abdul Ghani Azmi", "affiliation": "University of Malaya", "country": { "en": "Malaysia", "ar": "ماليزيا" } },
+    { "name": "Dr. Siti Haslina Md Harizan", "affiliation": "Universiti Sains Malaysia", "country": { "en": "Malaysia", "ar": "ماليزيا" } },
+    { "name": "Dr. Aida Mokhtar", "affiliation": "Intl. Islamic University Malaysia", "country": { "en": "Malaysia", "ar": "ماليزيا" } },
+    { "name": "Dr. Ahmad Rafiki", "affiliation": "Universitas Medan Area", "country": { "en": "Indonesia", "ar": "إندونيسيا" } },
+    { "name": "Dr. Muhammad Dharma Tuah Putra Nasution", "affiliation": "Universitas Sumatera Utara", "country": { "en": "Indonesia", "ar": "إندونيسيا" } },
+    { "name": "Dr. Nazlida Muhammad", "affiliation": "University Brunei Darussalam", "country": { "en": "Brunei", "ar": "بروناي" } }
+  ]
+}
