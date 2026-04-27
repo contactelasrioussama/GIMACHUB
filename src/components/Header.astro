@@ -2,6 +2,7 @@
 import Logo from "~/components/Logo.astro";
 import LanguageSwitcher from "~/components/LanguageSwitcher.astro";
 import { useTranslations, localePath } from "~/i18n/utils";
+import config from "~/data/config.json";
 
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
@@ -9,13 +10,12 @@ const nav = t.nav as Record<string, string>;
 
 const pathname = Astro.url.pathname;
 
+// 4 nav links — Past & Gallery live in the footer
 const navItems = [
   { key: "submit",       href: localePath(locale, "/submit") },
   { key: "publications", href: localePath(locale, "/publications") },
-  { key: "committee",    href: localePath(locale, "/committee") },
   { key: "venue",        href: localePath(locale, "/venue") },
-  { key: "past",         href: localePath(locale, "/past") },
-  { key: "gallery",      href: localePath(locale, "/gallery") },
+  { key: "committee",    href: localePath(locale, "/committee") },
 ];
 
 function isActive(href: string) {
@@ -45,8 +45,14 @@ function isActive(href: string) {
 
     <div class="flex items-center gap-3 sm:gap-4">
       <LanguageSwitcher variant="dark" />
-      <a href={localePath(locale, "/submit")} class="btn btn-dark text-sm hidden sm:inline-flex">
-        {t.nav.submit}
+      <!-- Register CTA → PayPal payment portal -->
+      <a
+        href={config.paypalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary text-sm hidden sm:inline-flex"
+      >
+        {t.nav.register}
       </a>
       <button
         type="button"
@@ -65,6 +71,7 @@ function isActive(href: string) {
     </div>
   </div>
 
+  <!-- Mobile drawer -->
   <div id="mobile-nav" class="lg:hidden hidden border-t border-midnight-100 bg-surface">
     <nav class="container-wide flex flex-col py-4 gap-1" aria-label="mobile">
       {navItems.map((item) => (
@@ -80,8 +87,17 @@ function isActive(href: string) {
           {nav[item.key]}
         </a>
       ))}
-      <a href={localePath(locale, "/submit")} class="btn btn-dark mt-3 w-full justify-center">
-        {t.nav.submit}
+      <!-- Secondary links -->
+      <a href={localePath(locale, "/past")}    class="px-2 py-3 text-sm text-midnight-600 hover:text-midnight-900 transition-colors">{nav.past}</a>
+      <a href={localePath(locale, "/gallery")} class="px-2 py-3 text-sm text-midnight-600 hover:text-midnight-900 transition-colors">{nav.gallery}</a>
+      <!-- Register CTA -->
+      <a
+        href={config.paypalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary mt-3 w-full justify-center"
+      >
+        {t.nav.register}
       </a>
     </nav>
   </div>

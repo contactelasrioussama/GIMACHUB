@@ -9,24 +9,27 @@ const t = useTranslations(locale);
 const nav = t.nav as Record<string, string>;
 
 const quickLinks = [
-  { key: "submit", href: localePath(locale, "/submit") },
+  { key: "submit",       href: localePath(locale, "/submit") },
   { key: "publications", href: localePath(locale, "/publications") },
-  { key: "committee", href: localePath(locale, "/committee") },
-  { key: "venue", href: localePath(locale, "/venue") },
-  { key: "past", href: localePath(locale, "/past") },
-  { key: "gallery", href: localePath(locale, "/gallery") },
+  { key: "committee",    href: localePath(locale, "/committee") },
+  { key: "venue",        href: localePath(locale, "/venue") },
+  { key: "past",         href: localePath(locale, "/past") },
+  { key: "gallery",      href: localePath(locale, "/gallery") },
 ];
 ---
 
 <footer class="bg-midnight-800 text-surface mt-16">
   <div class="container-wide py-14 grid gap-10 lg:gap-12 lg:grid-cols-12">
-    <div class="lg:col-span-5">
+
+    <!-- Brand + about -->
+    <div class="lg:col-span-4">
       <Logo variant="light" showSubtitle={true} />
       <p class="mt-6 text-sm leading-relaxed text-surface/75 max-w-md">
         {t.footer.about}
       </p>
     </div>
 
+    <!-- Quick links -->
     <div class="lg:col-span-3">
       <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-300 mb-4">
         {t.footer.quickLinks}
@@ -42,7 +45,8 @@ const quickLinks = [
       </ul>
     </div>
 
-    <div class="lg:col-span-4">
+    <!-- Contact + Register CTA -->
+    <div class="lg:col-span-5">
       <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-300 mb-4">
         {t.footer.contact}
       </h3>
@@ -68,7 +72,26 @@ const quickLinks = [
           </dd>
         </div>
       </dl>
+
+      <!-- Register CTA -->
+      <div class="mt-7 pt-6 border-t border-midnight-700">
+        <p class="text-xs text-surface/60 mb-3">{t.fees.earlyBird}</p>
+        <a
+          href={config.paypalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary text-sm w-full sm:w-auto justify-center"
+        >
+          {t.fees.ctaRegister}
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </div>
     </div>
+
   </div>
 
   <div class="border-t border-midnight-700">
