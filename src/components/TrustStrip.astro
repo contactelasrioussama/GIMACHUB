@@ -4,8 +4,8 @@ import { useTranslations } from "~/i18n/utils";
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 
-// cellW controls the individual logo cell width — narrows EBSCO
-// whose square-ish viewBox (95×25) makes it visually bigger than the others
+// cellW controls individual logo cell width — EBSCO's squarish viewBox
+// (95×25) makes it visually bigger than others at equal width
 const indexed = [
   { name: "Scopus",         logo: "/logos/scopus.svg",         url: "https://www.scopus.com",       cellW: 80 },
   { name: "Web of Science", logo: "/logos/web-of-science.svg", url: "https://www.webofscience.com", cellW: 80 },
@@ -13,8 +13,16 @@ const indexed = [
 ];
 
 const publishers = [
-  { name: "Springer",           logo: "/logos/springer.svg", url: "https://link.springer.com",          cellW: 80 },
-  { name: "Emerald Publishing", logo: "/logos/emerald.svg",  url: "https://www.emeraldpublishing.com",  cellW: 80 },
+  { name: "Springer",           logo: "/logos/springer.svg", url: "https://link.springer.com",         cellW: 80 },
+  { name: "Emerald Publishing", logo: "/logos/emerald.svg",  url: "https://www.emeraldpublishing.com", cellW: 80 },
+];
+
+// Text names only — small emblems lose all detail at 20px
+const institutions = [
+  { name: "IIMA",                           url: "https://islamicmarketingassociation.org" },
+  { name: "Alanya Alaaddin Keykubat Univ.", url: "https://www.alanya.edu.tr" },
+  { name: "University of Malaya",           url: "https://um.edu.my" },
+  { name: "King Abdulaziz University",      url: "https://www.kau.edu.sa" },
 ];
 ---
 
@@ -22,20 +30,14 @@ const publishers = [
   <div class="container-wide">
     <div class="trust-grid">
 
-      <!-- Column 1: Indexed in -->
+      <!-- Col 1 — Indexed in -->
       <div class="trust-col">
         <p class="col-label">{t.trust.indexedIn}</p>
         <ul class="logo-list">
           {indexed.map((item) => (
             <li>
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={item.name}
-                class="logo-cell"
-                style={`width:${item.cellW}px`}
-              >
+              <a href={item.url} target="_blank" rel="noopener noreferrer"
+                 aria-label={item.name} class="logo-cell" style={`width:${item.cellW}px`}>
                 <img src={item.logo} alt={item.name} />
               </a>
             </li>
@@ -44,21 +46,29 @@ const publishers = [
         </ul>
       </div>
 
-      <!-- Column 2: Publishing partners -->
+      <!-- Col 2 — Publishing partners -->
       <div class="trust-col">
         <p class="col-label">{t.trust.inPartnership}</p>
         <ul class="logo-list">
           {publishers.map((item) => (
             <li>
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={item.name}
-                class="logo-cell"
-                style={`width:${item.cellW}px`}
-              >
+              <a href={item.url} target="_blank" rel="noopener noreferrer"
+                 aria-label={item.name} class="logo-cell" style={`width:${item.cellW}px`}>
                 <img src={item.logo} alt={item.name} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 3 — Institutional partners (text only) -->
+      <div class="trust-col">
+        <p class="col-label">{t.trust.institutions}</p>
+        <ul class="inst-list">
+          {institutions.map((item) => (
+            <li>
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="inst-name">
+                {item.name}
               </a>
             </li>
           ))}
@@ -70,7 +80,7 @@ const publishers = [
 </section>
 
 <style>
-  /* ── Grid: 1-col mobile → 2-col desktop ─────────────────────────── */
+  /* ── 3-column grid on sm+, stacked on mobile ─────────────────────── */
   .trust-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -79,19 +89,20 @@ const publishers = [
 
   @media (min-width: 640px) {
     .trust-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 0;
+      align-items: start;
     }
   }
 
-  /* ── Column ──────────────────────────────────────────────────────── */
+  /* ── Column with vertical rule ───────────────────────────────────── */
   .trust-col {
     padding-inline-end: 1.5rem;
   }
 
   @media (min-width: 640px) {
     .trust-col {
-      padding-inline: 2rem;
+      padding-inline: 1.75rem;
       border-inline-end: 1px solid var(--color-midnight-100);
     }
     .trust-col:first-child { padding-inline-start: 0; }
@@ -119,12 +130,12 @@ const publishers = [
     margin: 0;
   }
 
-  /* Fixed-height cell, variable width set via inline style per logo */
+  /* Fixed-height cell; width set per-logo via inline style */
   .logo-cell {
     display: block;
     height: 20px;
-    outline-offset: 3px;
     flex-shrink: 0;
+    outline-offset: 3px;
   }
 
   .logo-cell img {
@@ -136,14 +147,10 @@ const publishers = [
     transition: filter 0.25s ease;
   }
 
-  :root[dir="rtl"] .logo-cell img {
-    object-position: right center;
-  }
+  :root[dir="rtl"] .logo-cell img { object-position: right center; }
 
   .logo-cell:hover img,
-  .logo-cell:focus-visible img {
-    filter: grayscale(0) opacity(1);
-  }
+  .logo-cell:focus-visible img { filter: grayscale(0) opacity(1); }
 
   /* ── ARCIF text chip ─────────────────────────────────────────────── */
   .text-chip {
@@ -152,5 +159,31 @@ const publishers = [
     letter-spacing: 0.12em;
     color: var(--color-midnight-600);
     opacity: 0.45;
+  }
+
+  /* ── Institution names — 2×2 grid ────────────────────────────────── */
+  .inst-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1rem;
+  }
+
+  .inst-name {
+    font-size: 0.7rem;
+    line-height: 1.35;
+    color: var(--color-midnight-600);
+    opacity: 0.6;
+    text-decoration: none;
+    transition: opacity 0.18s ease, color 0.18s ease;
+  }
+
+  .inst-name:hover {
+    opacity: 1;
+    color: var(--color-midnight-800);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 </style>
