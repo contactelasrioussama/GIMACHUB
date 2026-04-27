@@ -5,19 +5,26 @@ const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 
 const items = [
-  { value: t.stats.yearsValue, label: t.stats.yearsLabel },
+  { value: t.stats.yearsValue,     label: t.stats.yearsLabel },
   { value: t.stats.countriesValue, label: t.stats.countriesLabel },
-  { value: t.stats.outletsValue, label: t.stats.outletsLabel },
-  { value: t.stats.creditsValue, label: t.stats.creditsLabel },
+  { value: t.stats.outletsValue,   label: t.stats.outletsLabel },
+  { value: t.stats.creditsValue,   label: t.stats.creditsLabel },
 ];
 ---
 
 <section id="about" class="py-12 md:py-20 lg:py-24">
   <div class="container-wide">
     <ul class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-4">
-      {items.map((stat) => (
-        <li class="border-s-2 border-saffron-400 ps-4 md:ps-6">
-          <div class="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-midnight-800 leading-none tabular-nums">
+      {items.map((stat, i) => (
+        <li
+          class="border-s-2 border-saffron-400 ps-4 md:ps-6"
+          data-reveal
+          data-delay={i === 0 ? undefined : String(i * 150)}
+        >
+          <div
+            class="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-midnight-800 leading-none tabular-nums"
+            data-counter
+          >
             {stat.value}
           </div>
           <div class="mt-2 md:mt-3 text-sm text-muted leading-snug max-w-[14ch]">
@@ -28,3 +35,55 @@ const items = [
     </ul>
   </div>
 </section>
+
+<script>
+  function initCounters() {
+    const counters = document.querySelectorAll<HTMLElement>("[data-counter]:not([data-counted])");
+    if (!counters.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          io.unobserve(el);
+          el.dataset.counted = "1";
+
+          const original = el.textContent?.trim() ?? "";
+          // Parse prefix / number / suffix  e.g. "15+" → ["", "15", "+"]
+          const m = original.match(/^([^0-9]*)(\d+(?:\.\d+)?)(.*)$/);
+          if (!m) return;
+
+          const prefix  = m[1];
+          const end     = parseFloat(m[2]);
+          const suffix  = m[3];
+          const isFloat = m[2].includes(".");
+          const decimals = isFloat ? (m[2].split(".")[1]?.length ?? 0) : 0;
+
+          const duration = 1400;
+          const startTs  = performance.now();
+
+          function tick(now: number) {
+            const t = Math.min((now - startTs) / duration, 1);
+            // ease-out cubic
+            const eased   = 1 - Math.pow(1 - t, 3);
+            const current = eased * end;
+            el.textContent =
+              prefix +
+              (decimals ? current.toFixed(decimals) : Math.floor(current).toString()) +
+              suffix;
+            if (t < 1) requestAnimationFrame(tick);
+          }
+
+          requestAnimationFrame(tick);
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    counters.forEach((el) => io.observe(el));
+  }
+
+  initCounters();
+  document.addEventListener("astro:page-load", initCounters);
+</script>

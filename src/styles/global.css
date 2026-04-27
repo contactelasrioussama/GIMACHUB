@@ -112,6 +112,15 @@ html[lang="ar"] h4 {
             mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,4 61,28 88,28 71,46 88,64 61,64 50,88 39,64 12,64 29,46 12,28 39,28' fill='black'/></svg>") no-repeat center / contain;
   }
 
+  /* Card lift — shared hover treatment */
+  .card-lift {
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px -8px rgba(10, 31, 68, 0.13);
+  }
+
   /* Mobile accordion for Themes section */
   .track-accordion summary {
     list-style: none;
@@ -131,4 +140,82 @@ html[lang="ar"] h4 {
   }
   .track-accordion[open] summary .chevron { transform: rotate(180deg); }
   .track-accordion .chip-list { padding-top: 1rem; padding-bottom: 0.5rem; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   SCROLL REVEAL
+   Elements with [data-reveal] start hidden and animate in when the
+   IntersectionObserver (BaseLayout script) adds .is-visible.
+   Use [data-delay="N"] for stagger (N = 100 | 200 | 300 | 400 | 500 | 600).
+──────────────────────────────────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity  0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-reveal="fade"]  { transform: none; }
+[data-reveal="left"]  { transform: translateX(-32px); }
+[data-reveal="right"] { transform: translateX(32px); }
+[data-reveal="scale"] { transform: scale(0.94); }
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+[data-delay="100"] { transition-delay: 0.10s; }
+[data-delay="150"] { transition-delay: 0.15s; }
+[data-delay="200"] { transition-delay: 0.20s; }
+[data-delay="250"] { transition-delay: 0.25s; }
+[data-delay="300"] { transition-delay: 0.30s; }
+[data-delay="400"] { transition-delay: 0.40s; }
+[data-delay="500"] { transition-delay: 0.50s; }
+[data-delay="600"] { transition-delay: 0.60s; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  [data-delay]  { transition-delay: 0s; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   HERO ENTRANCE  —  staggered fade-up on page load
+──────────────────────────────────────────────────────────────────────── */
+@keyframes hero-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+.hero-anim {
+  animation: hero-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim { animation: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   GLOW PULSE  —  breathing radial glow behind hero
+──────────────────────────────────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 1; }
+}
+.glow-pulse {
+  animation: glow-pulse 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-pulse { animation: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   ACTIVE NAV  —  saffron underline on current page link
+──────────────────────────────────────────────────────────────────────── */
+.nav-active {
+  color: var(--color-midnight-900);
+  position: relative;
+}
+.nav-active::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--color-saffron-400);
+  border-radius: 1px;
 }

@@ -7,14 +7,20 @@ const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 const nav = t.nav as Record<string, string>;
 
+const pathname = Astro.url.pathname;
+
 const navItems = [
-  { key: "submit", href: localePath(locale, "/submit") },
+  { key: "submit",       href: localePath(locale, "/submit") },
   { key: "publications", href: localePath(locale, "/publications") },
-  { key: "committee", href: localePath(locale, "/committee") },
-  { key: "venue", href: localePath(locale, "/venue") },
-  { key: "past", href: localePath(locale, "/past") },
-  { key: "gallery", href: localePath(locale, "/gallery") },
+  { key: "committee",    href: localePath(locale, "/committee") },
+  { key: "venue",        href: localePath(locale, "/venue") },
+  { key: "past",         href: localePath(locale, "/past") },
+  { key: "gallery",      href: localePath(locale, "/gallery") },
 ];
+
+function isActive(href: string) {
+  return pathname === href || pathname === href + "/";
+}
 ---
 
 <header class="sticky top-0 z-50 backdrop-blur bg-[color-mix(in_srgb,var(--color-surface)_88%,transparent)] border-b border-midnight-100">
@@ -25,7 +31,12 @@ const navItems = [
       {navItems.map((item) => (
         <a
           href={item.href}
-          class="text-sm font-medium text-midnight-700 hover:text-midnight-900 transition-colors"
+          class={`text-sm font-medium transition-colors ${
+            isActive(item.href)
+              ? "nav-active"
+              : "text-midnight-700 hover:text-midnight-900"
+          }`}
+          aria-current={isActive(item.href) ? "page" : undefined}
         >
           {nav[item.key]}
         </a>
@@ -59,7 +70,12 @@ const navItems = [
       {navItems.map((item) => (
         <a
           href={item.href}
-          class="px-2 py-3 text-base font-medium text-midnight-800 hover:bg-midnight-50 rounded"
+          class={`px-2 py-3 text-base font-medium rounded transition-colors ${
+            isActive(item.href)
+              ? "text-midnight-900 bg-saffron-400/10"
+              : "text-midnight-800 hover:bg-midnight-50"
+          }`}
+          aria-current={isActive(item.href) ? "page" : undefined}
         >
           {nav[item.key]}
         </a>
