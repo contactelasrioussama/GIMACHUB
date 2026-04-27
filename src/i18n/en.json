@@ -29,7 +29,8 @@
   "trust": {
     "indexedIn": "Conference proceedings indexed in",
     "inPartnership": "In partnership with",
-    "institutions": "Institutional partners"
+    "institutions": "Institutional partners",
+    "trustedBy": "Trusted by & indexed in"
   },
   "stats": {
     "yearsValue": "15+",
