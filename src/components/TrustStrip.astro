@@ -4,24 +4,17 @@ import { useTranslations } from "~/i18n/utils";
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 
-// Logos constrained to a fixed 88×20px cell via object-fit:contain
+// cellW controls the individual logo cell width — narrows EBSCO
+// whose square-ish viewBox (95×25) makes it visually bigger than the others
 const indexed = [
-  { name: "Scopus",         logo: "/logos/scopus.svg",         url: "https://www.scopus.com" },
-  { name: "Web of Science", logo: "/logos/web-of-science.svg", url: "https://www.webofscience.com" },
-  { name: "EBSCO",          logo: "/logos/ebsco.svg",          url: "https://www.ebsco.com" },
+  { name: "Scopus",         logo: "/logos/scopus.svg",         url: "https://www.scopus.com",       cellW: 80 },
+  { name: "Web of Science", logo: "/logos/web-of-science.svg", url: "https://www.webofscience.com", cellW: 80 },
+  { name: "EBSCO",          logo: "/logos/ebsco.svg",          url: "https://www.ebsco.com",        cellW: 56 },
 ];
 
 const publishers = [
-  { name: "Springer",           logo: "/logos/springer.svg", url: "https://link.springer.com" },
-  { name: "Emerald Publishing", logo: "/logos/emerald.svg",  url: "https://www.emeraldpublishing.com" },
-];
-
-// Institutions shown as styled text — emblems are illegible at small sizes
-const institutions = [
-  { name: "IIMA",                               url: "https://islamicmarketingassociation.org" },
-  { name: "Alanya Alaaddin Keykubat Univ.",     url: "https://www.alanya.edu.tr" },
-  { name: "University of Malaya",               url: "https://um.edu.my" },
-  { name: "King Abdulaziz University",          url: "https://www.kau.edu.sa" },
+  { name: "Springer",           logo: "/logos/springer.svg", url: "https://link.springer.com",          cellW: 80 },
+  { name: "Emerald Publishing", logo: "/logos/emerald.svg",  url: "https://www.emeraldpublishing.com",  cellW: 80 },
 ];
 ---
 
@@ -35,14 +28,19 @@ const institutions = [
         <ul class="logo-list">
           {indexed.map((item) => (
             <li>
-              <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-cell">
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={item.name}
+                class="logo-cell"
+                style={`width:${item.cellW}px`}
+              >
                 <img src={item.logo} alt={item.name} />
               </a>
             </li>
           ))}
-          <li>
-            <span class="text-chip">ARCIF</span>
-          </li>
+          <li><span class="text-chip">ARCIF</span></li>
         </ul>
       </div>
 
@@ -52,22 +50,15 @@ const institutions = [
         <ul class="logo-list">
           {publishers.map((item) => (
             <li>
-              <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="logo-cell">
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={item.name}
+                class="logo-cell"
+                style={`width:${item.cellW}px`}
+              >
                 <img src={item.logo} alt={item.name} />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Column 3: Institutional partners -->
-      <div class="trust-col">
-        <p class="col-label">{t.trust.institutions}</p>
-        <ul class="inst-list">
-          {institutions.map((item) => (
-            <li>
-              <a href={item.url} target="_blank" rel="noopener noreferrer" class="inst-name">
-                {item.name}
               </a>
             </li>
           ))}
@@ -79,37 +70,32 @@ const institutions = [
 </section>
 
 <style>
-  /* ── Grid ────────────────────────────────────────────────────────── */
+  /* ── Grid: 1-col mobile → 2-col desktop ─────────────────────────── */
   .trust-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.75rem 0;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     .trust-grid {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 0;
     }
   }
 
   /* ── Column ──────────────────────────────────────────────────────── */
   .trust-col {
-    padding-inline: 0 1.5rem;
+    padding-inline-end: 1.5rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     .trust-col {
-      padding-inline: 1.75rem;
+      padding-inline: 2rem;
       border-inline-end: 1px solid var(--color-midnight-100);
     }
-    .trust-col:first-child {
-      padding-inline-start: 0;
-    }
-    .trust-col:last-child {
-      border-inline-end: none;
-      padding-inline-end: 0;
-    }
+    .trust-col:first-child { padding-inline-start: 0; }
+    .trust-col:last-child  { border-inline-end: none; padding-inline-end: 0; }
   }
 
   /* ── Section label ───────────────────────────────────────────────── */
@@ -133,12 +119,12 @@ const institutions = [
     margin: 0;
   }
 
-  /* Fixed-size cell — logo scales to fit inside, never overflows */
+  /* Fixed-height cell, variable width set via inline style per logo */
   .logo-cell {
     display: block;
-    width: 80px;
     height: 20px;
     outline-offset: 3px;
+    flex-shrink: 0;
   }
 
   .logo-cell img {
@@ -146,12 +132,10 @@ const institutions = [
     height: 100%;
     object-fit: contain;
     object-position: left center;
-    /* Greyscale by default — color on hover */
     filter: grayscale(1) opacity(0.45);
     transition: filter 0.25s ease;
   }
 
-  /* RTL: flip object-position */
   :root[dir="rtl"] .logo-cell img {
     object-position: right center;
   }
@@ -168,31 +152,5 @@ const institutions = [
     letter-spacing: 0.12em;
     color: var(--color-midnight-600);
     opacity: 0.45;
-  }
-
-  /* ── Institution text list ───────────────────────────────────────── */
-  .inst-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.3rem 0.75rem;
-  }
-
-  .inst-name {
-    font-size: 0.72rem;
-    color: var(--color-midnight-600);
-    opacity: 0.65;
-    text-decoration: none;
-    transition: opacity 0.18s ease, color 0.18s ease;
-    line-height: 1.4;
-  }
-
-  .inst-name:hover {
-    opacity: 1;
-    color: var(--color-midnight-800);
-    text-decoration: underline;
-    text-underline-offset: 2px;
   }
 </style>
