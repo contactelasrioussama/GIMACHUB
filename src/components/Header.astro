@@ -27,7 +27,7 @@ const navItems = [
           href={item.href}
           class="text-sm font-medium text-midnight-700 hover:text-midnight-900 transition-colors"
         >
-          {item.label ?? nav[item.key]}
+          {nav[item.key]}
         </a>
       ))}
     </nav>
@@ -61,7 +61,7 @@ const navItems = [
           href={item.href}
           class="px-2 py-3 text-base font-medium text-midnight-800 hover:bg-midnight-50 rounded"
         >
-          {item.label ?? nav[item.key]}
+          {nav[item.key]}
         </a>
       ))}
       <a href={localePath(locale, "/submit")} class="btn btn-dark mt-3 w-full justify-center">
