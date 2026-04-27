@@ -10,45 +10,39 @@ const { variant = "dark", showSubtitle = true } = Astro.props;
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 
-const ink = variant === "light" ? "#F8F5EE" : "#0A1F44";
-const accent = "#C9A94D";
+const ink     = variant === "light" ? "#F8F5EE"              : "#0A1F44";
+const accent  = "#C9A94D";
+const muted   = variant === "light" ? "rgba(248,245,238,0.55)" : "#8A94A6";
+
+const subtitle = locale === "ar"
+  ? "المؤتمر العالمي للتسويق الإسلامي"
+  : "Global Islamic Marketing Conference";
 ---
 
 <a
   href={locale === "ar" ? "/ar/" : "/"}
-  class="flex items-center gap-3 group"
-  aria-label={t.meta.siteFullName}
+  class="inline-flex flex-col leading-none group select-none"
+  aria-label={`GIMAC 17 — ${t.meta.siteFullName}`}
 >
-  <svg
-    width="40"
-    height="40"
-    viewBox="0 0 100 100"
-    aria-hidden="true"
-    class="shrink-0 transition-transform group-hover:rotate-[22.5deg]"
-    style={`color:${accent}`}
-  >
-    <!-- Rub el Hizb-derived 8-point star -->
-    <polygon
-      points="50,4 61,28 88,28 71,46 88,64 61,64 50,88 39,64 12,64 29,46 12,28 39,28"
-      fill="currentColor"
-      opacity="0.2"
-    />
-    <polygon
-      points="50,12 58,30 78,30 64,44 78,58 58,58 50,76 42,58 22,58 36,44 22,30 42,30"
-      fill="currentColor"
-    />
-  </svg>
-  <span class="leading-tight">
-    <span class="block font-serif text-xl font-semibold tracking-tight" style={`color:${ink}`}>
-      GIMAC<span style={`color:${accent}`} class="font-serif text-base align-super ms-0.5">17</span>
-    </span>
-    {showSubtitle && (
-      <span
-        class="hidden sm:block text-[0.62rem] uppercase tracking-[0.18em] font-medium"
-        style={`color:${variant === "light" ? "rgba(248,245,238,0.7)" : "#5A6271"}`}
-      >
-        {locale === "ar" ? "المؤتمر العالمي للتسويق الإسلامي" : "Global Islamic Marketing Conference"}
-      </span>
-    )}
+  <!-- Main wordmark -->
+  <span class="flex items-baseline">
+    <span
+      class="font-serif font-bold tracking-tight transition-colors"
+      style={`font-size:1.45rem; color:${ink};`}
+    >GIMAC</span>
+    <span
+      class="font-serif font-bold align-super ms-[0.15em] transition-colors"
+      style={`font-size:0.72rem; color:${accent}; line-height:1;`}
+    >17</span>
   </span>
+
+  <!-- Abbreviation line -->
+  {showSubtitle && (
+    <span
+      class="hidden sm:block uppercase tracking-[0.22em] font-medium mt-[0.3em] transition-colors"
+      style={`font-size:0.52rem; color:${muted}; letter-spacing:0.22em;`}
+    >
+      {subtitle}
+    </span>
+  )}
 </a>
