@@ -202,7 +202,24 @@
       }
     ],
     "hybridTitle": "Online participation",
-    "hybridDesc": "GIMAC 17 is a hybrid event. Online attendees receive a live-stream link and access to the virtual Q&A room. The online fee is $150 (all categories). Registration details are sent by email after payment."
+    "hybridDesc": "GIMAC 17 is a hybrid event. Online attendees receive a live-stream link and access to the virtual Q&A room. The online fee is $150 (all categories). Registration details are sent by email after payment.",
+    "amenitiesTitle": "Conference facilities",
+    "amenities": ["Plenary hall — 500+ seats", "Breakout session rooms", "High-speed Wi-Fi throughout", "Full A/V & live-streaming setup", "All-inclusive catering", "On-site accommodation"],
+    "weatherTitle": "October in Alanya",
+    "weatherItems": [
+      { "label": "Air temperature", "value": "25 °C", "note": "Warm, sunny days" },
+      { "label": "Sea temperature", "value": "23 °C", "note": "Perfect for swimming" },
+      { "label": "Daily sunshine", "value": "9 h", "note": "Average hours of sun" }
+    ],
+    "exploreTitle": "Explore Alanya",
+    "attractions": [
+      { "name": "Alanya Castle", "desc": "13th-century Seljuk fortress with panoramic views over the Mediterranean coast." },
+      { "name": "Cleopatra Beach", "desc": "One of Turkey's finest beaches — the conference hotel sits directly on it." },
+      { "name": "Red Tower (Kızıl Kule)", "desc": "Iconic 12th-century octagonal tower, the enduring symbol of Alanya." },
+      { "name": "Damlataş Cave", "desc": "Ancient stalagmite cave, only a 5-minute walk from the resort." }
+    ],
+    "transferTip": "Book a private transfer from Gazipaşa–Alanya airport for approximately €20. The resort concierge can arrange this upon request.",
+    "mapTitle": "Resort location"
   },
   "pastPage": {
     "kicker": "Conference history",

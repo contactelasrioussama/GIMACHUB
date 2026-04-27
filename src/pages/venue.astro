@@ -2,84 +2,268 @@
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import FinalCta from "~/components/FinalCta.astro";
 import { useTranslations, localePath } from "~/i18n/utils";
+import config from "~/data/config.json";
 
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
-const vp = t.venuePage;
+const vp = t.venuePage as any;
 const isAr = locale === "ar";
 ---
 
 <BaseLayout title={`${vp.title} — GIMAC 17`} description={vp.subtitle}>
 
-  <!-- Page hero -->
-  <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">
-    <div class="container-tight">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">{vp.kicker}</p>
-      <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+  <!-- ── 1. HERO ─────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden bg-midnight-800 text-surface min-h-[420px] flex items-end">
+    <div class="absolute inset-0" aria-hidden="true">
+      <img
+        src="/images/venue/alanya-coast.jpg"
+        alt=""
+        class="w-full h-full object-cover object-[center_60%]"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-midnight-800/72"></div>
+      <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-midnight-800/80 to-transparent"></div>
+    </div>
+    <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-saffron-400 to-transparent"></div>
+
+    <div class="container-tight relative z-10 py-16 md:py-24">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-300 mb-4">{vp.kicker}</p>
+      <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-4">
         {vp.title}
       </h1>
-      <p class="mt-4 text-base md:text-lg text-muted leading-relaxed max-w-2xl">{vp.subtitle}</p>
+      <p class="text-base md:text-lg text-surface/80 leading-relaxed max-w-2xl">{vp.subtitle}</p>
+
+      <!-- Quick chips -->
+      <div class="flex flex-wrap gap-3 mt-8">
+        <span class="inline-flex items-center gap-2 bg-surface/10 border border-surface/20 rounded-full px-4 py-1.5 text-xs font-medium text-surface/90">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+          27 – 28 October 2026
+        </span>
+        <span class="inline-flex items-center gap-2 bg-surface/10 border border-surface/20 rounded-full px-4 py-1.5 text-xs font-medium text-surface/90">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Cleopatra Beach, Alanya, Türkiye
+        </span>
+        <span class="inline-flex items-center gap-2 bg-saffron-400/20 border border-saffron-400/30 rounded-full px-4 py-1.5 text-xs font-medium text-saffron-300">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          {isAr ? "هجين — حضوري + عبر الإنترنت" : "Hybrid — in-person & online"}
+        </span>
+      </div>
     </div>
   </section>
 
-  <!-- Venue details -->
-  <section class="py-12 md:py-16 lg:py-20">
+  <!-- ── 2. PHOTO STRIP ────────────────────────────────────────────── -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 h-56 md:h-72" aria-hidden="true">
+    <div class="relative overflow-hidden group">
+      <img
+        src="/images/venue/alanya-castle.jpg"
+        alt={isAr ? "قلعة ألانيا" : "Alanya Castle"}
+        class="w-full h-full object-cover object-[center_40%] transition-transform duration-700 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-midnight-800/30 group-hover:bg-midnight-800/10 transition-colors duration-500"></div>
+      <p class="absolute bottom-3 start-3 text-xs font-semibold text-white/90 uppercase tracking-[0.12em]">
+        {isAr ? "قلعة ألانيا" : "Alanya Castle"}
+      </p>
+    </div>
+    <div class="relative overflow-hidden group hidden sm:block">
+      <img
+        src="/images/venue/cleopatra-beach.jpg"
+        alt={isAr ? "شاطئ كليوباترا" : "Cleopatra Beach"}
+        class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-midnight-800/30 group-hover:bg-midnight-800/10 transition-colors duration-500"></div>
+      <p class="absolute bottom-3 start-3 text-xs font-semibold text-white/90 uppercase tracking-[0.12em]">
+        {isAr ? "شاطئ كليوباترا" : "Cleopatra Beach"}
+      </p>
+    </div>
+    <div class="relative overflow-hidden group hidden sm:block">
+      <img
+        src="/images/venue/alanya-coast.jpg"
+        alt={isAr ? "ساحل ألانيا" : "Alanya Coastline"}
+        class="w-full h-full object-cover object-[center_55%] transition-transform duration-700 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-midnight-800/30 group-hover:bg-midnight-800/10 transition-colors duration-500"></div>
+      <p class="absolute bottom-3 start-3 text-xs font-semibold text-white/90 uppercase tracking-[0.12em]">
+        {isAr ? "ساحل ألانيا" : "Alanya Coastline"}
+      </p>
+    </div>
+  </div>
+
+  <!-- ── 3. VENUE INFO + MAP ───────────────────────────────────────── -->
+  <section class="py-14 md:py-20">
     <div class="container-tight">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
-      <!-- Venue fact card — dark accent -->
-      <div class="bg-midnight-800 text-surface rounded-sm p-6 md:p-8 mb-10">
-        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-300 mb-3">{vp.venueTitle}</p>
-        <h2 class="font-serif text-xl md:text-2xl font-semibold text-surface mb-6 leading-snug">
-          Asia Beach Resort & Spa
-        </h2>
-        <dl class="divide-y divide-[#11264C] text-sm">
-          <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
-            <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">
-              {isAr ? "العنوان" : "Address"}
-            </dt>
-            <dd class="text-surface/85">Cleopatra Beach, Alanya, Antalya Province, Türkiye</dd>
+        <!-- Venue fact card -->
+        <div class="bg-midnight-800 text-surface rounded-sm p-6 md:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-saffron-300 mb-3">{vp.venueTitle}</p>
+          <h2 class="font-serif text-xl md:text-2xl font-semibold mb-6 leading-snug">
+            Asia Beach Resort & Spa
+          </h2>
+
+          <dl class="divide-y divide-[#11264C] text-sm mb-6">
+            <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+              <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">{isAr ? "العنوان" : "Address"}</dt>
+              <dd class="text-surface/85">Cleopatra Beach, Alanya, Antalya, Türkiye</dd>
+            </div>
+            <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+              <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">{isAr ? "التواصل" : "Website"}</dt>
+              <dd>
+                <a href="https://www.asiabeachresort.com.tr" target="_blank" rel="noopener noreferrer"
+                   class="text-saffron-300 hover:text-saffron-200 transition-colors text-sm underline underline-offset-2">
+                  asiabeachresort.com.tr ↗
+                </a>
+              </dd>
+            </div>
+            <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+              <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">{isAr ? "تاريخ المؤتمر" : "Conference dates"}</dt>
+              <dd class="font-semibold text-saffron-300">27 – 28 October 2026</dd>
+            </div>
+            <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
+              <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">{isAr ? "الصيغة" : "Format"}</dt>
+              <dd class="text-surface/85">{isAr ? "هجين — حضوري + عبر الإنترنت" : "Hybrid — in-person & live online"}</dd>
+            </div>
+          </dl>
+
+          <!-- Amenities -->
+          <p class="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-saffron-300 mb-3">{vp.amenitiesTitle}</p>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-sm text-surface/80">
+            {(vp.amenities as string[]).map((item: string) => (
+              <li class="flex items-start gap-2">
+                <span class="text-saffron-400 mt-0.5 shrink-0">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p class="mt-6 text-sm text-surface/60 leading-relaxed">{vp.venueDesc}</p>
+        </div>
+
+        <!-- Interactive map -->
+        <div class="flex flex-col gap-3">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-midnight-500">{vp.mapTitle}</p>
+          <div class="rounded-sm overflow-hidden border border-midnight-100 shadow-sm aspect-[4/3] lg:aspect-auto lg:h-[440px]">
+            <iframe
+              src="https://maps.google.com/maps?q=Asia+Beach+Resort+%26+Spa+Alanya+Turkey&output=embed&z=15"
+              class="w-full h-full border-0"
+              loading="lazy"
+              title={isAr ? "موقع منتجع آسيا بيتش على الخريطة" : "Asia Beach Resort & Spa location map"}
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
-          <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
-            <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">
-              {isAr ? "تاريخ المؤتمر" : "Conference dates"}
-            </dt>
-            <dd class="font-semibold text-saffron-300">27 – 28 October 2026</dd>
-          </div>
-          <div class="py-3 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1">
-            <dt class="text-[0.7rem] uppercase tracking-wider text-surface/50 shrink-0">
-              {isAr ? "الصيغة" : "Format"}
-            </dt>
-            <dd class="text-surface/85">{isAr ? "هجين (حضوري + عبر الإنترنت)" : "Hybrid — in-person & live online"}</dd>
-          </div>
-        </dl>
-        <p class="mt-6 text-sm text-surface/65 leading-relaxed">{vp.venueDesc}</p>
+          <p class="text-xs text-muted">
+            {isAr
+              ? "منتجع آسيا بيتش & سبا — شاطئ كليوباترا، ألانيا، تركيا"
+              : "Asia Beach Resort & Spa — Cleopatra Beach, Alanya, Turkey"}
+          </p>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <!-- Getting to Alanya -->
-      <h2 class="font-serif text-xl md:text-2xl font-semibold text-midnight-800 mb-5">{vp.alanyaTitle}</h2>
-      <ul class="grid gap-3 sm:grid-cols-3">
-        {vp.flights.map((flight) => (
-          <li class="bg-white border border-midnight-100 rounded-sm p-4 md:p-5">
-            <p class="font-semibold text-midnight-800 text-sm md:text-base leading-snug mb-1">{flight.label}</p>
-            <p class="text-xs text-muted leading-relaxed">{flight.value}</p>
+  <!-- ── 4. GETTING HERE ───────────────────────────────────────────── -->
+  <section class="py-14 md:py-18 bg-surface-warm border-y border-midnight-100">
+    <div class="container-tight">
+      <h2 class="font-serif text-2xl md:text-3xl font-semibold text-midnight-800 mb-2">{vp.alanyaTitle}</h2>
+      <p class="text-muted text-sm mb-8 max-w-xl">
+        {isAr
+          ? "ألانيا محطة سياحية دولية يسهل الوصول إليها من معظم المدن الأوروبية والخليجية."
+          : "Alanya is a major international resort destination with easy connections from Europe and the Gulf."}
+      </p>
+
+      <ul class="grid gap-4 sm:grid-cols-3 mb-6">
+        {(vp.flights as {label:string;value:string}[]).map((flight) => (
+          <li class="bg-white border border-midnight-100 rounded-sm p-5 flex gap-4 items-start">
+            <span class="text-saffron-500 mt-0.5 shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3-8.59A2 2 0 0 1 4 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </span>
+            <div>
+              <p class="font-semibold text-midnight-800 text-sm leading-snug mb-1">{flight.label}</p>
+              <p class="text-xs text-muted leading-relaxed">{flight.value}</p>
+            </div>
           </li>
         ))}
       </ul>
 
+      <!-- Transfer tip -->
+      <div class="flex gap-3 items-start bg-saffron-50 border border-saffron-200 rounded-sm p-4 text-sm">
+        <span class="text-saffron-500 shrink-0 mt-0.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </span>
+        <p class="text-midnight-700">{vp.transferTip}</p>
+      </div>
     </div>
   </section>
 
-  <!-- Online participation -->
-  <section class="py-12 md:py-16 bg-surface-warm border-t border-midnight-100">
+  <!-- ── 5. OCTOBER WEATHER ────────────────────────────────────────── -->
+  <section class="py-14 md:py-18" data-reveal>
+    <div class="container-tight">
+      <h2 class="font-serif text-2xl md:text-3xl font-semibold text-midnight-800 mb-2">{vp.weatherTitle}</h2>
+      <p class="text-muted text-sm mb-8">
+        {isAr
+          ? "مناخ متوسطي معتدل — دافئ ومشمس، مثالي للمؤتمرات والاستجمام."
+          : "Mediterranean climate — warm, sunny skies perfect for both conferencing and leisure."}
+      </p>
+
+      <div class="grid grid-cols-3 gap-4 md:gap-6">
+        {(vp.weatherItems as {label:string;value:string;note:string}[]).map((item, i) => (
+          <div class="bg-white border border-midnight-100 rounded-sm p-5 md:p-7 text-center" data-reveal data-delay={String(i * 100)}>
+            <p class="font-serif text-3xl md:text-4xl font-semibold text-midnight-800 tabular-nums">{item.value}</p>
+            <p class="mt-2 text-xs md:text-sm font-semibold text-midnight-700">{item.label}</p>
+            <p class="mt-1 text-xs text-muted">{item.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. EXPLORE ALANYA ─────────────────────────────────────────── -->
+  <section class="py-14 md:py-18 bg-surface-warm border-t border-midnight-100">
+    <div class="container-tight">
+      <h2 class="font-serif text-2xl md:text-3xl font-semibold text-midnight-800 mb-2">{vp.exploreTitle}</h2>
+      <p class="text-muted text-sm mb-8 max-w-xl">
+        {isAr
+          ? "تجمع ألانيا بين إرث سلجوقي عريق وشواطئ متوسطية خلابة — وجهة لا تُنسى لمرافقي المشاركين وما بعد المؤتمر."
+          : "Alanya blends Seljuk heritage with Mediterranean beauty — an unforgettable destination for delegates and companions alike."}
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        {(vp.attractions as {name:string;desc:string}[]).map((item, i) => (
+          <div class="card-lift bg-white border border-midnight-100 rounded-sm overflow-hidden flex" data-reveal data-delay={String((i % 2) * 100)}>
+            <div class="w-1 shrink-0 bg-saffron-400"></div>
+            <div class="p-5 md:p-6">
+              <h3 class="font-semibold text-midnight-800 text-base mb-2">{item.name}</h3>
+              <p class="text-sm text-muted leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 7. ONLINE PARTICIPATION ───────────────────────────────────── -->
+  <section class="py-14 md:py-18 border-t border-midnight-100">
     <div class="container-tight">
       <div class="flex gap-4 items-start">
-        <span class="ornament-star !w-5 !h-5 text-saffron-400 shrink-0 mt-0.5"></span>
+        <span class="ornament-star !w-5 !h-5 text-saffron-400 shrink-0 mt-1"></span>
         <div>
           <h2 class="font-serif text-xl md:text-2xl font-semibold text-midnight-800 mb-3">{vp.hybridTitle}</h2>
           <p class="text-sm md:text-base text-muted leading-relaxed max-w-2xl">{vp.hybridDesc}</p>
-          <a href={localePath(locale, "/submit")} class="btn btn-dark mt-6 inline-flex">
-            {t.nav.submit}
-          </a>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href={config.paypalUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              {t.fees.ctaRegister}
+            </a>
+            <a href={localePath(locale, "/submit")} class="btn btn-dark">
+              {t.nav.submit}
+            </a>
+          </div>
         </div>
       </div>
     </div>
