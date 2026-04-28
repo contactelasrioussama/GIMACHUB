@@ -304,5 +304,14 @@
         "a": "The conference takes place at Asia Beach Resort & Spa on Cleopatra Beach, Alanya, Türkiye. The nearest airport is Gazipaşa–Alanya (GZP), approximately 45 minutes away by transfer."
       }
     ]
+  },
+  "internal": {
+    "submitCta":           "Researching any of these topics? Submit your abstract.",
+    "viewFees":            "View registration fees",
+    "viewArchive":         "Browse full conference archive",
+    "meetCommittee":       "Meet the full committee",
+    "inPersonCta":         "Attending in person?",
+    "explorePublications": "Research from past GIMAC editions published across 15+ peer-reviewed outlets.",
+    "quickLinks":          "Looking for something specific?"
   }
 }

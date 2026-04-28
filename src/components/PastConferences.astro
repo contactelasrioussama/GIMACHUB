@@ -1,9 +1,10 @@
 ---
-import { useTranslations } from "~/i18n/utils";
+import { useTranslations, localePath } from "~/i18n/utils";
 import past from "~/data/past-conferences.json";
 
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
+const nav = t.nav as Record<string, string>;
 type LocalKey = "en" | "ar";
 const k: LocalKey = locale === "ar" ? "ar" : "en";
 
@@ -88,6 +89,15 @@ const countries = new Set(past.editions.map((e) => e.country.en)).size;
     </svg>
     {locale === "ar" ? "مرّر لرؤية كل النسخ" : "Scroll to explore all editions"}
   </p>
+
+  <!-- Archive + Gallery links -->
+  <div class="container-wide mt-8 flex flex-wrap items-center gap-4" data-reveal>
+    <a href={localePath(locale, "/past")} class="btn btn-dark text-sm">{t.internal.viewArchive}</a>
+    <a href={localePath(locale, "/gallery")} class="inline-flex items-center gap-1.5 text-sm font-medium text-midnight-600 hover:text-saffron-600 transition-colors">
+      {nav.gallery}
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
 
 </section>
 

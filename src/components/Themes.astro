@@ -1,9 +1,10 @@
 ---
-import { useTranslations } from "~/i18n/utils";
+import { useTranslations, localePath } from "~/i18n/utils";
 import themesData from "~/data/themes.json";
 
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
+const nav = t.nav as Record<string, string>;
 type LocalKey = "en" | "ar";
 const k: LocalKey = locale === "ar" ? "ar" : "en";
 ---
@@ -87,6 +88,18 @@ const k: LocalKey = locale === "ar" ? "ar" : "en";
           </article>
         )
       ))}
+    </div>
+
+    <!-- Internal link row -->
+    <div class="mt-10 md:mt-14 pt-8 border-t border-midnight-100 flex flex-col sm:flex-row sm:items-center gap-4 justify-between" data-reveal>
+      <p class="text-sm text-muted max-w-xl">{t.internal.submitCta}</p>
+      <div class="flex flex-wrap items-center gap-4 shrink-0">
+        <a href={localePath(locale, "/submit")} class="btn btn-dark text-sm">{nav.submit}</a>
+        <a href={localePath(locale, "/blog")} class="inline-flex items-center gap-1.5 text-sm font-medium text-midnight-700 hover:text-saffron-600 transition-colors">
+          {nav.blog}
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>

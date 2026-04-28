@@ -1,5 +1,5 @@
 ---
-import { useTranslations } from "~/i18n/utils";
+import { useTranslations, localePath } from "~/i18n/utils";
 import committee from "~/data/committee.json";
 
 const locale = Astro.currentLocale ?? "en";
@@ -40,11 +40,20 @@ const k: LocalKey = locale === "ar" ? "ar" : "en";
       ))}
     </ul>
 
-    <p class="mt-8 md:mt-10 text-sm text-surface/70" data-reveal data-delay="200">
-      <span class="font-medium text-surface">+ {committee.members.length}</span>
-      {locale === "ar"
-        ? " عضواً في اللجنة المنظمة من 12 دولة"
-        : " more committee members across 12+ countries"}
-    </p>
+    <div class="mt-8 md:mt-10 flex flex-wrap items-center justify-between gap-4" data-reveal data-delay="200">
+      <p class="text-sm text-surface/70">
+        <span class="font-medium text-surface">+ {committee.members.length}</span>
+        {locale === "ar"
+          ? " عضواً في اللجنة المنظمة من 12 دولة"
+          : " more committee members across 12+ countries"}
+      </p>
+      <a
+        href={localePath(locale, "/committee")}
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-saffron-300 hover:text-saffron-200 transition-colors"
+      >
+        {t.internal.meetCommittee}
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
   </div>
 </section>
