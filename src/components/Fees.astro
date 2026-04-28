@@ -37,12 +37,22 @@ const tiers = [
         <article class="bg-white border border-midnight-100 p-5 md:p-7 md:p-8 rounded-sm">
           <h3 class="font-serif text-xl md:text-2xl text-midnight-800 mb-4 md:mb-6">{tier.label}</h3>
           <dl class="space-y-3 md:space-y-4">
-            <div class="flex items-baseline justify-between border-b border-midnight-100 pb-3 md:pb-4">
-              <dt class="text-sm md:text-base text-muted">{t.fees.inPerson}</dt>
+            <div class="flex items-center justify-between border-b border-midnight-100 pb-3 md:pb-4">
+              <dt class="text-sm md:text-base text-muted inline-flex items-center gap-1.5">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-saffron-500 shrink-0" aria-hidden="true">
+                  <path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>
+                </svg>
+                {t.fees.inPerson}
+              </dt>
               <dd class="font-serif text-2xl md:text-3xl text-midnight-800 tabular-nums">${tier.inPerson}</dd>
             </div>
-            <div class="flex items-baseline justify-between">
-              <dt class="text-sm md:text-base text-muted">{t.fees.online}</dt>
+            <div class="flex items-center justify-between">
+              <dt class="text-sm md:text-base text-muted inline-flex items-center gap-1.5">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-saffron-500 shrink-0" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+                </svg>
+                {t.fees.online}
+              </dt>
               <dd class="font-serif text-2xl md:text-3xl text-midnight-800 tabular-nums">${tier.online}</dd>
             </div>
           </dl>

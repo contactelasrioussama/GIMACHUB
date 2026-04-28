@@ -31,7 +31,10 @@ const nav = t.nav as Record<string, string>;
                 <span class="font-serif text-saffron-500 text-sm tabular-nums shrink-0">0{i + 1}</span>
                 <span class="text-sm md:text-base lg:text-lg text-midnight-800">{item.label}</span>
               </div>
-              <span class="font-serif text-sm md:text-base lg:text-lg font-medium text-midnight-800 whitespace-nowrap shrink-0">
+              <span class="font-serif text-sm md:text-base lg:text-lg font-medium text-midnight-800 whitespace-nowrap shrink-0 inline-flex items-center gap-1.5">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-saffron-500 opacity-70 shrink-0" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/>
+                </svg>
                 {item.date}
               </span>
             </li>
@@ -40,7 +43,7 @@ const nav = t.nav as Record<string, string>;
       </div>
 
       <!-- CTA links below deadline list -->
-      <div class="mt-8 flex flex-wrap items-center gap-3" data-reveal data-delay="200">
+      <div class="lg:col-span-full mt-8 flex flex-wrap items-center gap-3" data-reveal data-delay="200">
         <a href={localePath(locale, "/submit")} class="btn btn-primary text-sm">{nav.submit}</a>
         <a href="#fees" class="inline-flex items-center gap-1.5 text-sm font-medium text-midnight-600 hover:text-saffron-600 transition-colors">
           {t.internal.viewFees}

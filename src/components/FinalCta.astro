@@ -9,8 +9,28 @@ const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeUR
 const whatsappLink = `https://wa.me/${config.contact.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hello, I have a question about GIMAC 17.")}`;
 ---
 
-<section id="contact" class="py-12 md:py-20 lg:py-28">
-  <div class="container-tight text-center px-6 md:px-0" data-reveal="scale">
+<section id="contact" class="relative overflow-hidden py-12 md:py-20 lg:py-28">
+
+  <!-- ── Subtle Islamic mandala (centered, light section) ────────── -->
+  <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.04] pointer-events-none text-midnight-800" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <circle cx="200" cy="200" r="185" stroke="currentColor" stroke-width="1"/>
+    <circle cx="200" cy="200" r="110" stroke="currentColor" stroke-width="0.75"/>
+    <circle cx="200" cy="200" r="55" stroke="currentColor" stroke-width="0.75"/>
+    <circle cx="200" cy="200" r="6" fill="currentColor"/>
+    <line x1="200" y1="200" x2="200" y2="15" stroke="currentColor" stroke-width="0.75"/>
+    <line x1="200" y1="200" x2="200" y2="385" stroke="currentColor" stroke-width="0.75"/>
+    <line x1="200" y1="200" x2="385" y2="200" stroke="currentColor" stroke-width="0.75"/>
+    <line x1="200" y1="200" x2="15" y2="200" stroke="currentColor" stroke-width="0.75"/>
+    <line x1="200" y1="200" x2="331" y2="69" stroke="currentColor" stroke-width="0.75"/>
+    <line x1="200" y1="200" x2="69" y2="69" stroke="currentColor" stroke-width="0.75"/>
+    <line x1="200" y1="200" x2="69" y2="331" stroke="currentColor" stroke-width="0.75"/>
+    <line x1="200" y1="200" x2="331" y2="331" stroke="currentColor" stroke-width="0.75"/>
+    <polygon points="200,35 174,137 83,83 137,174 35,200 137,226 83,317 174,263 200,365 226,263 317,317 263,226 365,200 263,174 317,83 226,137" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+    <polygon points="200,90 183,158 122,122 158,183 90,200 158,217 122,278 183,242 200,310 217,242 278,278 242,217 310,200 242,183 278,122 217,158" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+    <polygon points="200,145 191,179 161,161 179,191 145,200 179,209 161,239 191,221 200,255 209,221 239,239 221,209 255,200 221,191 239,161 209,179" fill="currentColor" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="container-tight text-center px-6 md:px-0 relative z-10" data-reveal="scale">
     <span class="ornament-star !w-5 !h-5 md:!w-6 md:!h-6 text-saffron-400 inline-block mb-5 md:mb-6"></span>
     <h2 class="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
       {t.finalCta.title}
