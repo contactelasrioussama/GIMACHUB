@@ -1,0 +1,371 @@
+---
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const posts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 7); // show 7 latest
+
+const catStyle: Record<string, { bg: string; label: string; overlay: string }> = {
+  Research:         { bg: "#0A1F44", label: "#C9A94D",  overlay: "rgba(10,31,68,0.60)"   },
+  Marketing:        { bg: "#78350F", label: "#FDE68A",  overlay: "rgba(120,53,15,0.60)"  },
+  Technology:       { bg: "#0F4C5C", label: "#67E8F9",  overlay: "rgba(15,76,92,0.60)"   },
+  Finance:          { bg: "#1E3A8A", label: "#93C5FD",  overlay: "rgba(30,58,138,0.60)"  },
+  Entrepreneurship: { bg: "#4C1D95", label: "#DDD6FE",  overlay: "rgba(76,29,149,0.60)"  },
+  Sustainability:   { bg: "#064E3B", label: "#6EE7B7",  overlay: "rgba(6,78,59,0.60)"    },
+};
+function cat(c: string) { return catStyle[c] ?? { bg:"#243A6B", label:"#C9A94D", overlay:"rgba(36,58,107,0.60)" }; }
+function fmtDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-GB", { day:"numeric", month:"short", year:"numeric" });
+}
+---
+
+<section class="blog-section py-16 md:py-20" data-reveal>
+  <!-- ── Section header ─────────────────────────────────────────── -->
+  <div class="container-wide">
+    <div class="flex items-end justify-between gap-4 mb-10">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-saffron-600 mb-2">
+          From the Blog
+        </p>
+        <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-midnight-800 leading-tight">
+          Latest Research &amp; Insights
+        </h2>
+        <p class="mt-2 text-sm text-muted max-w-lg">
+          Perspectives on Islamic marketing, halal economy, and ethical business — curated for academics and practitioners.
+        </p>
+      </div>
+      <div class="hidden sm:flex items-center gap-2 shrink-0">
+        <!-- Prev / Next arrow buttons -->
+        <button
+          id="blog-prev"
+          aria-label="Scroll left"
+          class="scroll-arrow"
+          disabled
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button
+          id="blog-next"
+          aria-label="Scroll right"
+          class="scroll-arrow"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <a href="/blog" class="btn btn-dark ms-2 text-sm">View all</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Scroll track (full-width bleed) ───────────────────────── -->
+  <div class="scroll-outer">
+    <ul id="blog-track" class="scroll-track" role="list">
+      {posts.map((post) => {
+        const c = cat(post.data.category);
+        return (
+          <li class="scroll-card">
+            <a href={`/blog/${post.slug}`} class="card-link group">
+
+              <!-- Cover image -->
+              <div class="card-cover">
+                {post.data.cover ? (
+                  <>
+                    <img
+                      src={post.data.cover}
+                      alt=""
+                      loading="lazy"
+                      aria-hidden="true"
+                      class="card-img"
+                    />
+                    <div class="card-img-overlay" style={`background:${c.overlay}`}></div>
+                  </>
+                ) : (
+                  <div class="card-img-fallback" style={`background:${c.bg}`}></div>
+                )}
+                <span
+                  class="card-cat-pill"
+                  style={`background:rgba(0,0,0,0.4);color:${c.label}`}
+                >
+                  {post.data.category}
+                </span>
+                <span class="card-read-time">{post.data.readTime} min</span>
+              </div>
+
+              <!-- Card body -->
+              <div class="card-body">
+                <h3 class="card-title">{post.data.title}</h3>
+                <p class="card-desc">{post.data.description}</p>
+                <div class="card-footer">
+                  <span class="card-date">{fmtDate(post.data.date)}</span>
+                  <span class="card-cta" aria-hidden="true">
+                    Read
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                      <path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+  <!-- Mobile CTA -->
+  <div class="container-wide mt-8 sm:hidden">
+    <a href="/blog" class="btn btn-dark w-full justify-center text-sm">View all articles</a>
+  </div>
+</section>
+
+<style>
+  /* ── Section background ──────────────────────────────────────── */
+  .blog-section { background: var(--color-surface-warm); }
+
+  /* ── Scroll outer — full viewport bleed ─────────────────────── */
+  .scroll-outer {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+  }
+
+  /* Right-edge fade hint */
+  .scroll-outer::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 80px;
+    background: linear-gradient(to right, transparent, var(--color-surface-warm));
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── Track ───────────────────────────────────────────────────── */
+  .scroll-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    /* align cards with the rest of the page content */
+    padding-inline-start: max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+    padding-inline-end:   max(5rem,   calc((100vw - 1200px) / 2 + 5rem));
+    padding-block: 0.5rem 1.5rem; /* room for card shadows */
+  }
+  .scroll-track::-webkit-scrollbar { display: none; }
+  .scroll-track.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    user-select: none;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────── */
+  .scroll-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    list-style: none;
+  }
+  @media (min-width: 640px)  { .scroll-card { flex: 0 0 320px; } }
+  @media (min-width: 1024px) { .scroll-card { flex: 0 0 340px; } }
+
+  .card-link {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(10,31,68,0.07);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+  .card-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px -6px rgba(10,31,68,0.14);
+  }
+
+  /* Cover */
+  .card-cover {
+    position: relative;
+    height: 175px;
+    overflow: hidden;
+  }
+  .card-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .card-link:hover .card-img { transform: scale(1.05); }
+  .card-img-overlay {
+    position: absolute; inset: 0;
+  }
+  .card-img-fallback {
+    width: 100%; height: 100%;
+  }
+  .card-cat-pill {
+    position: absolute;
+    top: 10px; left: 12px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+  }
+  .card-read-time {
+    position: absolute;
+    top: 10px; right: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* Body */
+  .card-body {
+    padding: 1.1rem 1.2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 0.975rem;
+    font-weight: 700;
+    color: var(--color-midnight-800);
+    line-height: 1.35;
+    margin-bottom: 0.45rem;
+    /* 2-line clamp */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.15s;
+  }
+  .card-link:hover .card-title { color: var(--color-saffron-600); }
+
+  .card-desc {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    flex: 1;
+    /* 3-line clamp */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.85rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-midnight-50);
+  }
+  .card-date { font-size: 0.72rem; color: var(--color-muted); }
+  .card-cta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-saffron-600);
+    transition: gap 0.15s;
+  }
+  .card-link:hover .card-cta { gap: 7px; }
+
+  /* ── Arrow buttons ───────────────────────────────────────────── */
+  .scroll-arrow {
+    width: 36px; height: 36px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-midnight-200);
+    background: white;
+    color: var(--color-midnight-700);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s;
+    flex-shrink: 0;
+  }
+  .scroll-arrow:hover:not(:disabled) {
+    background: var(--color-midnight-800);
+    color: white;
+    border-color: var(--color-midnight-800);
+  }
+  .scroll-arrow:disabled { opacity: 0.3; cursor: default; }
+</style>
+
+<script>
+  const track   = document.getElementById("blog-track") as HTMLUListElement | null;
+  const btnPrev = document.getElementById("blog-prev") as HTMLButtonElement | null;
+  const btnNext = document.getElementById("blog-next") as HTMLButtonElement | null;
+
+  if (track && btnPrev && btnNext) {
+
+    /* ── Arrow buttons ─────────────────────────────────────────── */
+    const CARD_W = () => {
+      const first = track.querySelector<HTMLElement>(".scroll-card");
+      return first ? first.offsetWidth + 16 : 340; // card + gap
+    };
+
+    btnPrev.addEventListener("click", () => {
+      track.scrollBy({ left: -CARD_W() * 2, behavior: "smooth" });
+    });
+    btnNext.addEventListener("click", () => {
+      track.scrollBy({ left:  CARD_W() * 2, behavior: "smooth" });
+    });
+
+    // Update arrow disabled state on scroll
+    function updateArrows() {
+      btnPrev!.disabled = track!.scrollLeft <= 4;
+      btnNext!.disabled = track!.scrollLeft + track!.clientWidth >= track!.scrollWidth - 4;
+    }
+    track.addEventListener("scroll", updateArrows, { passive: true });
+    updateArrows();
+
+    /* ── Drag to scroll ────────────────────────────────────────── */
+    let isDragging = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let hasDragged = false;
+
+    track.addEventListener("mousedown", (e) => {
+      isDragging    = true;
+      hasDragged    = false;
+      startX        = e.pageX;
+      startScrollLeft = track.scrollLeft;
+      track.classList.add("is-dragging");
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+      track.classList.remove("is-dragging");
+    });
+
+    track.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      const dx = e.pageX - startX;
+      if (Math.abs(dx) > 4) hasDragged = true;
+      track.scrollLeft = startScrollLeft - dx;
+    });
+
+    // Prevent link clicks after a drag
+    track.addEventListener("click", (e) => {
+      if (hasDragged) e.preventDefault();
+    }, true);
+
+    /* ── Touch: native scrolling handles it, just update arrows ── */
+    track.addEventListener("touchend", updateArrows, { passive: true });
+  }
+</script>
