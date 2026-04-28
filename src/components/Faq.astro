@@ -1,116 +1,335 @@
 ---
 import { useTranslations, localePath } from "~/i18n/utils";
+import config from "~/data/config.json";
 
 const locale = Astro.currentLocale ?? "en";
-const t = useTranslations(locale);
-const nav = t.nav as Record<string, string>;
+const t      = useTranslations(locale);
+const nav    = t.nav as Record<string, string>;
+const isAr   = locale === "ar";
+
+const contactHref = `mailto:${config.contact.chairEmail}`;
+
+const quickLinks = [
+  { key: "venue",        href: localePath(locale, "/venue") },
+  { key: "submit",       href: localePath(locale, "/submit") },
+  { key: "publications", href: localePath(locale, "/publications") },
+  { key: "committee",    href: localePath(locale, "/committee") },
+  { key: "blog",         href: localePath(locale, "/blog") },
+];
 ---
 
-<section class="py-12 md:py-20 lg:py-24 bg-surface-warm border-t border-midnight-100">
-  <div class="container-tight">
-    <div class="mb-10 md:mb-14">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">
-        {t.faq.kicker}
-      </p>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-midnight-800 leading-tight">
-        {t.faq.title}
-      </h2>
-    </div>
+<section class="faq-section py-16 md:py-24 lg:py-28">
+  <div class="container-wide">
+    <div class="faq-grid">
 
-    <!-- Quick navigation above the accordion -->
-    <div class="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2" data-reveal>
-      <span class="text-xs font-semibold uppercase tracking-[0.16em] text-muted">{t.internal.quickLinks}</span>
-      {[
-        { key: "venue",        href: localePath(locale, "/venue") },
-        { key: "submit",       href: localePath(locale, "/submit") },
-        { key: "publications", href: localePath(locale, "/publications") },
-        { key: "committee",    href: localePath(locale, "/committee") },
-        { key: "blog",         href: localePath(locale, "/blog") },
-      ].map(({ key, href }) => (
-        <a href={href} class="inline-flex items-center gap-1 text-sm font-medium text-midnight-700 hover:text-saffron-600 transition-colors">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 5h8M5.5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          {nav[key]}
-        </a>
-      ))}
-    </div>
+      <!-- ── Left: sticky header ───────────────────────────────── -->
+      <aside class="faq-aside" data-reveal="left">
 
-    <div class="faq-list">
-      {t.faq.items.map((item, i) => (
-        <details class="faq-item" open={i === 0}>
-          <summary class="faq-summary">
-            <span class="faq-q">{item.q}</span>
-            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <polyline points="6 9 12 15 18 9"/>
-            </svg>
-          </summary>
-          <div class="faq-body">
-            <p class="faq-a">{item.a}</p>
+        <p class="faq-kicker">{t.faq.kicker}</p>
+        <h2 class="faq-heading">{t.faq.title}</h2>
+        <p class="faq-desc">
+          {isAr
+            ? "إجابات على أكثر الأسئلة شيوعاً حول التقديم والحضور والتسجيل."
+            : "Answers to the most common questions about submission, attendance, and registration."}
+        </p>
+
+        <!-- Contact row -->
+        <div class="faq-contact">
+          <p class="faq-contact-label">
+            {isAr ? "لا تجد ما تبحث عنه؟" : "Can't find your answer?"}
+          </p>
+          <div class="faq-contact-links">
+            <a href={contactHref} class="faq-contact-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <path d="m3 7 9 6 9-6"/>
+              </svg>
+              {isAr ? "راسلنا" : "Email us"}
+            </a>
+            <a href={localePath(locale, "/committee")} class="faq-contact-ghost">
+              {nav.committee}
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 6h8M6.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
           </div>
-        </details>
-      ))}
+        </div>
+
+        <!-- Quick links -->
+        <div class="faq-quicklinks">
+          <p class="faq-quicklinks-label">{t.internal.quickLinks}</p>
+          <nav aria-label={isAr ? "روابط سريعة" : "Quick links"}>
+            {quickLinks.map(({ key, href }) => (
+              <a href={href} class="faq-quicklink">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M1 5h8M5.5 2l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {nav[key]}
+              </a>
+            ))}
+          </nav>
+        </div>
+
+      </aside>
+
+      <!-- ── Right: accordion ──────────────────────────────────── -->
+      <div class="faq-items" data-reveal>
+        {t.faq.items.map((item, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-summary">
+              <span class="faq-num" aria-hidden="true">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span class="faq-q">{item.q}</span>
+              <span class="faq-toggle" aria-hidden="true">
+                <span class="faq-plus">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span class="faq-minus">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 7h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              </span>
+            </summary>
+            <div class="faq-body">
+              <p class="faq-a">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
     </div>
   </div>
 </section>
 
 <style>
-  .faq-list {
-    border-top: 1px solid var(--color-midnight-100);
+  /* ── Section ─────────────────────────────────────────────────── */
+  .faq-section {
+    background: var(--color-midnight-800);
   }
+
+  /* ── Two-column grid ─────────────────────────────────────────── */
+  .faq-grid {
+    display: grid;
+    gap: 3rem;
+  }
+  @media (min-width: 1024px) {
+    .faq-grid {
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+    }
+  }
+
+  /* ── Aside (left col) ────────────────────────────────────────── */
+  .faq-aside {
+    display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 1024px) {
+    .faq-aside {
+      position: sticky;
+      top: 6rem;
+      align-self: start;
+    }
+  }
+
+  .faq-kicker {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--color-saffron-400);
+    margin-bottom: 1rem;
+  }
+
+  .faq-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .faq-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.55);
+    max-width: 34ch;
+  }
+
+  /* Contact row */
+  .faq-contact {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .faq-contact-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.75rem;
+  }
+  .faq-contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .faq-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    background: var(--color-saffron-400);
+    color: var(--color-midnight-900);
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .faq-contact-btn:hover { background: var(--color-saffron-300); }
+
+  .faq-contact-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .faq-contact-ghost:hover { color: rgba(255,255,255,0.9); }
+
+  /* Quick links */
+  .faq-quicklinks {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .faq-quicklinks-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.85rem;
+  }
+  .faq-quicklinks nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .faq-quicklink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.15s, gap 0.15s;
+  }
+  .faq-quicklink:hover {
+    color: var(--color-saffron-300);
+    gap: 0.75rem;
+  }
+  .faq-quicklink svg { flex-shrink: 0; }
+
+  /* ── Accordion (right col) ───────────────────────────────────── */
+  .faq-items {
+    /* slight visual separation from very top */
+    padding-top: 0.25rem;
+  }
+
   .faq-item {
-    border-bottom: 1px solid var(--color-midnight-100);
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .faq-item:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
   .faq-summary {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding: 1.25rem 0;
+    display: grid;
+    grid-template-columns: 2.25rem 1fr 2rem;
+    align-items: start;
+    gap: 0.85rem;
+    padding: 1.4rem 0;
     cursor: pointer;
     list-style: none;
     user-select: none;
   }
   .faq-summary::-webkit-details-marker { display: none; }
+  @media (min-width: 768px) {
+    .faq-summary { padding: 1.6rem 0; gap: 1rem; }
+  }
+
+  .faq-num {
+    font-family: var(--font-serif);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-saffron-400);
+    padding-top: 0.18rem;
+    letter-spacing: 0.04em;
+  }
 
   .faq-q {
     font-family: var(--font-serif);
-    font-size: 1rem;
+    font-size: 0.975rem;
     font-weight: 600;
-    color: var(--color-midnight-800);
+    color: rgba(255,255,255,0.88);
     line-height: 1.45;
-    padding-top: 0.1rem;
   }
   @media (min-width: 768px) {
-    .faq-q { font-size: 1.125rem; }
-    .faq-summary { padding: 1.5rem 0; }
+    .faq-q { font-size: 1.075rem; }
   }
+  details[open] .faq-q { color: #fff; }
 
-  .faq-chevron {
+  /* Toggle icon circle */
+  .faq-toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
     flex-shrink: 0;
-    margin-top: 0.15rem;
-    color: var(--color-saffron-500);
-    transition: transform 0.22s ease;
+    margin-top: 0.05rem;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
-  details[open] .faq-chevron {
-    transform: rotate(180deg);
+  details[open] .faq-toggle {
+    background: var(--color-saffron-400);
+    border-color: var(--color-saffron-400);
+    color: var(--color-midnight-900);
   }
 
+  .faq-plus  { display: flex; }
+  .faq-minus { display: none; }
+  details[open] .faq-plus  { display: none;  }
+  details[open] .faq-minus { display: flex; }
+
+  /* Answer */
   .faq-body {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease;
+    padding: 0 0 1.75rem calc(2.25rem + 0.85rem); /* indent = num + gap */
   }
-  details[open] .faq-body {
-    max-height: 600px;
+  @media (min-width: 768px) {
+    .faq-body { padding-left: calc(2.25rem + 1rem); }
   }
 
   .faq-a {
-    padding-bottom: 1.5rem;
-    font-size: 0.9375rem;
-    line-height: 1.8;
-    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.58);
+    border-left: 2px solid var(--color-saffron-400);
+    padding-left: 1rem;
   }
   @media (min-width: 768px) {
-    .faq-a { font-size: 1rem; }
+    .faq-a { font-size: 0.95rem; }
   }
 </style>
