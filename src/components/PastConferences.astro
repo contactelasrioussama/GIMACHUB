@@ -11,7 +11,7 @@ const k: LocalKey = locale === "ar" ? "ar" : "en";
 const countries = new Set(past.editions.map((e) => e.country.en)).size;
 ---
 
-<section id="past" class="py-16 md:py-24 lg:py-28 bg-surface-warm overflow-hidden">
+<section id="past" class="py-16 md:py-24 lg:py-28 bg-white overflow-hidden">
 
   <!-- Header -->
   <div class="container-wide" data-reveal>
@@ -255,7 +255,7 @@ const countries = new Set(past.editions.map((e) => e.country.en)).size;
     height: 14px;
     border-radius: 50%;
     background: var(--color-midnight-200);
-    border: 2.5px solid var(--color-surface-warm, #faf8f5);
+    border: 2.5px solid #fff;
     z-index: 5;
     flex-shrink: 0;
     transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -272,7 +272,7 @@ const countries = new Set(past.editions.map((e) => e.country.en)).size;
     width: 18px;
     height: 18px;
     background: var(--color-saffron-400);
-    border-color: var(--color-surface-warm, #faf8f5);
+    border-color: #fff;
     box-shadow: 0 0 0 4px rgba(201,169,77,0.18);
   }
 
