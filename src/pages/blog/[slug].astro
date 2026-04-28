@@ -1,0 +1,271 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const {
+  title, description, author, authorRole,
+  date, category, readTime,
+} = post.data;
+
+// Category colour
+const catStyle: Record<string, { bg: string; label: string; text: string }> = {
+  Research:         { bg: "#0A1F44", label: "#C9A94D",  text: "#DBEAFE" },
+  Marketing:        { bg: "#78350F", label: "#FDE68A",  text: "#FEF3C7" },
+  Technology:       { bg: "#0F4C5C", label: "#67E8F9",  text: "#CFFAFE" },
+  Finance:          { bg: "#1E3A8A", label: "#93C5FD",  text: "#DBEAFE" },
+  Entrepreneurship: { bg: "#4C1D95", label: "#DDD6FE",  text: "#EDE9FE" },
+  Sustainability:   { bg: "#064E3B", label: "#6EE7B7",  text: "#D1FAE5" },
+};
+const c = catStyle[category] ?? { bg: "#243A6B", label: "#C9A94D", text: "#DBEAFE" };
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-GB", {
+    day: "numeric", month: "long", year: "numeric",
+  });
+}
+---
+
+<BaseLayout title={`${title} — GIMAC 17`} description={description}>
+
+  <!-- ── Article hero ──────────────────────────────────────────────── -->
+  <div style={`background:${c.bg}`}>
+    <div class="container-tight py-12 md:py-16 lg:py-20">
+
+      <!-- Back link -->
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] mb-8
+               hover:opacity-80 transition-opacity"
+        style={`color:${c.label}`}
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        All Articles
+      </a>
+
+      <!-- Category pill -->
+      <div class="mb-5">
+        <span
+          class="text-xs font-bold uppercase tracking-[0.18em] px-3 py-1 rounded-sm"
+          style={`background:rgba(255,255,255,0.12); color:${c.label}`}
+        >
+          {category}
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h1
+        class="font-serif text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight
+               text-white max-w-3xl"
+      >
+        {title}
+      </h1>
+
+      <!-- Description -->
+      <p class="mt-5 text-base md:text-lg leading-relaxed max-w-2xl"
+         style="color:rgba(255,255,255,0.72)">
+        {description}
+      </p>
+
+      <!-- Author / meta row -->
+      <div class="mt-8 flex flex-wrap items-center gap-4 md:gap-6">
+        <!-- Author badge -->
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0"
+            style={`background:rgba(255,255,255,0.14); color:${c.label}`}
+            aria-hidden="true"
+          >
+            {author.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-white leading-none">{author}</p>
+            {authorRole && (
+              <p class="text-xs mt-1 leading-none" style="color:rgba(255,255,255,0.5)">{authorRole}</p>
+            )}
+          </div>
+        </div>
+
+        <div class="h-8 w-px hidden md:block" style="background:rgba(255,255,255,0.15)" aria-hidden="true"></div>
+
+        <p class="text-xs font-medium" style="color:rgba(255,255,255,0.5)">
+          {formatDate(date)}
+        </p>
+
+        <div class="h-8 w-px hidden md:block" style="background:rgba(255,255,255,0.15)" aria-hidden="true"></div>
+
+        <p class="text-xs font-medium" style="color:rgba(255,255,255,0.5)">
+          {readTime} min read
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Thin colour accent line ───────────────────────────────────── -->
+  <div style={`background:${c.label}; height:3px`} aria-hidden="true"></div>
+
+  <!-- ── Article body ──────────────────────────────────────────────── -->
+  <div class="bg-white">
+    <div class="container-tight py-12 md:py-16 lg:py-20">
+      <div class="prose">
+        <Content />
+      </div>
+
+      <!-- ── End of article ──────────────────────────────────────── -->
+      <div class="mt-12 pt-8 border-t border-midnight-100 flex flex-wrap items-center justify-between gap-4">
+
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0"
+            style={`background:${c.bg}; color:${c.label}`}
+            aria-hidden="true"
+          >
+            {author.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-midnight-800 leading-none">{author}</p>
+            {authorRole && (
+              <p class="text-xs text-muted mt-1 leading-none">{authorRole}</p>
+            )}
+          </div>
+        </div>
+
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-midnight-700
+                 hover:text-saffron-600 transition-colors"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to all articles
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Call to action ────────────────────────────────────────────── -->
+  <section class="bg-midnight-800 py-14 md:py-16">
+    <div class="container-tight text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-saffron-400 mb-3">
+        GIMAC 17 · Alanya, Turkey · October 2026
+      </p>
+      <h2 class="font-serif text-2xl md:text-3xl font-bold text-white mb-4">
+        Present at GIMAC 17
+      </h2>
+      <p class="text-base max-w-lg mx-auto mb-8" style="color:rgba(255,255,255,0.65)">
+        Submit your research on the topics explored in this article.
+        Abstract deadline: 30 June 2026.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/submit" class="btn btn-primary">Submit a Paper</a>
+        <a href="/blog" class="btn btn-ghost">More Articles</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Prose typography ────────────────────────────────────────────── */
+  .prose {
+    color: #1A1A1A;
+    font-size: 1.0625rem;
+    line-height: 1.78;
+    max-width: 68ch;
+  }
+
+  .prose h2 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0A1F44;
+    margin-top: 2.6em;
+    margin-bottom: 0.6em;
+    line-height: 1.3;
+  }
+
+  .prose h3 {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #0A1F44;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  .prose p {
+    margin-top: 0;
+    margin-bottom: 1.3em;
+  }
+
+  .prose ul,
+  .prose ol {
+    margin: 1em 0 1.3em;
+    padding-left: 1.5em;
+  }
+
+  .prose ul { list-style-type: disc; }
+  .prose ol { list-style-type: decimal; }
+
+  .prose li {
+    margin-bottom: 0.4em;
+    line-height: 1.7;
+  }
+
+  .prose strong {
+    font-weight: 700;
+    color: #0A1F44;
+  }
+
+  .prose em {
+    font-style: italic;
+  }
+
+  /* Inline code / italic Arabic terms */
+  .prose em:not(strong em) {
+    font-style: italic;
+    color: #243A6B;
+  }
+
+  .prose blockquote {
+    border-left: 3px solid #C9A94D;
+    margin-left: 0;
+    padding-left: 1.2em;
+    color: #5A6271;
+    font-style: italic;
+  }
+
+  .prose a {
+    color: #C9A94D;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(201,169,77,0.4);
+  }
+  .prose a:hover {
+    color: #B0903A;
+    text-decoration-color: #B0903A;
+  }
+
+  /* Bold-prefixed paragraphs used in several articles */
+  .prose p > strong:first-child {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.1em;
+  }
+</style>
