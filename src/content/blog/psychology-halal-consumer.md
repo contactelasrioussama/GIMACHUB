@@ -1,11 +1,11 @@
 ---
 title: "Beyond Compliance: The Psychology of Halal Consumer Choice"
 description: "Why do Muslims choose halal products? The answer is more complex than religious obligation — and understanding it is essential for brands that want durable loyalty rather than mere certification."
-author: "Dr. Nadia Khoury"
-authorRole: "Research Fellow in Consumer Behaviour, American University of Beirut"
+author: "GIMAC Editorial Team"
 date: "2025-12-04"
 category: "Research"
 readTime: 8
+cover: "/images/blog/cover-consumer-psychology.jpg"
 ---
 
 The standard marketing assumption about halal consumers is appealingly simple: Muslims buy halal products because their religion requires it. Certification provides assurance. End of analysis.

@@ -1,11 +1,11 @@
 ---
 title: "What Islamic Marketing Really Means — And Why It Gets Misunderstood"
 description: "Islamic marketing is not a checklist of prohibitions. It is a comprehensive values framework that reshapes how brands build trust, communicate authenticity, and serve communities."
-author: "Dr. Sara Al-Rashidi"
-authorRole: "Associate Professor of Marketing, Kuwait University"
+author: "GIMAC Editorial Team"
 date: "2026-02-28"
 category: "Marketing"
 readTime: 7
+cover: "/images/blog/cover-islamic-marketing.jpg"
 ---
 
 Ask ten people what Islamic marketing means and you will likely receive ten variations of the same answer: no alcohol, no pork, halal certification, maybe modest imagery. This answer is not wrong. It is just dramatically incomplete — and the incompleteness has consequences for how brands operate, how researchers frame their questions, and how Muslim consumers are understood.

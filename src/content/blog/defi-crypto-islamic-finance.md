@@ -1,11 +1,11 @@
 ---
 title: "DeFi, Crypto & the Riba Question: What Blockchain Means for Islamic Finance"
 description: "Decentralised finance promises to democratise access to financial services — but does it resolve or recreate the problems Islamic finance has always sought to address?"
-author: "Prof. Musa Idris"
-authorRole: "Professor of Islamic Finance, University of Malaya"
+author: "GIMAC Editorial Team"
 date: "2025-12-18"
 category: "Finance"
 readTime: 10
+cover: "/images/blog/cover-defi-crypto.jpg"
 ---
 
 The relationship between Islamic finance and financial technology has always been generative. Mobile banking reached unbanked Muslim populations in Indonesia and Bangladesh before conventional banks did. Crowdfunding platforms enabled musharakah-style community investment outside traditional financial institutions. And now, blockchain-based decentralised finance is forcing a reckoning with some of the deepest questions in Islamic financial jurisprudence.

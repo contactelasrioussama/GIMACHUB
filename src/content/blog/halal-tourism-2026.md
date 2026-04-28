@@ -1,11 +1,11 @@
 ---
 title: "Halal Tourism in 2026: How the Travel Industry Is Finally Adapting"
 description: "Muslim travellers represent a $220 billion market. Hotels, airlines, and destinations are reshaping their offerings — and the most successful are going beyond prayer mats and halal menus."
-author: "Dr. Omar Mansour"
-authorRole: "Professor of Tourism Studies, University of Jordan"
+author: "GIMAC Editorial Team"
 date: "2026-01-08"
 category: "Marketing"
 readTime: 7
+cover: "/images/blog/cover-halal-tourism.jpg"
 ---
 
 The Muslim traveller has spent decades being treated as an edge case. Prayer facilities were an afterthought. Halal dining meant a single item on a menu otherwise built around alcohol. Family-appropriate amenities were assumed rather than designed. The result was a multi-hundred-billion-dollar market that felt, to those it was supposed to serve, chronically underserved.

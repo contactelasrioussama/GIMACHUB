@@ -1,12 +1,12 @@
 ---
 title: "Sixteen Editions of GIMAC: What the Research Archive Tells Us"
 description: "A retrospective analysis of sixteen years of conference proceedings reveals the intellectual arc of Islamic marketing scholarship — what it has resolved, what it has opened, and where the field is heading."
-author: "GIMAC Research Desk"
-authorRole: "Editorial Team, Global Islamic Marketing Conference"
+author: "GIMAC Editorial Team"
 date: "2026-02-05"
 category: "Research"
 readTime: 6
 featured: false
+cover: "/images/blog/cover-gimac-history.jpg"
 ---
 
 Sixteen editions. Nine countries. More than six hundred peer-reviewed papers. As GIMAC prepares to convene its seventeenth conference in Alanya, it is worth pausing to ask what the accumulated archive of the previous sixteen actually shows.

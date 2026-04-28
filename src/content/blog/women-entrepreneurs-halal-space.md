@@ -1,11 +1,11 @@
 ---
 title: "Women-Led Ventures in the Halal Space: From Modest Fashion to FinTech"
 description: "Muslim women entrepreneurs are reshaping industries from modest fashion to financial technology, building businesses that are simultaneously values-driven, globally scalable, and culturally rooted."
-author: "Dr. Aisha Benmoussa"
-authorRole: "Researcher, ESCA Business School, Morocco"
+author: "GIMAC Editorial Team"
 date: "2026-01-22"
 category: "Entrepreneurship"
 readTime: 8
+cover: "/images/blog/cover-women-entrepreneurs.jpg"
 ---
 
 The narrative around Muslim women and the halal economy has too often been framed around what women wear rather than what they build. That framing is overdue for revision. Across Southeast Asia, the Gulf, North Africa, and Muslim diaspora communities in Europe and North America, women entrepreneurs are creating businesses that span modest fashion, halal cosmetics, Islamic financial services, educational technology, and professional services — often simultaneously navigating religious identity, family expectations, and startup culture.

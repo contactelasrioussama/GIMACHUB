@@ -10,10 +10,11 @@ const nav = t.nav as Record<string, string>;
 
 const pathname = Astro.url.pathname;
 
-// 4 nav links — Past & Gallery live in the footer
+// 5 nav links — Past & Gallery live in the footer
 const navItems = [
   { key: "submit",       href: localePath(locale, "/submit") },
   { key: "publications", href: localePath(locale, "/publications") },
+  { key: "blog",         href: localePath(locale, "/blog") },
   { key: "venue",        href: localePath(locale, "/venue") },
   { key: "committee",    href: localePath(locale, "/committee") },
 ];

@@ -11,6 +11,7 @@ const blog = defineCollection({
     category:    z.string(),
     readTime:    z.number(),           // minutes
     featured:    z.boolean().default(false),
+    cover:       z.string().optional(), // path like /images/blog/cover-xyz.jpg
   }),
 });
 

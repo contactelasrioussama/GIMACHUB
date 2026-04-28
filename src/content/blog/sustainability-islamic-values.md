@@ -1,11 +1,11 @@
 ---
 title: "Sustainability and Islamic Values: A Convergence the World Needs"
 description: "The principles of Maqasid al-Shariah and modern ESG frameworks share more than a surface resemblance. Exploring how Islamic ethical traditions can enrich — and challenge — contemporary sustainability discourse."
-author: "Prof. Tariq Hassan"
-authorRole: "Professor of Marketing Ethics, Ankara University"
+author: "GIMAC Editorial Team"
 date: "2025-11-20"
 category: "Sustainability"
 readTime: 9
+cover: "/images/blog/cover-sustainability.jpg"
 ---
 
 The environmental crisis has generated a global vocabulary of sustainability: ESG frameworks, net-zero commitments, circular economy principles, and the United Nations Sustainable Development Goals. This vocabulary is largely secular in origin and Western in framing. Yet the ethical imperatives it describes — stewardship of the natural world, responsibility to future generations, the interdependence of human and ecological flourishing — are not new ideas. They are ancient ones, and some of their most sophisticated articulations appear in Islamic scholarship.

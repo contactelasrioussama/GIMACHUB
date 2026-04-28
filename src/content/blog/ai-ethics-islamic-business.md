@@ -1,11 +1,11 @@
 ---
 title: "AI, Algorithms & Adab: Navigating Ethical AI in Islamic Business"
 description: "As artificial intelligence reshapes commerce, Muslim scholars and business leaders face urgent questions about algorithmic fairness, data stewardship, and the boundaries of permissible automation."
-author: "Dr. Farid Al-Tamimi"
-authorRole: "Research Fellow, Centre for Islamic Digital Ethics"
+author: "GIMAC Editorial Team"
 date: "2026-02-14"
 category: "Technology"
 readTime: 9
+cover: "/images/blog/cover-ai-ethics.jpg"
 ---
 
 Artificial intelligence is not neutral. Every algorithm encodes assumptions, every training dataset reflects historical biases, and every automated decision carries ethical weight. For businesses operating within an Islamic framework, this creates both a challenge and an opportunity: the challenge of applying centuries-old ethical principles to genuinely novel technologies, and the opportunity to contribute a values-grounded perspective to a global conversation that desperately needs one.
