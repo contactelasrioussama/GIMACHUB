@@ -6,35 +6,329 @@ const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 type LocalKey = "en" | "ar";
 const k: LocalKey = locale === "ar" ? "ar" : "en";
+
+const countries = new Set(past.editions.map((e) => e.country.en)).size;
 ---
 
-<section id="past" class="py-12 md:py-20 lg:py-24">
-  <div class="container-wide">
-    <div class="max-w-3xl mb-8 md:mb-12">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">
-        {t.past.kicker}
-      </p>
-      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
-        {t.past.title}
-      </h2>
-      <p class="mt-4 text-base md:text-lg text-muted leading-relaxed">{t.past.subtitle}</p>
-    </div>
+<section id="past" class="py-16 md:py-24 lg:py-28 bg-surface-warm overflow-hidden">
 
-    <ol class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-5">
-      {past.editions.map((ed) => (
-        <li class={`relative ps-3 md:ps-4 border-s ${ed.current ? "border-saffron-400" : "border-midnight-200"}`}>
-          <div class={`text-[0.65rem] md:text-xs font-semibold tracking-wider ${ed.current ? "text-saffron-600" : "text-midnight-400"}`}>
-            #{ed.edition} · {ed.year}
+  <!-- Header -->
+  <div class="container-wide" data-reveal>
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-600 mb-4">
+          {t.past.kicker}
+        </p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-midnight-800 leading-tight">
+          {t.past.title}
+        </h2>
+        <p class="mt-4 text-base md:text-lg text-muted leading-relaxed">{t.past.subtitle}</p>
+      </div>
+
+      <!-- Stats -->
+      <dl class="flex gap-8 shrink-0" data-reveal data-delay="100">
+        {[
+          { v: String(past.editions.length), l: locale === "ar" ? "نسخة" : "Editions" },
+          { v: String(countries),            l: locale === "ar" ? "دولة" : "Countries" },
+          { v: "15+",                        l: locale === "ar" ? "عامًا" : "Years" },
+        ].map(({ v, l }) => (
+          <div class="text-center">
+            <dd class="font-serif text-3xl md:text-4xl font-semibold text-midnight-800 leading-none">{v}</dd>
+            <dt class="text-[0.6rem] uppercase tracking-[0.18em] text-muted mt-1">{l}</dt>
           </div>
-          <div class={`font-serif text-base md:text-lg lg:text-xl mt-0.5 leading-tight ${ed.current ? "text-midnight-800 font-semibold" : "text-midnight-700"}`}>
-            {ed.city[k]}
-          </div>
-          <div class="text-xs text-muted">{ed.country[k]}</div>
-          {ed.current && (
-            <span class="absolute -start-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-saffron-400 ring-4 ring-saffron-100"></span>
-          )}
-        </li>
-      ))}
-    </ol>
+        ))}
+      </dl>
+    </div>
   </div>
+
+  <!-- ── Timeline ─────────────────────────────────────────────────── -->
+  <div class="tl-scroll" data-reveal>
+    <div class="tl-inner">
+
+      <!-- Animated connecting line -->
+      <div class="tl-line" aria-hidden="true">
+        <div class="tl-fill"></div>
+      </div>
+
+      <!-- Edition nodes -->
+      {past.editions.map((ed, i) => (
+        <div
+          class={`tl-node${ed.current ? " is-current" : ""}`}
+          style={`--i:${i}`}
+          tabindex="0"
+          role="listitem"
+          aria-label={`${locale === "ar" ? "النسخة" : "Edition"} ${ed.edition} · ${ed.city[k]}, ${ed.country[k]} · ${ed.year}`}
+        >
+          <!-- Tooltip -->
+          <div class="tl-tip" aria-hidden="true">
+            <span class="tip-edition">{locale === "ar" ? "النسخة" : "Ed."} #{ed.edition}</span>
+            <span class="tip-city">{ed.city[k]}</span>
+            <span class="tip-country">{ed.country[k]}</span>
+            <div class="tip-arrow"></div>
+          </div>
+
+          <!-- Dot -->
+          <div class="tl-dot">
+            {ed.current && <div class="tl-pulse"></div>}
+          </div>
+
+          <!-- Year + city -->
+          <time class="tl-year" datetime={String(ed.year)}>{ed.year}</time>
+          <span class="tl-city">{ed.city[k]}</span>
+        </div>
+      ))}
+
+    </div>
+  </div>
+
+  <!-- Scroll hint (mobile) -->
+  <p class="tl-hint container-wide mt-5 flex items-center gap-1.5 text-xs text-muted" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M5 12h14M13 6l6 6-6 6"/>
+    </svg>
+    {locale === "ar" ? "مرّر لرؤية كل النسخ" : "Scroll to explore all editions"}
+  </p>
+
 </section>
+
+<style>
+  /* ── Scroll container ───────────────────────────────────────────── */
+  .tl-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-block: 16px;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 64px,
+      black calc(100% - 64px),
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 64px,
+      black calc(100% - 64px),
+      transparent
+    );
+  }
+  .tl-scroll::-webkit-scrollbar { display: none; }
+
+  /* ── Inner row (positions the line relative to nodes) ───────────── */
+  .tl-inner {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    min-width: max-content;
+    /* Match container-wide edges */
+    padding-inline: max(2.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+  }
+
+  /* ── Connecting line ────────────────────────────────────────────── */
+  /* top = node padding-top (88px) + half dot (7px) = 95px */
+  .tl-line {
+    position: absolute;
+    top: 95px;
+    left:  calc(max(2.5rem, calc((100vw - 1200px) / 2 + 1.5rem)) + 36px);
+    right: calc(max(2.5rem, calc((100vw - 1200px) / 2 + 1.5rem)) + 36px);
+    height: 2px;
+    background: var(--color-midnight-100);
+    border-radius: 1px;
+  }
+
+  .tl-fill {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 0;
+    border-radius: 1px;
+    background: linear-gradient(
+      to right,
+      var(--color-midnight-300, #c8d0db) 0%,
+      var(--color-saffron-400, #C9A94D) 100%
+    );
+    transition: width 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;
+  }
+
+  .is-visible .tl-fill { width: 100%; }
+
+  /* ── Node ───────────────────────────────────────────────────────── */
+  .tl-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 72px;
+    padding-top: 88px; /* tooltip lives in this space */
+    outline: none;
+    cursor: default;
+    /* entrance */
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  .is-visible .tl-node {
+    animation: tl-node-in 0.35s ease-out both;
+    animation-delay: calc(0.4s + var(--i, 0) * 0.07s);
+  }
+
+  @keyframes tl-node-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Tooltip ────────────────────────────────────────────────────── */
+  .tl-tip {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--color-midnight-800);
+    color: #fff;
+    border-radius: 6px;
+    padding: 0.4rem 0.65rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 30;
+    min-width: 86px;
+  }
+
+  .tip-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--color-midnight-800);
+  }
+
+  .tl-node:hover .tl-tip,
+  .tl-node:focus-visible .tl-tip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .tip-edition {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(201,169,77,0.9);
+  }
+
+  .tip-city {
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: var(--font-spectral, Georgia, serif);
+    color: #fff;
+    margin-top: 1px;
+  }
+
+  .tip-country {
+    font-size: 0.6rem;
+    color: rgba(248,245,238,0.65);
+  }
+
+  /* ── Dot ────────────────────────────────────────────────────────── */
+  .tl-dot {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-midnight-200);
+    border: 2.5px solid var(--color-surface-warm, #faf8f5);
+    z-index: 5;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  .tl-node:hover .tl-dot,
+  .tl-node:focus-visible .tl-dot {
+    background: var(--color-midnight-600);
+    transform: scale(1.4);
+    box-shadow: 0 0 0 3px rgba(10,31,68,0.12);
+  }
+
+  .tl-node.is-current .tl-dot {
+    width: 18px;
+    height: 18px;
+    background: var(--color-saffron-400);
+    border-color: var(--color-surface-warm, #faf8f5);
+    box-shadow: 0 0 0 4px rgba(201,169,77,0.18);
+  }
+
+  .tl-node.is-current:hover .tl-dot { transform: scale(1.2); }
+
+  /* Pulse ring for current edition */
+  .tl-pulse {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid var(--color-saffron-400);
+    animation: tl-pulse 2.5s ease-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes tl-pulse {
+    0%   { opacity: 0.75; transform: scale(1); }
+    100% { opacity: 0;    transform: scale(2.4); }
+  }
+
+  /* ── Year ───────────────────────────────────────────────────────── */
+  .tl-year {
+    display: block;
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: var(--color-midnight-400);
+    margin-top: 7px;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  .tl-node.is-current .tl-year {
+    color: var(--color-saffron-600, #a07922);
+    font-weight: 800;
+  }
+
+  /* ── City ───────────────────────────────────────────────────────── */
+  .tl-city {
+    display: block;
+    font-size: 0.56rem;
+    color: var(--color-midnight-500);
+    margin-top: 2px;
+    text-align: center;
+    line-height: 1.25;
+    max-width: 68px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tl-node.is-current .tl-city {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--color-midnight-800);
+    white-space: normal;
+    text-overflow: unset;
+  }
+
+  /* ── Scroll hint: only on small screens ─────────────────────────── */
+  .tl-hint { display: none; }
+  @media (max-width: 1024px) { .tl-hint { display: flex; } }
+
+  /* ── Reduced motion ─────────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .tl-fill { transition: none; width: 100%; }
+    .is-visible .tl-node { animation: none; opacity: 1; transform: none; }
+    .tl-pulse { animation: none; opacity: 0.5; }
+  }
+</style>
