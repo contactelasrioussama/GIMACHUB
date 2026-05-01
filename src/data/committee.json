@@ -49,7 +49,7 @@
     { "name": "Prof. Sadok Gassouma", "affiliation": "Higher Institute of Accounting and Business Administration, University of Manouba — LARIMRAF Laboratory, ESC Business School", "country": { "en": "Tunisia", "ar": "تونس" } },
     { "name": "Prof. Houyam Alsaudi", "affiliation": "University of Jordan", "country": { "en": "Jordan", "ar": "الأردن" } },
     { "name": "Dr. Ismail Abu Amoud", "affiliation": "University of Jordan", "country": { "en": "Jordan", "ar": "الأردن" } },
-    { "name": "Haitham Ali Hilal Albaqoum", "affiliation": "Al-Albayt University", "country": { "en": "Jordan", "ar": "الأردن" } },
+    { "name": "Haitham Ali Hilal Albaqoum", "affiliation": "Hashemite University", "country": { "en": "Jordan", "ar": "الأردن" } },
     { "name": "Prof. Mubbsher Munawar Khan", "affiliation": "Hailey College of Banking", "country": { "en": "Pakistan", "ar": "باكستان" } },
     { "name": "Dr. Bekir Ozkan", "affiliation": "Bursa Technical University", "country": { "en": "Türkiye", "ar": "تركيا" } },
     { "name": "Dr. Hasan Terzi", "affiliation": "Karabuk University", "country": { "en": "Türkiye", "ar": "تركيا" } },
@@ -64,6 +64,7 @@
     { "name": "Dr. Aida Mokhtar", "affiliation": "Intl. Islamic University Malaysia", "country": { "en": "Malaysia", "ar": "ماليزيا" } },
     { "name": "Dr. Ahmad Rafiki", "affiliation": "Universitas Medan Area", "country": { "en": "Indonesia", "ar": "إندونيسيا" } },
     { "name": "Dr. Muhammad Dharma Tuah Putra Nasution", "affiliation": "Universitas Sumatera Utara", "country": { "en": "Indonesia", "ar": "إندونيسيا" } },
+    { "name": "Dr. Akhmad Mahbubi", "affiliation": "Dept. of Agribusiness, Faculty of Science and Technology, Syarif Hidayatullah State Islamic University Jakarta", "country": { "en": "Indonesia", "ar": "إندونيسيا" } },
     { "name": "Dr. Nazlida Muhammad", "affiliation": "University Brunei Darussalam", "country": { "en": "Brunei", "ar": "بروناي" } }
   ]
 }
