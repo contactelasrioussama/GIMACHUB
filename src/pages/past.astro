@@ -12,9 +12,50 @@ const pp = t.pastPage;
 
 const total = past.editions.length;
 const countries = [...new Set(past.editions.map((e) => e.country.en))].length;
+
+const breadcrumbs = [
+  { name: locale === "ar" ? "الرئيسية" : "Home", url: locale === "ar" ? "/ar/" : "/" },
+  { name: pp.title, url: locale === "ar" ? "/ar/past/" : "/past/" },
+];
+
+const pastKeywords = locale === "ar"
+  ? "المؤتمرات السابقة, تاريخ مؤتمر جيماك, إرث جيماك, ست عشرة نسخة, التسويق الإسلامي, خمسة عشر عاماً"
+  : "GIMAC past conferences, conference history, 16 editions, 15 years GIMAC, Islamic marketing conference legacy, GIMAC archive";
+
+const pastListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": pp.title,
+  "description": pp.subtitle,
+  "numberOfItems": past.editions.length,
+  "itemListElement": past.editions.map((ed, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Event",
+      "name": `GIMAC ${ed.edition} — ${ed.city[k]}, ${ed.country[k]} (${ed.year})`,
+      "startDate": String(ed.year),
+      "location": {
+        "@type": "Place",
+        "name": ed.city[k],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": ed.city[k],
+          "addressCountry": ed.country.en,
+        },
+      },
+    },
+  })),
+};
 ---
 
-<BaseLayout title={`${pp.title} — GIMAC 17`} description={pp.subtitle}>
+<BaseLayout
+  title={`${pp.title} — GIMAC 17`}
+  description={pp.subtitle}
+  keywords={pastKeywords}
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[pastListJsonLd]}
+>
 
   <!-- Page hero -->
   <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">

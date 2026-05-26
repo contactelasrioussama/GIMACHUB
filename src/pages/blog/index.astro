@@ -31,11 +31,42 @@ function formatDate(iso: string) {
     day: "numeric", month: "long", year: "numeric",
   });
 }
+
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/blog/" },
+];
+
+// CollectionPage / Blog schema
+const blogCollectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "GIMAC Research & Insights",
+  "description": "Latest thinking on Islamic marketing, halal economy, sustainable finance, and Muslim consumer behaviour from the GIMAC research community.",
+  "url": "https://gimachub.com/blog/",
+  "inLanguage": "en",
+  "publisher": { "@id": "https://gimachub.com/#organization" },
+  "blogPost": posts.map((post) => ({
+    "@type": "BlogPosting",
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.date,
+    "author": { "@type": "Organization", "name": post.data.author },
+    "image": post.data.cover
+      ? new URL(post.data.cover, Astro.site).toString()
+      : new URL("/og-default.jpg", Astro.site).toString(),
+    "url": new URL(`/blog/${post.slug}/`, Astro.site).toString(),
+    "articleSection": post.data.category,
+  })),
+};
 ---
 
 <BaseLayout
-  title="Research & Insights — GIMAC 17"
+  title="Research & Insights — GIMAC Blog"
   description="Latest thinking on Islamic marketing, halal economy, sustainable finance, and Muslim consumer behaviour from the GIMAC research community."
+  keywords="Islamic marketing blog, halal economy research, Muslim consumer behaviour, Islamic finance articles, GIMAC research, halal industry insights, ethical business blog"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[blogCollectionJsonLd]}
 >
 
   <!-- ── Page header ────────────────────────────────────────────────── -->
@@ -72,10 +103,12 @@ function formatDate(iso: string) {
         {featured.data.cover && (
           <img
             src={featured.data.cover}
-            alt=""
+            alt={`${featured.data.title} — featured article on ${featured.data.category}`}
             class="absolute inset-0 w-full h-full object-cover"
             loading="eager"
-            aria-hidden="true"
+            fetchpriority="high"
+            width="1200"
+            height="630"
           />
         )}
         <!-- Category-tinted overlay -->
@@ -156,16 +189,17 @@ function formatDate(iso: string) {
                   <>
                     <img
                       src={post.data.cover}
-                      alt=""
+                      alt={`${post.data.title} — ${post.data.category}`}
                       class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
-                      aria-hidden="true"
+                      width="600"
+                      height="400"
                     />
                     {/* Category overlay — light tint only */}
-                    <div class="absolute inset-0" style={`background:${c.overlay.replace("0.78","0.52")}`}></div>
+                    <div class="absolute inset-0" style={`background:${c.overlay.replace("0.78","0.52")}`} aria-hidden="true"></div>
                   </>
                 ) : (
-                  <div class="w-full h-full" style={`background:${c.bg}`}></div>
+                  <div class="w-full h-full" style={`background:${c.bg}`} aria-hidden="true"></div>
                 )}
 
                 <!-- Category pill — always on top of image -->

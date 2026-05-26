@@ -9,9 +9,51 @@ const t = useTranslations(locale);
 type LocalKey = "en" | "ar";
 const k: LocalKey = locale === "ar" ? "ar" : "en";
 const cp = t.committeePage;
+
+const breadcrumbs = [
+  { name: "الرئيسية", url: "/ar/" },
+  { name: cp.title, url: "/ar/committee/" },
+];
+
+const committeeListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": cp.title,
+  "description": cp.subtitle,
+  "numberOfItems": committeeData.chairs.length + committeeData.members.length,
+  "itemListElement": [
+    ...committeeData.chairs.map((c, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Person",
+        "name": c.name,
+        "jobTitle": c.role[k],
+        "affiliation": { "@type": "Organization", "name": c.affiliation },
+        "nationality": c.country[k],
+      },
+    })),
+    ...committeeData.members.map((m, i) => ({
+      "@type": "ListItem",
+      "position": committeeData.chairs.length + i + 1,
+      "item": {
+        "@type": "Person",
+        "name": m.name,
+        "affiliation": { "@type": "Organization", "name": m.affiliation },
+        "nationality": m.country[k],
+      },
+    })),
+  ],
+};
 ---
 
-<BaseLayout title={`${cp.title} — GIMAC 17`} description={cp.subtitle}>
+<BaseLayout
+  title={`${cp.title} — GIMAC 17`}
+  description={cp.subtitle}
+  keywords="اللجنة العلمية, مؤتمر جيماك, لجنة التحكيم, التسويق الإسلامي, أكاديميون, الأبحاث الإسلامية, ألانيا 2026"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[committeeListJsonLd]}
+>
 
   <!-- Page hero -->
   <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">

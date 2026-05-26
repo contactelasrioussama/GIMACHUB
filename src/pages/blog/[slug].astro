@@ -28,9 +28,85 @@ function formatDate(iso: string) {
     day: "numeric", month: "long", year: "numeric",
   });
 }
+
+const breadcrumbs = [
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/blog/" },
+  { name: title, url: `/blog/${post.slug}/` },
+];
+
+const articleUrl = new URL(`/blog/${post.slug}/`, Astro.site).toString();
+const imageUrl = cover
+  ? new URL(cover, Astro.site).toString()
+  : new URL("/og-default.jpg", Astro.site).toString();
+
+// Category-specific keywords
+const categoryKeywords: Record<string, string> = {
+  Research:         "Islamic marketing research, academic study, halal economy research, GIMAC scholarship",
+  Marketing:        "Islamic marketing strategy, halal branding, Muslim consumer marketing, ethical marketing",
+  Technology:       "AI ethics, Islamic technology, halal tech, ethical AI, Muslim consumer tech",
+  Finance:          "Islamic finance, halal banking, DeFi crypto, sukuk, Shariah-compliant finance",
+  Entrepreneurship: "Muslim entrepreneurs, halal startups, women entrepreneurs, Islamic business",
+  Sustainability:   "sustainability Islam, ethical business, halal sustainability, ESG Muslim values",
+};
+const articleKeywords = `${categoryKeywords[category] ?? "Islamic marketing"}, ${title}, GIMAC, ${category} article`;
+
+// BlogPosting JSON-LD
+const blogPostingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": articleUrl + "#article",
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://gimachub.com/blog/",
+    "name": "GIMAC Research & Insights",
+  },
+  "headline": title,
+  "description": description,
+  "image": [imageUrl],
+  "datePublished": date,
+  "dateModified": date,
+  "author": {
+    "@type": "Organization",
+    "name": author,
+    "url": "https://gimachub.com/",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://gimachub.com/#organization",
+    "name": "International Islamic Marketing Association (IIMA)",
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL("/logos/iima.svg", Astro.site).toString(),
+    },
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": articleUrl,
+  },
+  "url": articleUrl,
+  "articleSection": category,
+  "wordCount": readTime * 220, // rough estimate from reading time
+  "timeRequired": `PT${readTime}M`,
+  "inLanguage": "en",
+  "keywords": articleKeywords,
+};
 ---
 
-<BaseLayout title={`${title} — GIMAC 17`} description={description} ogImage={cover}>
+<BaseLayout
+  title={`${title} — GIMAC Blog`}
+  description={description}
+  ogImage={cover}
+  ogType="article"
+  keywords={articleKeywords}
+  publishedTime={date}
+  modifiedTime={date}
+  author={author}
+  articleSection={category}
+  articleTags={[category, "Islamic marketing", "GIMAC", "halal economy"]}
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[blogPostingJsonLd]}
+>
 
   <!-- ── Article hero ──────────────────────────────────────────────── -->
   <div class="relative overflow-hidden" style="min-height:360px">
@@ -39,10 +115,12 @@ function formatDate(iso: string) {
     {cover && (
       <img
         src={cover}
-        alt=""
+        alt={`${title} — ${category} article cover`}
         class="absolute inset-0 w-full h-full object-cover"
         loading="eager"
-        aria-hidden="true"
+        fetchpriority="high"
+        width="1200"
+        height="630"
       />
     )}
     <!-- Category-tinted overlay — always on top of photo -->

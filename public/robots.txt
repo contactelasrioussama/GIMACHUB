@@ -1,4 +1,36 @@
+# GIMAC 17 — Robots policy
+# https://gimachub.com
+
 User-agent: *
 Allow: /
+Disallow: /404
+Disallow: /ar/404
+Disallow: /api/
 
+# Be friendly to large AI crawlers and search engines, deny abusive scrapers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Sitemap
 Sitemap: https://gimachub.com/sitemap-index.xml

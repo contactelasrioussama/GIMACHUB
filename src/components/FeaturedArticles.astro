@@ -76,15 +76,16 @@ function fmtDate(iso: string) {
                   <>
                     <img
                       src={post.data.cover}
-                      alt=""
+                      alt={`${post.data.title} — ${post.data.category}`}
                       loading="lazy"
-                      aria-hidden="true"
+                      width="340"
+                      height="195"
                       class="card-img"
                     />
-                    <div class="card-img-overlay" style={`background:${c.overlay}`}></div>
+                    <div class="card-img-overlay" style={`background:${c.overlay}`} aria-hidden="true"></div>
                   </>
                 ) : (
-                  <div class="card-img-fallback" style={`background:${c.bg}`}></div>
+                  <div class="card-img-fallback" style={`background:${c.bg}`} aria-hidden="true"></div>
                 )}
                 <span
                   class="card-cat-pill"

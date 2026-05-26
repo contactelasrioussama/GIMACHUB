@@ -7,9 +7,28 @@ import galleryData from "~/data/gallery.json";
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 const gp = t.galleryPage;
+
+const breadcrumbs = [
+  { name: "الرئيسية", url: "/ar/" },
+  { name: gp.title, url: "/ar/gallery/" },
+];
+
+const galleryJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": gp.title,
+  "description": gp.subtitle,
+  "numberOfItems": galleryData.photos.length,
+};
 ---
 
-<BaseLayout title={`${gp.title} — GIMAC 17`} description={gp.subtitle}>
+<BaseLayout
+  title={`${gp.title} — GIMAC 17`}
+  description={gp.subtitle}
+  keywords="معرض صور جيماك, صور المؤتمر, جلسات المؤتمر, التسويق الإسلامي, صور أكاديمية"
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[galleryJsonLd]}
+>
 
   <!-- Page hero -->
   <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">
@@ -37,11 +56,12 @@ const gp = t.galleryPage;
           >
             <img
               src={photo.src}
-              alt={`صورة من مؤتمر جيماك`}
+              alt={`المؤتمر العالمي للتسويق الإسلامي جيماك — لقطة ${i + 1}`}
               loading={i < 8 ? "eager" : "lazy"}
               decoding="async"
               class="gallery-img"
               width="640"
+              height="426"
             />
           </a>
         ))}

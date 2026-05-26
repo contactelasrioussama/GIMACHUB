@@ -8,18 +8,65 @@ const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 const vp = t.venuePage as any;
 const isAr = locale === "ar";
+
+const breadcrumbs = [
+  { name: isAr ? "الرئيسية" : "Home", url: isAr ? "/ar/" : "/" },
+  { name: vp.title, url: isAr ? "/ar/venue/" : "/venue/" },
+];
+
+const venueKeywords = isAr
+  ? "مكان مؤتمر جيماك, منتجع آسيا بيتش, ألانيا تركيا, شاطئ كليوباترا, السفر إلى ألانيا, مطار غازي باشا, الإقامة"
+  : "GIMAC venue, Asia Beach Resort Spa, Alanya Turkey, Cleopatra Beach, conference accommodation, Gazipasa airport, travel to Alanya, hybrid conference venue";
+
+// LodgingBusiness / Place schema for venue
+const venueJsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["Place", "LodgingBusiness"],
+  "name": "Asia Beach Resort & Spa",
+  "description": vp.venueDesc,
+  "url": "https://www.asiabeachresort.com.tr",
+  "image": new URL("/images/venue/alanya-coast.jpg", Astro.site).toString(),
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Cleopatra Beach",
+    "addressLocality": "Alanya",
+    "addressRegion": "Antalya",
+    "addressCountry": "TR",
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 36.5444,
+    "longitude": 31.9967,
+  },
+  "amenityFeature": (vp.amenities as string[]).map((a: string) => ({
+    "@type": "LocationFeatureSpecification",
+    "name": a,
+  })),
+};
 ---
 
-<BaseLayout title={`${vp.title} — GIMAC 17`} description={vp.subtitle}>
+<BaseLayout
+  title={`${vp.title} — GIMAC 17`}
+  description={vp.subtitle}
+  keywords={venueKeywords}
+  breadcrumbs={breadcrumbs}
+  ogImage="/images/venue/alanya-coast.jpg"
+  extraJsonLd={[venueJsonLd]}
+>
 
   <!-- ── 1. HERO ─────────────────────────────────────────────────────── -->
   <section class="relative overflow-hidden bg-midnight-800 text-surface min-h-[420px] flex items-end">
-    <div class="absolute inset-0" aria-hidden="true">
+    <div class="absolute inset-0">
       <img
         src="/images/venue/alanya-coast.jpg"
-        alt=""
+        alt={isAr
+          ? "ساحل ألانيا — موقع منتجع آسيا بيتش وسبا على شاطئ كليوباترا"
+          : "Alanya coastline — Asia Beach Resort & Spa venue location on Cleopatra Beach, Türkiye"}
         class="w-full h-full object-cover object-[center_60%]"
         loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="1080"
       />
       <div class="absolute inset-0 bg-midnight-800/72"></div>
       <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-midnight-800/80 to-transparent"></div>

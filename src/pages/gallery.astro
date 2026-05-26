@@ -7,9 +7,32 @@ import galleryData from "~/data/gallery.json";
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 const gp = t.galleryPage;
+
+const breadcrumbs = [
+  { name: locale === "ar" ? "الرئيسية" : "Home", url: locale === "ar" ? "/ar/" : "/" },
+  { name: gp.title, url: locale === "ar" ? "/ar/gallery/" : "/gallery/" },
+];
+
+const galleryKeywords = locale === "ar"
+  ? "معرض صور جيماك, صور المؤتمر, جلسات المؤتمر, التسويق الإسلامي, صور أكاديمية"
+  : "GIMAC gallery, conference photos, academic conference images, Islamic marketing event, conference moments, GIMAC visual archive";
+
+const galleryJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": gp.title,
+  "description": gp.subtitle,
+  "numberOfItems": galleryData.photos.length,
+};
 ---
 
-<BaseLayout title={`${gp.title} — GIMAC 17`} description={gp.subtitle}>
+<BaseLayout
+  title={`${gp.title} — GIMAC 17`}
+  description={gp.subtitle}
+  keywords={galleryKeywords}
+  breadcrumbs={breadcrumbs}
+  extraJsonLd={[galleryJsonLd]}
+>
 
   <!-- Page hero -->
   <section class="bg-surface-warm py-14 md:py-20 border-b border-midnight-100">
@@ -33,15 +56,16 @@ const gp = t.galleryPage;
             target="_blank"
             rel="noopener noreferrer"
             class="gallery-item"
-            aria-label={`GIMAC conference photo — view on Flickr`}
+            aria-label={`GIMAC conference photo ${i + 1} — view on Flickr`}
           >
             <img
               src={photo.src}
-              alt={`GIMAC conference photo`}
+              alt={`GIMAC Global Islamic Marketing Conference — moment ${i + 1}`}
               loading={i < 8 ? "eager" : "lazy"}
               decoding="async"
               class="gallery-img"
               width="640"
+              height="426"
             />
           </a>
         ))}

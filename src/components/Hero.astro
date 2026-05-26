@@ -10,15 +10,20 @@ const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeUR
 <section class="relative overflow-hidden bg-midnight-800 text-surface min-h-[600px] lg:min-h-[680px]">
 
   <!-- ── Full-bleed background image ──────────────────────────────── -->
-  <div class="absolute inset-0" aria-hidden="true">
+  <div class="absolute inset-0">
     <img
       src="/images/hero-conference.jpg"
-      alt=""
+      alt={locale === "ar"
+        ? "المؤتمر العالمي السابع عشر للتسويق الإسلامي — ألانيا، تركيا، أكتوبر 2026"
+        : "GIMAC 17 — 17th Global Islamic Marketing Conference, Alanya, Turkey, October 2026"}
       class="w-full h-full object-cover object-[center_30%]"
       loading="eager"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
     />
     <!-- Solid uniform dark overlay — no gradient -->
-    <div class="absolute inset-0 bg-midnight-800/80"></div>
+    <div class="absolute inset-0 bg-midnight-800/80" aria-hidden="true"></div>
   </div>
 
   <!-- Saffron top accent bar -->

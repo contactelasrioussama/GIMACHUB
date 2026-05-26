@@ -13,9 +13,45 @@ import FeaturedArticles from "~/components/FeaturedArticles.astro";
 import Testimonials from "~/components/Testimonials.astro";
 import Faq from "~/components/Faq.astro";
 import FinalCta from "~/components/FinalCta.astro";
+import { useTranslations } from "~/i18n/utils";
+
+const locale = Astro.currentLocale ?? "en";
+const t = useTranslations(locale);
+
+// FAQ JSON-LD built from the visible FAQ items
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": t.faq.items.map((item) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a,
+    },
+  })),
+};
+
+const homeTitle = locale === "ar"
+  ? "جيماك 17 — المؤتمر العالمي السابع عشر للتسويق الإسلامي · ألانيا، تركيا · أكتوبر 2026"
+  : "GIMAC 17 — 17th Global Islamic Marketing Conference · Alanya, Turkey · 27–28 October 2026";
+
+const homeDescription = locale === "ar"
+  ? "المؤتمر العالمي السابع عشر للتسويق الإسلامي يجمع الباحثين والممارسين وصانعي السياسات لمناقشة الاقتصاد الحلال والتسويق الأخلاقي وسلوك المستهلك المسلم. ألانيا، تركيا، 27-28 أكتوبر 2026 — صيغة هجينة."
+  : "The 17th Global Islamic Marketing Conference (GIMAC 17) brings together academics, practitioners and policymakers shaping the halal economy, ethical marketing and Muslim consumer behaviour. Alanya, Turkey · 27–28 October 2026 · Hybrid format.";
+
+const homeKeywords = locale === "ar"
+  ? "جيماك 17, المؤتمر العالمي للتسويق الإسلامي, ألانيا 2026, تركيا, الاقتصاد الحلال, التسويق الإسلامي, سلوك المستهلك المسلم, التمويل الإسلامي, الأعمال الأخلاقية, السياحة الحلال, الجمعية الدولية للتسويق الإسلامي"
+  : "GIMAC 17, Global Islamic Marketing Conference, Alanya 2026, Islamic marketing conference, halal economy, Muslim consumer behaviour, Islamic finance conference, halal tourism, ethical business, IIMA, Turkey conference, hybrid conference, academic call for papers";
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={homeTitle}
+  description={homeDescription}
+  keywords={homeKeywords}
+  preloadHero={true}
+  extraJsonLd={[faqJsonLd]}
+>
   <Hero />
   <Countdown />
   <TrustStrip />
