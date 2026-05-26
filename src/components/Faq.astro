@@ -14,7 +14,8 @@ const quickLinks = [
   { key: "submit",       href: localePath(locale, "/submit") },
   { key: "publications", href: localePath(locale, "/publications") },
   { key: "committee",    href: localePath(locale, "/committee") },
-  { key: "blog",         href: localePath(locale, "/blog") },
+  // Blog is English-only — always links to /blog/ regardless of locale
+  { key: "blog",         href: "/blog" },
 ];
 ---
 

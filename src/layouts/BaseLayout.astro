@@ -27,6 +27,8 @@ interface Props {
   extraJsonLd?: Record<string, unknown>[];
   preloadHero?: boolean;
   canonicalOverride?: string;
+  /** Set to false on EN-only pages (e.g. /blog/*) — suppresses AR hreflang to avoid sending Google to a 404 */
+  hasArVersion?: boolean;
 }
 
 const locale = Astro.currentLocale ?? "en";
@@ -42,7 +44,7 @@ const defaultKeywords = locale === "ar"
 const {
   title = siteName,
   description = t.hero.subtitle,
-  ogImage = "/og-default.jpg",
+  ogImage = "/images/hero-conference.jpg",
   ogType = "website",
   keywords = defaultKeywords,
   noindex = false,
@@ -55,6 +57,7 @@ const {
   extraJsonLd = [],
   preloadHero = false,
   canonicalOverride,
+  hasArVersion = true,
 } = Astro.props;
 
 // ── URLs & hreflang ─────────────────────────────────────────────────────
@@ -181,7 +184,7 @@ const eventJsonLd = {
       "category": "Student Registration",
     },
   ],
-  "image": new URL("/og-default.jpg", Astro.site).toString(),
+  "image": new URL("/images/hero-conference.jpg", Astro.site).toString(),
   "inLanguage": ["en", "ar"],
   "keywords": "Islamic marketing, halal economy, Muslim consumer behaviour, academic conference",
 };
@@ -277,9 +280,9 @@ const robotsValue = noindex
     <meta name="twitter:image" content={fullOgImage} />
     <meta name="twitter:image:alt" content={title} />
 
-    <!-- Hreflang -->
+    <!-- Hreflang (only emit AR when an AR version actually exists) -->
     <link rel="alternate" hreflang="en" href={enHref} />
-    <link rel="alternate" hreflang="ar" href={arHref} />
+    {hasArVersion && <link rel="alternate" hreflang="ar" href={arHref} />}
     <link rel="alternate" hreflang="x-default" href={enHref} />
 
     <!-- Performance hints -->

@@ -15,7 +15,8 @@ const quickLinks = [
   { key: "venue",        href: localePath(locale, "/venue") },
   { key: "past",         href: localePath(locale, "/past") },
   { key: "gallery",      href: localePath(locale, "/gallery") },
-  { key: "blog",         href: localePath(locale, "/blog") },
+  // Blog is English-only — always links to /blog/ regardless of locale
+  { key: "blog",         href: "/blog" },
 ];
 ---
 
