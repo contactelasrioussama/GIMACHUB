@@ -41,6 +41,12 @@
       "name": "Dr. Mehmet Bayirli",
       "affiliation": "Alanya Alaaddin Keykubat University",
       "country": { "en": "Türkiye", "ar": "تركيا" }
+    },
+    {
+      "role": { "en": "Guest Speaker", "ar": "متحدث ضيف" },
+      "name": "Dr. Muhammad Ismail",
+      "affiliation": "University of Veterinary and Animal Sciences, Swat",
+      "country": { "en": "Pakistan", "ar": "باكستان" }
     }
   ],
   "members": [
