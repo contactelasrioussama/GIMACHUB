@@ -1,6 +1,6 @@
 ---
 title: "Blockchain in Halal Supply Chains: From Certificate to Verifiable Truth"
-description: "Halal certification has long depended on trust in human auditors. Blockchain traceability is changing that — letting Muslim consumers verify a product's halal chain from farm to shelf. We examine the technology, the standards, and the gaps."
+description: "Halal certification has long depended on trust in human auditors. Blockchain traceability is changing that, letting Muslim consumers verify a product's halal chain from farm to shelf. We examine the technology, the standards, and the gaps."
 author: "GIMAC Editorial Team"
 date: "2026-06-02"
 category: "Technology"
@@ -15,7 +15,7 @@ The halal economy's growth past $3.2 trillion is straining this trust model. Cou
 
 ## What Blockchain Actually Does for Halal
 
-The core idea is straightforward. Every step in a product's journey — the slaughter, the feed source, the processing line, the storage temperature, the transport route, the retail receipt — is recorded as a cryptographically signed entry on a distributed ledger. No single party can alter the history retrospectively. Anyone with the product's unique identifier (typically a QR code on the package) can view the chain.
+The core idea is straightforward. Every step in a product's journey (the slaughter, the feed source, the processing line, the storage temperature, the transport route, the retail receipt) is recorded as a cryptographically signed entry on a distributed ledger. No single party can alter the history retrospectively. Anyone with the product's unique identifier (typically a QR code on the package) can view the chain.
 
 For halal applications specifically, blockchain provides four properties that paper certification cannot:
 
@@ -45,11 +45,11 @@ The technology has moved beyond pilots. Several deployments are operating at mea
 
 Three structural challenges persist:
 
-**Standards fragmentation.** Multiple halal authorities — JAKIM, MUI, GCC Standardization Organization, ESMA (UAE), HFA, IFANCA, and dozens of national bodies — each maintain distinct halal definitions, particularly around mechanical slaughter, stunning practices, and additive permissibility. A blockchain solves transparency but doesn't resolve substantive disagreement among certifying authorities.
+**Standards fragmentation.** Multiple halal authorities, among them JAKIM, MUI, the GCC Standardization Organization, ESMA (UAE), HFA and IFANCA, plus dozens of national bodies, each maintain distinct halal definitions, particularly around mechanical slaughter, stunning practices, and additive permissibility. A blockchain solves transparency but doesn't resolve substantive disagreement among certifying authorities.
 
 **Onboarding cost for small producers.** A Malaysian smallholder or an Indonesian fishery cooperative cannot deploy blockchain infrastructure independently. Without subsidised onboarding via larger buyers, NGOs, or government programs, the technology risks concentrating compliance power with large processors at the expense of smaller producers.
 
-**Consumer literacy.** Scanning a QR code is one thing; understanding what the underlying chain-of-custody record actually proves is another. Halal-conscious consumers need clearer interpretation layers — apps that translate technical chain records into plain-language assurance.
+**Consumer literacy.** Scanning a QR code is one thing; understanding what the underlying chain-of-custody record actually proves is another. Halal-conscious consumers need clearer interpretation layers, apps that translate technical chain records into plain-language assurance.
 
 ## The Marketing Opportunity
 

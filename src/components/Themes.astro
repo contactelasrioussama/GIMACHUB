@@ -27,7 +27,7 @@ const k: LocalKey = locale === "ar" ? "ar" : "en";
     <div class="space-y-3 md:space-y-0 md:grid md:gap-6 lg:grid-cols-12">
       {themesData.groups.map((group, i) => (
         group.highlight ? (
-          /* Special focus — always fully visible */
+          /* Special focus, always fully visible */
           <article
             class="lg:col-span-12 bg-midnight-800 text-surface rounded-sm p-4 md:p-6 lg:p-8 border border-midnight-100"
             data-reveal
@@ -48,7 +48,7 @@ const k: LocalKey = locale === "ar" ? "ar" : "en";
             </ul>
           </article>
         ) : (
-          /* Secondary groups — collapsible on mobile, always open on md+ */
+          /* Secondary groups, collapsible on mobile, always open on md+ */
           <article
             class="card-lift lg:col-span-6 bg-white text-midnight-800 rounded-sm border border-midnight-100 overflow-hidden"
             data-reveal

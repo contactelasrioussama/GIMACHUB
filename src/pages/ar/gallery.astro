@@ -23,7 +23,7 @@ const galleryJsonLd = {
 ---
 
 <BaseLayout
-  title={`${gp.title} — GIMAC 17`}
+  title={`${gp.title} · GIMAC 17`}
   description={gp.subtitle}
   keywords="معرض صور جيماك, صور المؤتمر, جلسات المؤتمر, التسويق الإسلامي, صور أكاديمية"
   breadcrumbs={breadcrumbs}
@@ -52,11 +52,11 @@ const galleryJsonLd = {
             target="_blank"
             rel="noopener noreferrer"
             class="gallery-item"
-            aria-label={`صورة من مؤتمر جيماك — عرض على فليكر`}
+            aria-label={`صورة من مؤتمر جيماك، عرض على فليكر`}
           >
             <img
               src={photo.src}
-              alt={`المؤتمر العالمي للتسويق الإسلامي جيماك — لقطة ${i + 1}`}
+              alt={`المؤتمر العالمي للتسويق الإسلامي جيماك، لقطة ${i + 1}`}
               loading={i < 8 ? "eager" : "lazy"}
               decoding="async"
               class="gallery-img"

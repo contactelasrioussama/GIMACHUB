@@ -18,17 +18,17 @@ Against that backdrop, the striking thing is how little deliberate thought the i
 
 The most consequential issue is structural, and it sits at the centre of how modern games make money.
 
-**Loot boxes and gacha mechanics** — paying for a randomised reward — map closely onto *maysir*, the prohibition of gambling. The elements scholars identify are present: payment of a stake, an outcome determined by chance, and a prize of uncertain value. Multiple fatwa bodies and individual scholars have issued opinions against them, and several Muslim-majority jurisdictions have examined them under gambling law independently of religious argument.
+**Loot boxes and gacha mechanics**, paying for a randomised reward, map closely onto *maysir*, the prohibition of gambling. The elements scholars identify are present: payment of a stake, an outcome determined by chance, and a prize of uncertain value. Multiple fatwa bodies and individual scholars have issued opinions against them, and several Muslim-majority jurisdictions have examined them under gambling law independently of religious argument.
 
 This is not a peripheral design detail. Randomised monetisation drives a very large share of revenue in mobile and live-service games, which are precisely the categories dominant in these markets.
 
 Related concerns compound it:
 
-- **Speculative trading of randomised items** on secondary markets, which adds *gharar* — excessive uncertainty — to the *maysir* problem
+- **Speculative trading of randomised items** on secondary markets, which adds *gharar*, excessive uncertainty, to the *maysir* problem
 - **Real-money wagering** in some competitive and fantasy formats
 - **Play-to-earn and NFT mechanics**, which combine the difficulties of speculative assets with those of randomised rewards
 
-Some publishers have adopted **direct purchase alternatives** — letting players buy the specific item rather than a chance at it — often for regulatory reasons in Belgium, the Netherlands or China rather than religious ones. The effect is the same, and it is the single clearest lever available for making a game commercially accessible to observant Muslim players.
+Some publishers have adopted **direct purchase alternatives**, letting players buy the specific item rather than a chance at it, often for regulatory reasons in Belgium, the Netherlands or China rather than religious ones. The effect is the same, and it is the single clearest lever available for making a game commercially accessible to observant Muslim players.
 
 ## Content Design and Regional Editing
 
@@ -38,9 +38,9 @@ Publishers generally treat this as unremarkable compliance work. Two problems re
 
 **Editing is reactive and inconsistent.** Adjustments are typically made late, market by market, in response to a rating body or a distributor's objection. The result is uneven, occasionally clumsy, and sometimes creates worse problems than it solves.
 
-**Representation is handled poorly.** The recurring criticism from Muslim players is not about content restrictions at all — it is about how Muslim characters, settings and cultures are portrayed. Decades of games have used Middle Eastern and North African settings as generic conflict backdrops with interchangeable antagonists. Arabic text appears as decoration, frequently mirrored, misspelled, or lifted from religious material and used ornamentally in ways that give offence.
+**Representation is handled poorly.** The recurring criticism from Muslim players is not about content restrictions at all; it is about how Muslim characters, settings and cultures are portrayed. Decades of games have used Middle Eastern and North African settings as generic conflict backdrops with interchangeable antagonists. Arabic text appears as decoration, frequently mirrored, misspelled, or lifted from religious material and used ornamentally in ways that give offence.
 
-Studios that have engaged Muslim consultants during development, rather than editors after it, produce noticeably better outcomes on both axes — and avoid the expensive late-stage rework that reactive editing requires.
+Studios that have engaged Muslim consultants during development, rather than editors after it, produce noticeably better outcomes on both axes, and avoid the expensive late-stage rework that reactive editing requires.
 
 ## Streaming, Creators and Prayer Rhythms
 
@@ -63,7 +63,7 @@ Saudi investment changes the sector's incentive structure in a way that has not 
 
 The scale is substantial: significant stakes across major publishers, outright studio acquisitions, esports infrastructure, and a stated ambition to build domestic development capability rather than merely holding financial positions.
 
-The commercially interesting question is what a publisher does when a major shareholder is a Muslim-majority state pursuing an explicit cultural agenda. Plausible consequences include greater investment in Arabic localisation as a first-class market rather than an afterthought, more original content set in Muslim cultural contexts developed with rather than about those cultures, and pressure — commercial rather than religious — toward monetisation models compatible with the region.
+The commercially interesting question is what a publisher does when a major shareholder is a Muslim-majority state pursuing an explicit cultural agenda. Plausible consequences include greater investment in Arabic localisation as a first-class market rather than an afterthought, more original content set in Muslim cultural contexts developed with rather than about those cultures, and pressure, commercial rather than religious, toward monetisation models compatible with the region.
 
 Whether this materialises is unresolved. Financial investment does not automatically produce creative influence, and the sector's history of foreign capital acquiring studios without altering their output is long.
 
@@ -75,6 +75,6 @@ Gaming is arguably the largest under-researched category in Islamic marketing sc
 - **What is the revenue effect of direct-purchase alternatives in these markets?** Publishers have this data. None have published it, and it would settle whether ethical monetisation carries a commercial cost.
 - **Does representation quality measurably affect commercial performance** in Muslim-majority markets, or is it a reputational issue only?
 - **How do Muslim parents mediate children's gaming?** Parental gatekeeping in this category is culturally specific and entirely unstudied.
-- **What would a game designed from Islamic ethical premises look like** — not a religious educational product, but a mainstream commercial game whose economy avoided *maysir* and *gharar* by design?
+- **What would a game designed from Islamic ethical premises look like**: not a religious educational product, but a mainstream commercial game whose economy avoided *maysir* and *gharar* by design?
 
-That last question is the most generative. A great deal of Islamic marketing research examines how existing commercial forms can be made compliant. Rather less asks what those forms would look like if the ethics had shaped them from the beginning. Gaming — a young industry, with its economic models still visibly contested — is an unusually good place to ask it.
+That last question is the most generative. A great deal of Islamic marketing research examines how existing commercial forms can be made compliant. Rather less asks what those forms would look like if the ethics had shaped them from the beginning. Gaming (a young industry, with its economic models still visibly contested) is an unusually good place to ask it.

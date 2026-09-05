@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand palette — Midnight + Saffron + warm off-white */
+  /* Brand palette, Midnight + Saffron + warm off-white */
   --color-midnight-50:  #F2F4F9;
   --color-midnight-100: #DCE2EE;
   --color-midnight-200: #B6C0D6;
@@ -65,7 +65,7 @@ html[lang="ar"] h4 {
 /* Selection */
 ::selection { background: var(--color-saffron-200); color: var(--color-midnight-800); }
 
-/* Component layer — must be inside @layer so Tailwind utilities (hidden, etc.) can override */
+/* Component layer, must be inside @layer so Tailwind utilities (hidden, etc.) can override */
 @layer components {
   .container-wide { max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
   .container-tight { max-width: 920px; margin-inline: auto; padding-inline: 1.5rem; }
@@ -112,7 +112,7 @@ html[lang="ar"] h4 {
             mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,4 61,28 88,28 71,46 88,64 61,64 50,88 39,64 12,64 29,46 12,28 39,28' fill='black'/></svg>") no-repeat center / contain;
   }
 
-  /* Card lift — shared hover treatment */
+  /* Card lift, shared hover treatment */
   .card-lift {
     transition: transform 0.22s ease, box-shadow 0.22s ease;
   }
@@ -176,7 +176,7 @@ html[lang="ar"] h4 {
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   HERO ENTRANCE  —  staggered fade-up on page load
+   HERO ENTRANCE, staggered fade-up on page load
 ──────────────────────────────────────────────────────────────────────── */
 @keyframes hero-up {
   from { opacity: 0; transform: translateY(22px); }
@@ -190,7 +190,7 @@ html[lang="ar"] h4 {
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   GLOW PULSE  —  breathing radial glow behind hero
+   GLOW PULSE, breathing radial glow behind hero
 ──────────────────────────────────────────────────────────────────────── */
 @keyframes glow-pulse {
   0%, 100% { opacity: 0.55; }
@@ -204,7 +204,7 @@ html[lang="ar"] h4 {
 }
 
 /* ─────────────────────────────────────────────────────────────────────
-   ACTIVE NAV  —  saffron underline on current page link
+   ACTIVE NAV, saffron underline on current page link
 ──────────────────────────────────────────────────────────────────────── */
 .nav-active {
   color: var(--color-midnight-900);

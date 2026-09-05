@@ -27,7 +27,7 @@ interface Props {
   extraJsonLd?: Record<string, unknown>[];
   preloadHero?: boolean;
   canonicalOverride?: string;
-  /** Set to false on EN-only pages (e.g. /blog/*) — suppresses AR hreflang to avoid sending Google to a 404 */
+  /** Set to false on EN-only pages (e.g. /blog/*), suppresses AR hreflang to avoid sending Google to a 404 */
   hasArVersion?: boolean;
 }
 
@@ -35,7 +35,7 @@ const locale = Astro.currentLocale ?? "en";
 const dir = getDirection(locale);
 const t = useTranslations(locale);
 
-const siteName = `${t.meta.siteName} — ${t.meta.siteFullName}`;
+const siteName = `${t.meta.siteName} · ${t.meta.siteFullName}`;
 
 const defaultKeywords = locale === "ar"
   ? "التسويق الإسلامي, الاقتصاد الحلال, سلوك المستهلك المسلم, الأعمال الأخلاقية, التمويل الإسلامي, السياحة الحلال, مؤتمر جيماك, ألانيا, تركيا, 2026"
@@ -104,7 +104,7 @@ const orgJsonLd = {
   },
 };
 
-// 2. WebSite (always) — supports sitelinks search box
+// 2. WebSite (always), supports sitelinks search box
 const webSiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -121,7 +121,7 @@ const eventJsonLd = {
   "@context": "https://schema.org",
   "@type": "Event",
   "@id": "https://gimachub.com/#event",
-  "name": "GIMAC 17 — 17th Global Islamic Marketing Conference",
+  "name": "GIMAC 17, 17th Global Islamic Marketing Conference",
   "alternateName": "17th GIMAC",
   "description": t.hero.subtitle,
   "url": "https://gimachub.com/",
@@ -310,7 +310,7 @@ const robotsValue = noindex
     <!-- Sitemap discovery -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
 
-    <!-- Structured data — Organization, WebSite, Event (+ per-page extras) -->
+    <!-- Structured data: Organization, WebSite, Event (+ per-page extras) -->
     {allJsonLd.map((schema) => (
       <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}

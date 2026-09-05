@@ -4,7 +4,7 @@ import config from "~/data/config.json";
 
 const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
-const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeURIComponent("GIMAC 17 — Paper Submission")}`;
+const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeURIComponent("GIMAC 17: Paper Submission")}`;
 ---
 
 <section class="relative overflow-hidden bg-midnight-800 text-surface min-h-[600px] lg:min-h-[680px]">
@@ -14,15 +14,15 @@ const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeUR
     <img
       src="/images/hero-conference.jpg"
       alt={locale === "ar"
-        ? "المؤتمر العالمي السابع عشر للتسويق الإسلامي — ألانيا، تركيا، أكتوبر 2026"
-        : "GIMAC 17 — 17th Global Islamic Marketing Conference, Alanya, Turkey, October 2026"}
+        ? "المؤتمر العالمي السابع عشر للتسويق الإسلامي، ألانيا، تركيا، أكتوبر 2026"
+        : "GIMAC 17: 17th Global Islamic Marketing Conference, Alanya, Turkey, October 2026"}
       class="w-full h-full object-cover object-[center_30%]"
       loading="eager"
       fetchpriority="high"
       width="1920"
       height="1080"
     />
-    <!-- Solid uniform dark overlay — no gradient -->
+    <!-- Solid uniform dark overlay, no gradient -->
     <div class="absolute inset-0 bg-midnight-800/80" aria-hidden="true"></div>
   </div>
 

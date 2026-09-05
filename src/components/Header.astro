@@ -10,7 +10,7 @@ const nav = t.nav as Record<string, string>;
 
 const pathname = Astro.url.pathname;
 
-// 5 nav links — Past & Gallery live in the footer
+// 5 nav links, Past & Gallery live in the footer
 // Blog is English-only, so it always links to /blog/ regardless of locale
 const navItems = [
   { key: "submit",       href: localePath(locale, "/submit") },

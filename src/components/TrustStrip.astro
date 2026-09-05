@@ -26,7 +26,7 @@ const items = [
   <!-- Marquee -->
   <div class="marquee-outer mt-5" role="region" aria-label={t.trust.trustedBy}>
 
-    <!-- First copy — accessible -->
+    <!-- First copy, accessible -->
     <div class="marquee-track">
 
       {items.map((item) => (
@@ -46,7 +46,7 @@ const items = [
         </div>
       ))}
 
-      <!-- Duplicate — decorative only, hidden from assistive tech -->
+      <!-- Duplicate, decorative only, hidden from assistive tech -->
       {items.map((item) => (
         <div class="marquee-item" aria-hidden="true">
           {item.type === "logo" ? (
@@ -80,7 +80,7 @@ const items = [
     color: var(--color-midnight-400);
   }
 
-  /* ── Marquee outer — clips scroll + paints edge fades ────────────── */
+  /* ── Marquee outer, clips scroll + paints edge fades ────────────── */
   .marquee-outer {
     overflow: hidden;
     position: relative;

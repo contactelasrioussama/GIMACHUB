@@ -94,7 +94,7 @@ const blogPostingJsonLd = {
 ---
 
 <BaseLayout
-  title={`${title} — GIMAC Blog`}
+  title={`${title} · GIMAC Blog`}
   description={description}
   ogImage={cover}
   ogType="article"
@@ -116,7 +116,7 @@ const blogPostingJsonLd = {
     {cover && (
       <img
         src={cover}
-        alt={`${title} — ${category} article cover`}
+        alt={`${title}, ${category} article cover`}
         class="absolute inset-0 w-full h-full object-cover"
         loading="eager"
         fetchpriority="high"
@@ -124,7 +124,7 @@ const blogPostingJsonLd = {
         height="630"
       />
     )}
-    <!-- Category-tinted overlay — always on top of photo -->
+    <!-- Category-tinted overlay, always on top of photo -->
     <div class="absolute inset-0" style={`background:${cover ? c.overlay : c.bg}`}></div>
     <!-- Extra gradient for left-side legibility -->
     {cover && (

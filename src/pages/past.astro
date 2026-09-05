@@ -33,7 +33,7 @@ const pastListJsonLd = {
     "position": i + 1,
     "item": {
       "@type": "Event",
-      "name": `GIMAC ${ed.edition} — ${ed.city[k]}, ${ed.country[k]} (${ed.year})`,
+      "name": `GIMAC ${ed.edition}, ${ed.city[k]}, ${ed.country[k]} (${ed.year})`,
       "startDate": String(ed.year),
       "location": {
         "@type": "Place",
@@ -50,7 +50,7 @@ const pastListJsonLd = {
 ---
 
 <BaseLayout
-  title={`${pp.title} — GIMAC 17`}
+  title={`${pp.title} · GIMAC 17`}
   description={pp.subtitle}
   keywords={pastKeywords}
   breadcrumbs={breadcrumbs}
