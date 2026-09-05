@@ -5,6 +5,7 @@ author: "GIMAC Editorial Team"
 date: "2026-08-27"
 category: "Technology"
 featured: false
+cover: "/images/blog/cover-muslim-gaming.jpg"
 ---
 
 Muslim-majority countries include some of the largest and fastest-growing gaming markets in the world. Indonesia has well over 100 million players. Türkiye, Egypt, Pakistan, Malaysia and Saudi Arabia all rank highly by player count, and the Gulf has among the highest per-player spending globally.

@@ -5,6 +5,7 @@ author: "GIMAC Editorial Team"
 date: "2026-07-01"
 category: "Finance"
 featured: false
+cover: "/images/blog/cover-zakat-waqf.jpg"
 ---
 
 The commercial Islamic economy attracts most of the attention: sukuk issuance, takaful growth, halal certification, Shariah-compliant fintech. Alongside it sits a parallel system that is older, larger in participation terms, and until recently almost entirely undigitised.

@@ -5,6 +5,7 @@ author: "GIMAC Editorial Team"
 date: "2026-07-16"
 category: "Marketing"
 featured: false
+cover: "/images/blog/cover-diaspora-consumer.jpg"
 ---
 
 Most writing about Muslim consumers implicitly means Muslim-majority markets: Indonesia, Malaysia, the Gulf, Türkiye, Pakistan. That focus is understandable and it misses something commercially significant.

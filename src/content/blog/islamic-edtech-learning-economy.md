@@ -5,6 +5,7 @@ author: "GIMAC Editorial Team"
 date: "2026-08-06"
 category: "Entrepreneurship"
 featured: false
+cover: "/images/blog/cover-islamic-edtech.jpg"
 ---
 
 Demography is the whole story here. The global Muslim population has a median age in the low twenties, younger than every other major religious grouping and dramatically younger than the world's ageing high-income economies. In Pakistan, Nigeria, Egypt, Indonesia and Bangladesh, cohorts entering education are enormous relative to the institutional capacity available to teach them.

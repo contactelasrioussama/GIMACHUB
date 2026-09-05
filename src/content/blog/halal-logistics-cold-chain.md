@@ -5,6 +5,7 @@ author: "GIMAC Editorial Team"
 date: "2026-07-30"
 category: "Technology"
 featured: false
+cover: "/images/blog/cover-halal-logistics.jpg"
 ---
 
 Halal certification is overwhelmingly discussed as a question about products: what is in them, how the animal was slaughtered, which authority approved the formulation. This framing has a blind spot large enough to drive a lorry through, which is roughly what happens.

@@ -5,6 +5,7 @@ author: "GIMAC Editorial Team"
 date: "2026-06-24"
 category: "Research"
 featured: false
+cover: "/images/blog/cover-halal-pharmaceuticals.jpg"
 ---
 
 Almost every survey of the halal economy names pharmaceuticals as a high-growth frontier. Almost none of them explain why it is so difficult. Halal food certification, for all its fragmentation, deals largely with visible ingredients and traceable supply chains. Pharmaceuticals deal with gelatin capsules sourced through three intermediaries, excipients present at fractions of a percent, enzymes used in manufacturing but absent from the final product, and a regulatory environment where substituting an ingredient can require years of re-approval.
