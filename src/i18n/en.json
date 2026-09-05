@@ -55,7 +55,7 @@
   "themes": {
     "kicker": "Tracks & special topics",
     "title": "Where Islamic values shape the modern economy",
-    "subtitle": "GIMAC 17 puts a special spotlight on AI, digital transformation, and women-led entrepreneurship — alongside the established tracks of Islamic marketing, finance, and comparative studies.",
+    "subtitle": "GIMAC 17 puts a special spotlight on AI, digital transformation, and women-led entrepreneurship: alongside the established tracks of Islamic marketing, finance, and comparative studies.",
     "viewAll": "See all tracks →"
   },
   "deadlines": {
@@ -99,7 +99,7 @@
   "committee": {
     "kicker": "Organizing committee",
     "title": "Chaired by leading scholars across 12+ countries",
-    "subtitle": "GIMAC is curated by senior academics in Islamic marketing, halal economy, and ethical business — backed by IIMA and partner universities.",
+    "subtitle": "GIMAC is curated by senior academics in Islamic marketing, halal economy, and ethical business, backed by IIMA and partner universities.",
     "chairLabel": "Conference Chair",
     "viewAll": "Meet the full committee →"
   },
@@ -128,7 +128,7 @@
     "steps": [
       "Prepare your full paper or extended abstract following the format guidelines below.",
       "Send it as a PDF or Word attachment to the conference chair.",
-      "Use the subject line: GIMAC 17 — Paper Submission.",
+      "Use the subject line: GIMAC 17: Paper Submission.",
       "In the email body, include your name, affiliation, country, and preferred research track."
     ],
     "formatTitle": "Format requirements",
@@ -169,7 +169,7 @@
   "publicationsPage": {
     "kicker": "Scientific output",
     "title": "8 indexed publication outlets",
-    "subtitle": "Accepted papers are considered for publication across Springer, Emerald, Inderscience, and IIMA-hosted journals — all peer-reviewed and indexed.",
+    "subtitle": "Accepted papers are considered for publication across Springer, Emerald, Inderscience, and IIMA-hosted journals, all peer-reviewed and indexed.",
     "indexedIn": "Indexed in",
     "noteTitle": "How it works",
     "note": "The conference scientific committee reviews all submitted papers. Strong papers accepted for presentation are invited to submit to one of the eight partner outlets for further peer review and potential publication."
@@ -177,14 +177,14 @@
   "committeePage": {
     "kicker": "Organizing committee",
     "title": "Scholars from 12+ countries",
-    "subtitle": "GIMAC 17 is organized by a volunteer committee of senior academics in Islamic marketing, halal economy, and ethical business — coordinated through the International Islamic Marketing Association (IIMA).",
+    "subtitle": "GIMAC 17 is organized by a volunteer committee of senior academics in Islamic marketing, halal economy, and ethical business, coordinated through the International Islamic Marketing Association (IIMA).",
     "chairs": "Conference chairs",
     "members": "Scientific committee members"
   },
   "venuePage": {
     "kicker": "Venue & travel",
     "title": "Asia Beach Resort & Spa, Alanya",
-    "subtitle": "GIMAC 17 takes place along the Mediterranean coast of Türkiye — a city that blends Seljuk and Ottoman heritage with modern resort infrastructure.",
+    "subtitle": "GIMAC 17 takes place along the Mediterranean coast of Türkiye, a city that blends Seljuk and Ottoman heritage with modern resort infrastructure.",
     "venueTitle": "The conference venue",
     "venueDesc": "Asia Beach Resort & Spa is a premium property on Alanya's Cleopatra Beach, offering fully equipped conference halls, meeting rooms, and all-inclusive hospitality for academic events.",
     "alanyaTitle": "Getting to Alanya",
@@ -205,7 +205,7 @@
     "hybridTitle": "Online participation",
     "hybridDesc": "GIMAC 17 is a hybrid event. Online attendees receive a live-stream link and access to the virtual Q&A room. The online fee is $150 (all categories). Registration details are sent by email after payment.",
     "amenitiesTitle": "Conference facilities",
-    "amenities": ["Plenary hall — 500+ seats", "Breakout session rooms", "High-speed Wi-Fi throughout", "Full A/V & live-streaming setup", "All-inclusive catering", "On-site accommodation"],
+    "amenities": ["Plenary hall: 500+ seats", "Breakout session rooms", "High-speed Wi-Fi throughout", "Full A/V & live-streaming setup", "All-inclusive catering", "On-site accommodation"],
     "weatherTitle": "October in Alanya",
     "weatherItems": [
       { "label": "Air temperature", "value": "25 °C", "note": "Warm, sunny days" },
@@ -215,7 +215,7 @@
     "exploreTitle": "Explore Alanya",
     "attractions": [
       { "name": "Alanya Castle", "desc": "13th-century Seljuk fortress with panoramic views over the Mediterranean coast." },
-      { "name": "Cleopatra Beach", "desc": "One of Turkey's finest beaches — the conference hotel sits directly on it." },
+      { "name": "Cleopatra Beach", "desc": "One of Turkey's finest beaches, the conference hotel sits directly on it." },
       { "name": "Red Tower (Kızıl Kule)", "desc": "Iconic 12th-century octagonal tower, the enduring symbol of Alanya." },
       { "name": "Damlataş Cave", "desc": "Ancient stalagmite cave, only a 5-minute walk from the resort." }
     ],
@@ -225,12 +225,12 @@
   "pastPage": {
     "kicker": "Conference history",
     "title": "From Dubai 2011 to Alanya 2026",
-    "subtitle": "Sixteen editions across 9 countries and 3 continents — a 15-year journey of Islamic marketing scholarship."
+    "subtitle": "Sixteen editions across 9 countries and 3 continents, a 15-year journey of Islamic marketing scholarship."
   },
   "galleryPage": {
     "kicker": "GIMAC in pictures",
     "title": "History & Highlights Gallery",
-    "subtitle": "Fifteen years of scholarship, community, and discovery — captured across 16 editions from Dubai to Alanya.",
+    "subtitle": "Fifteen years of scholarship, community, and discovery, captured across 16 editions from Dubai to Alanya.",
     "flickrCta": "View all 4,200+ photos on Flickr",
     "attribution": "Photos from the official GIMAC Flickr archive · All rights reserved"
   },

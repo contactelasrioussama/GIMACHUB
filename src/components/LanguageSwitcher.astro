@@ -1,5 +1,5 @@
 ---
-import { useTranslations, getOppositeLocale } from "~/i18n/utils";
+import { useTranslations, getOppositeLocale, switchLocalePath } from "~/i18n/utils";
 
 interface Props {
   variant?: "light" | "dark";
@@ -10,10 +10,9 @@ const locale = Astro.currentLocale ?? "en";
 const t = useTranslations(locale);
 const otherLocale = getOppositeLocale(locale);
 
-const path = Astro.url.pathname;
-const targetPath = locale === "ar"
-  ? path.replace(/^\/ar(\/|$)/, "/")
-  : `/ar${path === "/" ? "/" : path}`;
+// Routes without a counterpart in the other locale (the blog is English-only)
+// resolve to that locale's home page instead of a URL that was never built.
+const targetPath = switchLocalePath(locale, Astro.url.pathname);
 
 const colorClass = variant === "light"
   ? "text-surface/80 hover:text-surface"

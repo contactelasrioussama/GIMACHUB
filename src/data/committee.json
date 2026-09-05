@@ -41,12 +41,18 @@
       "name": "Dr. Mehmet Bayirli",
       "affiliation": "Alanya Alaaddin Keykubat University",
       "country": { "en": "Türkiye", "ar": "تركيا" }
+    },
+    {
+      "role": { "en": "Guest Speaker", "ar": "متحدث ضيف" },
+      "name": "Dr. Muhammad Ismail",
+      "affiliation": "University of Veterinary and Animal Sciences, Swat",
+      "country": { "en": "Pakistan", "ar": "باكستان" }
     }
   ],
   "members": [
     { "name": "Prof. Hafedh Ben Abdennebi", "affiliation": "ECSTRA - University of Carthage", "country": { "en": "Tunisia", "ar": "تونس" } },
     { "name": "Prof. Sami Mensi", "affiliation": "ECSTRA - University of Carthage", "country": { "en": "Tunisia", "ar": "تونس" } },
-    { "name": "Prof. Sadok Gassouma", "affiliation": "Higher Institute of Accounting and Business Administration, University of Manouba — LARIMRAF Laboratory, ESC Business School", "country": { "en": "Tunisia", "ar": "تونس" } },
+    { "name": "Prof. Sadok Gassouma", "affiliation": "Higher Institute of Accounting and Business Administration, University of Manouba: LARIMRAF Laboratory, ESC Business School", "country": { "en": "Tunisia", "ar": "تونس" } },
     { "name": "Prof. Houyam Alsaudi", "affiliation": "University of Jordan", "country": { "en": "Jordan", "ar": "الأردن" } },
     { "name": "Dr. Ismail Abu Amoud", "affiliation": "University of Jordan", "country": { "en": "Jordan", "ar": "الأردن" } },
     { "name": "Haitham Ali Hilal Albaqoum", "affiliation": "Hashemite University", "country": { "en": "Jordan", "ar": "الأردن" } },

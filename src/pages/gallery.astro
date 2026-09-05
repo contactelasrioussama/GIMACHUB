@@ -27,7 +27,7 @@ const galleryJsonLd = {
 ---
 
 <BaseLayout
-  title={`${gp.title} — GIMAC 17`}
+  title={`${gp.title} · GIMAC 17`}
   description={gp.subtitle}
   keywords={galleryKeywords}
   breadcrumbs={breadcrumbs}
@@ -56,11 +56,11 @@ const galleryJsonLd = {
             target="_blank"
             rel="noopener noreferrer"
             class="gallery-item"
-            aria-label={`GIMAC conference photo ${i + 1} — view on Flickr`}
+            aria-label={`GIMAC conference photo ${i + 1} · view on Flickr`}
           >
             <img
               src={photo.src}
-              alt={`GIMAC Global Islamic Marketing Conference — moment ${i + 1}`}
+              alt={`GIMAC Global Islamic Marketing Conference, moment ${i + 1}`}
               loading={i < 8 ? "eager" : "lazy"}
               decoding="async"
               class="gallery-img"

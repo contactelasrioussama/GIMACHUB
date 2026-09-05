@@ -29,6 +29,28 @@ function formatDate(iso: string) {
   });
 }
 
+/**
+ * Word count of the article body, for the BlogPosting JSON-LD.
+ * Strips markdown so syntax (bullet markers, emphasis, link URLs) is not
+ * counted as prose, and drops code blocks entirely.
+ */
+function countWords(markdown: string): number {
+  const text = markdown
+    .replace(/```[\s\S]*?```/g, " ")          // fenced code blocks
+    .replace(/`[^`\n]*`/g, " ")               // inline code
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")    // images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")  // links keep their visible text
+    .replace(/^\s{0,3}#{1,6}\s+/gm, "")       // heading markers
+    .replace(/^\s{0,3}>\s?/gm, "")            // blockquote markers
+    .replace(/^\s*[-*+]\s+/gm, "")            // bullet markers
+    .replace(/^\s*\d+\.\s+/gm, "")            // ordered list markers
+    .replace(/^\s*[-*_]{3,}\s*$/gm, " ")      // horizontal rules
+    .replace(/\*\*|__|\*|_/g, "");            // emphasis markers
+  return text.split(/\s+/).filter((t) => /[\p{L}\p{N}]/u.test(t)).length;
+}
+
+const wordCount = countWords(post.body ?? "");
+
 const breadcrumbs = [
   { name: "Home", url: "/" },
   { name: "Blog", url: "/blog/" },
@@ -38,7 +60,7 @@ const breadcrumbs = [
 const articleUrl = new URL(`/blog/${post.slug}/`, Astro.site).toString();
 const imageUrl = cover
   ? new URL(cover, Astro.site).toString()
-  : new URL("/og-default.jpg", Astro.site).toString();
+  : new URL("/images/hero-conference.jpg", Astro.site).toString();
 
 // Category-specific keywords
 const categoryKeywords: Record<string, string> = {
@@ -86,7 +108,7 @@ const blogPostingJsonLd = {
   },
   "url": articleUrl,
   "articleSection": category,
-  "wordCount": readTime * 220, // rough estimate from reading time
+  "wordCount": wordCount,
   "timeRequired": `PT${readTime}M`,
   "inLanguage": "en",
   "keywords": articleKeywords,
@@ -94,7 +116,7 @@ const blogPostingJsonLd = {
 ---
 
 <BaseLayout
-  title={`${title} — GIMAC Blog`}
+  title={`${title} · GIMAC Blog`}
   description={description}
   ogImage={cover}
   ogType="article"
@@ -116,7 +138,7 @@ const blogPostingJsonLd = {
     {cover && (
       <img
         src={cover}
-        alt={`${title} — ${category} article cover`}
+        alt={`${title}, ${category} article cover`}
         class="absolute inset-0 w-full h-full object-cover"
         loading="eager"
         fetchpriority="high"
@@ -124,7 +146,7 @@ const blogPostingJsonLd = {
         height="630"
       />
     )}
-    <!-- Category-tinted overlay — always on top of photo -->
+    <!-- Category-tinted overlay, always on top of photo -->
     <div class="absolute inset-0" style={`background:${cover ? c.overlay : c.bg}`}></div>
     <!-- Extra gradient for left-side legibility -->
     {cover && (
@@ -239,7 +261,11 @@ const blogPostingJsonLd = {
     line-height: 1.78;
     max-width: 68ch;
   }
-  .prose h2 {
+  /* Article body comes from <Content /> (rendered markdown), so those elements
+     never receive Astro's scope attribute. Every descendant selector must be
+     :global() or the rules compile to `.prose[data-astro-cid] h2[data-astro-cid]`
+     and silently miss, leaving Tailwind preflight to flatten the article. */
+  .prose :global(h2) {
     font-family: var(--font-serif);
     font-size: 1.4rem;
     font-weight: 700;
@@ -248,7 +274,7 @@ const blogPostingJsonLd = {
     margin-bottom: 0.6em;
     line-height: 1.3;
   }
-  .prose h3 {
+  .prose :global(h3) {
     font-family: var(--font-serif);
     font-size: 1.15rem;
     font-weight: 600;
@@ -256,20 +282,21 @@ const blogPostingJsonLd = {
     margin-top: 2em;
     margin-bottom: 0.5em;
   }
-  .prose p { margin-top: 0; margin-bottom: 1.3em; }
-  .prose ul, .prose ol { margin: 1em 0 1.3em; padding-left: 1.5em; }
-  .prose ul  { list-style-type: disc; }
-  .prose ol  { list-style-type: decimal; }
-  .prose li  { margin-bottom: 0.4em; line-height: 1.7; }
-  .prose strong { font-weight: 700; color: #0A1F44; }
-  .prose em { font-style: italic; color: #243A6B; }
-  .prose blockquote {
+  .prose :global(p) { margin-top: 0; margin-bottom: 1.3em; }
+  .prose :global(ul), .prose :global(ol) { margin: 1em 0 1.3em; padding-left: 1.5em; }
+  .prose :global(ul) { list-style-type: disc; }
+  .prose :global(ol) { list-style-type: decimal; }
+  .prose :global(li) { margin-bottom: 0.4em; line-height: 1.7; }
+  .prose :global(li) :global(p) { margin-bottom: 0.4em; }
+  .prose :global(strong) { font-weight: 700; color: #0A1F44; }
+  .prose :global(em) { font-style: italic; color: #243A6B; }
+  .prose :global(blockquote) {
     border-left: 3px solid #C9A94D;
     margin-left: 0;
     padding-left: 1.2em;
     color: #5A6271;
     font-style: italic;
   }
-  .prose a { color: #C9A94D; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(201,169,77,0.4); }
-  .prose a:hover { color: #B0903A; text-decoration-color: #B0903A; }
+  .prose :global(a) { color: #C9A94D; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(201,169,77,0.4); }
+  .prose :global(a):hover { color: #B0903A; text-decoration-color: #B0903A; }
 </style>

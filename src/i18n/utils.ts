@@ -25,3 +25,36 @@ export function localePath(locale: string | undefined, path: string = '/'): stri
   if (locale === 'ar') return `/ar${clean === '/' ? '' : clean}`;
   return clean;
 }
+
+/**
+ * Route prefixes that exist in English only, with no /ar counterpart.
+ * Keep in sync with src/pages. The language switcher and the hreflang tags
+ * both derive from this, so listing a prefix here covers both at once.
+ */
+export const EN_ONLY_PREFIXES = ['/blog'] as const;
+
+/** Strip a leading /ar and any trailing slash so both locales compare equal. */
+function toBasePath(path: string): string {
+  const stripped = path.replace(/^\/ar(?=\/|$)/, '');
+  const clean = stripped.replace(/\/+$/, '');
+  return clean === '' ? '/' : clean;
+}
+
+/** Whether this route has a counterpart in the other locale. */
+export function hasTranslation(path: string): boolean {
+  const base = toBasePath(path);
+  return !EN_ONLY_PREFIXES.some((p) => base === p || base.startsWith(`${p}/`));
+}
+
+/**
+ * Where the language switcher should point from `path`.
+ * Routes with no counterpart fall back to the target locale's home page,
+ * rather than linking to a URL that was never built.
+ */
+export function switchLocalePath(locale: string | undefined, path: string): string {
+  const target = getOppositeLocale(locale);
+  if (!hasTranslation(path)) return target === 'ar' ? '/ar/' : '/';
+  if (target === 'ar') return path === '/' ? '/ar/' : `/ar${path}`;
+  const stripped = path.replace(/^\/ar(?=\/|$)/, '');
+  return stripped === '' ? '/' : stripped;
+}

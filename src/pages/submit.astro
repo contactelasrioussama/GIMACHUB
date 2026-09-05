@@ -11,7 +11,7 @@ type LocalKey = "en" | "ar";
 const k: LocalKey = locale === "ar" ? "ar" : "en";
 const sp = t.submitPage;
 
-const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeURIComponent("GIMAC 17 — Paper Submission")}&body=${encodeURIComponent("Dear Prof. Alserhan,\n\nPlease find my paper attached for consideration at GIMAC 17.\n\nTitle:\nAuthor(s):\nAffiliation:\nTrack:\n\nKind regards,")}`;
+const submissionMailto = `mailto:${config.contact.chairEmail}?subject=${encodeURIComponent("GIMAC 17: Paper Submission")}&body=${encodeURIComponent("Dear Prof. Alserhan,\n\nPlease find my paper attached for consideration at GIMAC 17.\n\nTitle:\nAuthor(s):\nAffiliation:\nTrack:\n\nKind regards,")}`;
 const whatsappLink = `https://wa.me/${config.contact.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent("Hello, I have a question about GIMAC 17.")}`;
 
 const breadcrumbs = [
@@ -39,7 +39,7 @@ const howToJsonLd = {
 ---
 
 <BaseLayout
-  title={`${sp.title} — GIMAC 17`}
+  title={`${sp.title} · GIMAC 17`}
   description={sp.subtitle}
   keywords={submitKeywords}
   breadcrumbs={breadcrumbs}
