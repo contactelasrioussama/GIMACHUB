@@ -54,7 +54,7 @@ const blogCollectionJsonLd = {
     "author": { "@type": "Organization", "name": post.data.author },
     "image": post.data.cover
       ? new URL(post.data.cover, Astro.site).toString()
-      : new URL("/og-default.jpg", Astro.site).toString(),
+      : new URL("/images/hero-conference.jpg", Astro.site).toString(),
     "url": new URL(`/blog/${post.slug}/`, Astro.site).toString(),
     "articleSection": post.data.category,
   })),
