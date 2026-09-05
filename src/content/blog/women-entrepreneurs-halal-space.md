@@ -4,7 +4,6 @@ description: "Muslim women entrepreneurs are reshaping industries from modest fa
 author: "GIMAC Editorial Team"
 date: "2026-01-22"
 category: "Entrepreneurship"
-readTime: 8
 cover: "/images/blog/cover-women-entrepreneurs.jpg"
 ---
 

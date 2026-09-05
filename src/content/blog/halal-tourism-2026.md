@@ -4,7 +4,6 @@ description: "Muslim travellers represent a $220 billion market. Hotels, airline
 author: "GIMAC Editorial Team"
 date: "2026-01-08"
 category: "Marketing"
-readTime: 7
 cover: "/images/blog/cover-halal-tourism.jpg"
 ---
 

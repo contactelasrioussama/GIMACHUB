@@ -4,8 +4,8 @@ description: "Murabaha, ijara and diminishing musharaka are the three structures
 author: "GIMAC Editorial Team"
 date: "2026-07-23"
 category: "Finance"
-readTime: 12
 featured: false
+cover: "/images/blog/cover-islamic-home-financing.jpg"
 ---
 
 For most households, a mortgage is the largest financial commitment of their lives. For observant Muslim households, it is also the point at which the prohibition of *riba* stops being abstract and becomes an immediate practical problem: the standard route to home ownership in most countries is an interest-bearing loan.

@@ -4,7 +4,6 @@ description: "Islamic marketing is not a checklist of prohibitions. It is a comp
 author: "GIMAC Editorial Team"
 date: "2026-02-28"
 category: "Marketing"
-readTime: 7
 cover: "/images/blog/cover-islamic-marketing.jpg"
 ---
 

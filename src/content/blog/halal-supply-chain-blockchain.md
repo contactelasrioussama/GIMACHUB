@@ -4,7 +4,6 @@ description: "Halal certification has long depended on trust in human auditors. 
 author: "GIMAC Editorial Team"
 date: "2026-06-02"
 category: "Technology"
-readTime: 11
 featured: false
 cover: "/images/blog/cover-halal-supply-chain.jpg"
 ---

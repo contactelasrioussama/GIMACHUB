@@ -4,7 +4,6 @@ description: "Conventional insurance contains elements Islamic law prohibits. Ta
 author: "GIMAC Editorial Team"
 date: "2026-05-29"
 category: "Finance"
-readTime: 11
 featured: false
 cover: "/images/blog/cover-takaful-insurance.jpg"
 ---

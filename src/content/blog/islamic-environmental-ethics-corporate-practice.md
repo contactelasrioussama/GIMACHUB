@@ -4,8 +4,8 @@ description: "Islamic environmental thought is older and more demanding than the
 author: "GIMAC Editorial Team"
 date: "2026-08-20"
 category: "Sustainability"
-readTime: 12
 featured: false
+cover: "/images/blog/cover-environmental-ethics.jpg"
 ---
 
 The comparison between Islamic ethics and ESG is made so routinely that it has stopped being examined. Both care about the environment, both care about social outcomes, both constrain profit-seeking; therefore they align, and Islamic finance can be presented as ESG with a longer pedigree.

@@ -4,7 +4,6 @@ description: "Islamic FinTech has moved beyond crypto into mainstream digital ba
 author: "GIMAC Editorial Team"
 date: "2026-06-10"
 category: "Technology"
-readTime: 12
 featured: false
 cover: "/images/blog/cover-islamic-fintech.jpg"
 ---

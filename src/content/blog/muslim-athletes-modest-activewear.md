@@ -4,8 +4,8 @@ description: "A decade after the sports hijab arrived on major brand shelves, mo
 author: "GIMAC Editorial Team"
 date: "2026-08-13"
 category: "Marketing"
-readTime: 11
 featured: false
+cover: "/images/blog/cover-muslim-athletes.jpg"
 ---
 
 In 2016, a Muslim woman competing at the Olympics in a hijab was a news story. By the Paris cycle it was unremarkable enough that coverage focused on the results. That shift happened faster than the sportswear industry adapted to it, and the gap between visible participation and available product is where the modest activewear category was built.

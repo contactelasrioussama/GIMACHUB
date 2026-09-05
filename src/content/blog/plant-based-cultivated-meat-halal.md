@@ -4,8 +4,8 @@ description: "Alternative proteins promise to sidestep slaughter entirely, which
 author: "GIMAC Editorial Team"
 date: "2026-07-09"
 category: "Research"
-readTime: 12
 featured: false
+cover: "/images/blog/cover-plant-based-meat.jpg"
 ---
 
 There is a persistent assumption in the alternative-protein industry that halal is a solved problem. No animal, no slaughter, no issue. Several founders have said as much in public, usually while announcing an expansion into Southeast Asia or the Gulf.

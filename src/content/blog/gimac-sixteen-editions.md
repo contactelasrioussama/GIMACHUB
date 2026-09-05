@@ -4,7 +4,6 @@ description: "A retrospective analysis of sixteen years of conference proceeding
 author: "GIMAC Editorial Team"
 date: "2026-02-05"
 category: "Research"
-readTime: 6
 featured: false
 cover: "/images/blog/cover-gimac-history.jpg"
 ---

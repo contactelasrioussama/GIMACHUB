@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { readingMinutes } from "~/utils/reading";
 
 const allPosts = await getCollection("blog");
 const posts = allPosts
@@ -93,7 +94,7 @@ function fmtDate(iso: string) {
                 >
                   {post.data.category}
                 </span>
-                <span class="card-read-time">{post.data.readTime} min</span>
+                <span class="card-read-time">{readingMinutes(post.body ?? "")} min</span>
               </div>
 
               <!-- Card body -->

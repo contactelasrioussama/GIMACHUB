@@ -4,7 +4,6 @@ description: "Why do Muslims choose halal products? The answer is more complex t
 author: "GIMAC Editorial Team"
 date: "2025-12-04"
 category: "Research"
-readTime: 8
 cover: "/images/blog/cover-consumer-psychology.jpg"
 ---
 

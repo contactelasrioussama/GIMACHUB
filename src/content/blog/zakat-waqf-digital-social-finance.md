@@ -4,8 +4,8 @@ description: "Islamic social finance moves hundreds of billions of dollars a yea
 author: "GIMAC Editorial Team"
 date: "2026-07-01"
 category: "Finance"
-readTime: 12
 featured: false
+cover: "/images/blog/cover-zakat-waqf.jpg"
 ---
 
 The commercial Islamic economy attracts most of the attention: sukuk issuance, takaful growth, halal certification, Shariah-compliant fintech. Alongside it sits a parallel system that is older, larger in participation terms, and until recently almost entirely undigitised.

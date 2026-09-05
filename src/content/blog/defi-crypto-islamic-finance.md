@@ -4,7 +4,6 @@ description: "Decentralised finance promises to democratise access to financial 
 author: "GIMAC Editorial Team"
 date: "2025-12-18"
 category: "Finance"
-readTime: 10
 cover: "/images/blog/cover-defi-crypto.jpg"
 ---
 

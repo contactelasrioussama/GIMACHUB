@@ -4,7 +4,6 @@ description: "Halal cosmetics is now a $100 billion-plus market, and it's conver
 author: "GIMAC Editorial Team"
 date: "2026-06-05"
 category: "Marketing"
-readTime: 11
 featured: false
 cover: "/images/blog/cover-halal-beauty.jpg"
 ---
