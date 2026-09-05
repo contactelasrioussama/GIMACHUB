@@ -4,7 +4,6 @@ description: "Muslim creators command audiences that mainstream agencies underes
 author: "GIMAC Editorial Team"
 date: "2026-06-15"
 category: "Marketing"
-readTime: 12
 featured: false
 cover: "/images/blog/cover-muslim-influencers.jpg"
 ---

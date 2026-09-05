@@ -4,7 +4,6 @@ description: "Murabaha, ijara and diminishing musharaka are the three structures
 author: "GIMAC Editorial Team"
 date: "2026-07-23"
 category: "Finance"
-readTime: 12
 featured: false
 ---
 

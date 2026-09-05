@@ -4,7 +4,6 @@ description: "The global Muslim population is strikingly young, and the platform
 author: "GIMAC Editorial Team"
 date: "2026-08-06"
 category: "Entrepreneurship"
-readTime: 11
 featured: false
 ---
 

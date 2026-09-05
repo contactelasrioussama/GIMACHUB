@@ -4,7 +4,6 @@ description: "Halal pharmaceuticals and nutraceuticals are among the fastest-gro
 author: "GIMAC Editorial Team"
 date: "2026-06-24"
 category: "Research"
-readTime: 11
 featured: false
 ---
 

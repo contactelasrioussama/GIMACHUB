@@ -4,7 +4,6 @@ description: "A product can be certified halal at the factory and lose its integ
 author: "GIMAC Editorial Team"
 date: "2026-07-30"
 category: "Technology"
-readTime: 11
 featured: false
 ---
 

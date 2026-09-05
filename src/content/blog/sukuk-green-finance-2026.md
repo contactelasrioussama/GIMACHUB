@@ -4,7 +4,6 @@ description: "Green sukuk issuance has crossed $50 billion globally and is resha
 author: "GIMAC Editorial Team"
 date: "2026-05-22"
 category: "Finance"
-readTime: 13
 featured: false
 cover: "/images/blog/cover-sukuk-green-finance.jpg"
 ---

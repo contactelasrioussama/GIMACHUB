@@ -4,7 +4,6 @@ description: "Islamic social finance moves hundreds of billions of dollars a yea
 author: "GIMAC Editorial Team"
 date: "2026-07-01"
 category: "Finance"
-readTime: 12
 featured: false
 ---
 

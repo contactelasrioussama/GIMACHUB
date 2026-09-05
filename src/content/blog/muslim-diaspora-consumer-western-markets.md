@@ -4,7 +4,6 @@ description: "Muslim consumers in Europe and North America are younger, more urb
 author: "GIMAC Editorial Team"
 date: "2026-07-16"
 category: "Marketing"
-readTime: 11
 featured: false
 ---
 

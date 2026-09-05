@@ -4,7 +4,6 @@ description: "There is no single global halal standard; there are more than 300 
 author: "GIMAC Editorial Team"
 date: "2026-05-15"
 category: "Research"
-readTime: 12
 featured: false
 cover: "/images/blog/cover-halal-certification.jpg"
 ---

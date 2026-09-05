@@ -4,7 +4,6 @@ description: "Ramadan is now the single most concentrated commercial moment in t
 author: "GIMAC Editorial Team"
 date: "2026-04-22"
 category: "Marketing"
-readTime: 10
 featured: false
 cover: "/images/blog/cover-ramadan-marketing.jpg"
 ---

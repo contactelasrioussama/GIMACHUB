@@ -4,7 +4,6 @@ description: "Islamic environmental thought is older and more demanding than the
 author: "GIMAC Editorial Team"
 date: "2026-08-20"
 category: "Sustainability"
-readTime: 12
 featured: false
 ---
 

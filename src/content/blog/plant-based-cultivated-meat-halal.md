@@ -4,7 +4,6 @@ description: "Alternative proteins promise to sidestep slaughter entirely, which
 author: "GIMAC Editorial Team"
 date: "2026-07-09"
 category: "Research"
-readTime: 12
 featured: false
 ---
 

@@ -4,7 +4,6 @@ description: "As artificial intelligence reshapes commerce, Muslim scholars and 
 author: "GIMAC Editorial Team"
 date: "2026-02-14"
 category: "Technology"
-readTime: 9
 cover: "/images/blog/cover-ai-ethics.jpg"
 ---
 

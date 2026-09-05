@@ -4,7 +4,6 @@ description: "A new generation of Shariah-compliant venture funds is backing Mus
 author: "GIMAC Editorial Team"
 date: "2026-06-12"
 category: "Entrepreneurship"
-readTime: 11
 featured: false
 cover: "/images/blog/cover-halal-venture-capital.jpg"
 ---

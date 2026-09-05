@@ -4,7 +4,6 @@ description: "Born into a connected world, Muslim Gen Z consumers are rewriting 
 author: "GIMAC Editorial Team"
 date: "2026-04-15"
 category: "Research"
-readTime: 8
 featured: false
 cover: "/images/blog/cover-gen-z-consumer.jpg"
 ---

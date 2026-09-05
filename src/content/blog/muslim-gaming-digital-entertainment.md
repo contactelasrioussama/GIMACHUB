@@ -4,7 +4,6 @@ description: "Saudi Arabia is buying its way into global gaming, Indonesia is on
 author: "GIMAC Editorial Team"
 date: "2026-08-27"
 category: "Technology"
-readTime: 12
 featured: false
 ---
 

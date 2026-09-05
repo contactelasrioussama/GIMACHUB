@@ -4,7 +4,6 @@ description: "A decade after the sports hijab arrived on major brand shelves, mo
 author: "GIMAC Editorial Team"
 date: "2026-08-13"
 category: "Marketing"
-readTime: 11
 featured: false
 ---
 

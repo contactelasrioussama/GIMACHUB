@@ -4,7 +4,6 @@ description: "The global halal market has surpassed $3.2 trillion. We examine th
 author: "GIMAC Editorial Team"
 date: "2026-03-15"
 category: "Research"
-readTime: 12
 featured: true
 cover: "/images/blog/cover-halal-economy.jpg"
 ---

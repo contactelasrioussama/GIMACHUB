@@ -4,7 +4,6 @@ description: "The principles of Maqasid al-Shariah and modern ESG frameworks sha
 author: "GIMAC Editorial Team"
 date: "2025-11-20"
 category: "Sustainability"
-readTime: 9
 cover: "/images/blog/cover-sustainability.jpg"
 ---
 

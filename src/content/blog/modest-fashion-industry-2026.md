@@ -4,7 +4,6 @@ description: "Modest fashion has moved from niche to mainstream, with global spe
 author: "GIMAC Editorial Team"
 date: "2026-05-08"
 category: "Marketing"
-readTime: 11
 featured: false
 cover: "/images/blog/cover-modest-fashion.jpg"
 ---
