@@ -29,6 +29,28 @@ function formatDate(iso: string) {
   });
 }
 
+/**
+ * Word count of the article body, for the BlogPosting JSON-LD.
+ * Strips markdown so syntax (bullet markers, emphasis, link URLs) is not
+ * counted as prose, and drops code blocks entirely.
+ */
+function countWords(markdown: string): number {
+  const text = markdown
+    .replace(/```[\s\S]*?```/g, " ")          // fenced code blocks
+    .replace(/`[^`\n]*`/g, " ")               // inline code
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")    // images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")  // links keep their visible text
+    .replace(/^\s{0,3}#{1,6}\s+/gm, "")       // heading markers
+    .replace(/^\s{0,3}>\s?/gm, "")            // blockquote markers
+    .replace(/^\s*[-*+]\s+/gm, "")            // bullet markers
+    .replace(/^\s*\d+\.\s+/gm, "")            // ordered list markers
+    .replace(/^\s*[-*_]{3,}\s*$/gm, " ")      // horizontal rules
+    .replace(/\*\*|__|\*|_/g, "");            // emphasis markers
+  return text.split(/\s+/).filter((t) => /[\p{L}\p{N}]/u.test(t)).length;
+}
+
+const wordCount = countWords(post.body ?? "");
+
 const breadcrumbs = [
   { name: "Home", url: "/" },
   { name: "Blog", url: "/blog/" },
@@ -86,7 +108,7 @@ const blogPostingJsonLd = {
   },
   "url": articleUrl,
   "articleSection": category,
-  "wordCount": readTime * 220, // rough estimate from reading time
+  "wordCount": wordCount,
   "timeRequired": `PT${readTime}M`,
   "inLanguage": "en",
   "keywords": articleKeywords,
