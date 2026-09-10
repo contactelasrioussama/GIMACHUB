@@ -5,6 +5,7 @@ author: "GIMAC Editorial Team"
 date: "2026-09-16"
 category: "Entrepreneurship"
 featured: false
+cover: "/images/blog/cover-phidoc-launch.jpg"
 ---
 
 Abdellatif Miraoui, Morocco's former Minister of Higher Education, Scientific Research and Innovation, has cited a figure stark enough to function as an indictment: roughly nine in ten doctoral researchers in the country abandon their thesis before completion. Not fail a defence. Not graduate late. Abandon it.
