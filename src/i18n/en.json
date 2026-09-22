@@ -44,8 +44,9 @@
     "creditsLabel": "CIMB continuing education credits"
   },
   "countdown": {
-    "headline": "Submission window closes",
-    "deadline": "20 September 2026",
+    "headline": "Submission deadline extended",
+    "deadline": "27 September 2026",
+    "extendedFrom": "Extended from 20 September 2026",
     "days": "days",
     "hours": "hours",
     "minutes": "minutes",
@@ -61,10 +62,12 @@
   "deadlines": {
     "kicker": "Key dates",
     "title": "Plan your submission",
+    "extendedLabel": "Extended",
     "items": [
       {
         "label": "Paper submission deadline",
-        "date": "20 September 2026"
+        "date": "27 September 2026",
+        "extended": true
       },
       {
         "label": "Early bird registration (–30%)",
@@ -123,7 +126,7 @@
     "kicker": "Call for papers",
     "title": "Submit your paper to GIMAC 17",
     "subtitle": "We welcome original, unpublished research across all GIMAC tracks. Papers may be submitted in English or Arabic.",
-    "deadlineChip": "Deadline: 20 September 2026",
+    "deadlineChip": "Extended deadline: 27 September 2026",
     "howTitle": "How to submit",
     "steps": [
       "Prepare your full paper or extended abstract following the format guidelines below.",
@@ -159,7 +162,7 @@
       },
       {
         "label": "Deadline",
-        "value": "20 September 2026"
+        "value": "27 September 2026 (extended)"
       }
     ],
     "cta": "Email your paper",
