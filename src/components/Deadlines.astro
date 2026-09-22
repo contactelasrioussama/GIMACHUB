@@ -27,9 +27,14 @@ const nav = t.nav as Record<string, string>;
               data-reveal
               data-delay={String(i * 100)}
             >
-              <div class="flex items-baseline gap-3 md:gap-4 min-w-0">
+              <div class="flex items-baseline flex-wrap gap-x-3 gap-y-1.5 md:gap-x-4 min-w-0">
                 <span class="font-serif text-saffron-500 text-sm tabular-nums shrink-0">0{i + 1}</span>
                 <span class="text-sm md:text-base lg:text-lg text-midnight-800">{item.label}</span>
+                {"extended" in item && item.extended && (
+                  <span class="shrink-0 px-2 py-0.5 rounded-sm bg-saffron-400/10 border border-saffron-400 text-[0.6rem] font-semibold uppercase tracking-widest text-saffron-600">
+                    {t.deadlines.extendedLabel}
+                  </span>
+                )}
               </div>
               <span class="font-serif text-sm md:text-base lg:text-lg font-medium text-midnight-800 whitespace-nowrap shrink-0 inline-flex items-center gap-1.5">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-saffron-500 opacity-70 shrink-0" aria-hidden="true">
